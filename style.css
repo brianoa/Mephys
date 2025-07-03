@@ -1,7 +1,7 @@
 .banner{
 	width: 100%;
 	min-height: 100vh;
-	background-image: linear-gradient(rgba(0, 0, 0, 1),rgba(0, 0, 0, 0.1)),url(images/physio.jpg);
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.3)),url(images/elderly.jpg);
 	background-size: cover;
 	background-position: center;
 }
@@ -33,7 +33,7 @@
 	content: '';
 	height: 3px;
 	width: 0;
-	background: #009688;
+	background: #0099cc;
 	position: absolute;
 	left: 0;
 	bottom: -10px;
@@ -66,7 +66,7 @@ button{
 	margin: 20px 10px;
 	border-radius: 25px;
 	font-weight: bold;
-	border: 2px solid #009688;
+	border: 2px solid #0099cc;
 	background: transparent;
 	color: #fff;
 	cursor: pointer;
@@ -75,7 +75,7 @@ button{
 
 }
 span{
-	background: #009688;
+	background: #0099cc;
 	height: 100%;
 	width: 0;
 	border-radius: 25px;

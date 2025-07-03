@@ -10,35 +10,39 @@
 	<title>Home</title>
 </head>
 <body>
-<div class="banner">
-	<div class="navbar">
-		<img src="images/logo.jpg" class="logo">
+<section class="home" id="home"> 
+  <div class="banner">
 
-		<!-- Hamburger menu button -->
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-			<span class="navbar-toggler-icon"></span>
-		</button>
+    <!-- Responsive Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="#location">Location</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-		<!-- Collapsible menu content -->
-		
-			<ul>
-				<li><a href="#">Home</a></li>
-				<li><a href="#about">About Us</a></li>
-				<li><a href="#services">Services</a></li>
-				<li><a href="#contact">Contact</a></li>
-				<li><a href="#location">Location</a></li>
-			</ul>
-		
-	</div> 
-	<div class="content">
-		<h1>Feel Stronger. Move Freely</h1>
-		<p>Professional physiotherapy that restores balance, strength, and confidence.</p>
-		<div>
-			<button type="button"><span></span>COMPANY</button>
-			<button type="button" onclick="window.location.href='#projects'"><span></span>PROJECTS</button>
-		</div>
-	</div>    
-</div>
+    <!-- Banner Content -->
+    <div class="content text-center">
+      <h1>Feel Stronger. Move Freely</h1>
+      <p>Professional physiotherapy that restores balance, strength, and confidence.</p>
+      <div>
+        <button type="button"><span></span>CONTACT US</button>
+        <button type="button" onclick="window.location.href='#projects'"><span></span>PROJECTS</button>
+      </div>
+    </div>    
+
+  </div>
+</section>
 
 <!--Profile----->
 <section class="AboutUS" id="about">
@@ -50,7 +54,8 @@
 	
 	<div class="row">
 		<div class="col-md-5">
-			<img src="images/Physiotherapy.jpg">
+      
+			<img src="images/Physiotherapy.jpg" class="img-fluid" style="height: auto; object-fit: cover;">
 		</div>
 
 
@@ -70,7 +75,7 @@
 			<p>At Mephys Physiotherapy Clinic, our mission is to enhance the overall well-being and quality of life for our patients through personalized and comprehensive physiotherapy services. We are committed to providing evidence-based care, utilizing cutting-edge techniques and technology to address musculoskeletal issues, promote mobility, and optimize physical function. Our 
 			dedicated team of experienced physiotherapists strives to create a supportive and empowering environment, fostering healing, recovery, and the prevention of future injuries. Mephys Physiotherapy Clinic is dedicated to being a trusted partner in our community, 
 			promoting health, and helping individuals achieve their fullest potential in movement and life."</p>
-		<button style="margin-left: 250px; width: 120px;" type="button" class="btn btn-primary" onclick="window.location.href='mission.html'">Read More</button>			
+		<button class="btn btn-primary mx-auto d-block" style="width: 120px;" onclick="window.location.href='mission.html'">Read More</button>			
 		
 
 </section>
@@ -88,7 +93,7 @@
 			<div class="row">				
 				<div class="col-md-6">	
 				 <div class="card">
-					<img style="width: 100%; height: 340px;" src="images/safety.avif" class="card-img-top" alt="Image 1">
+					<img src="images/safety.avif" class="card-img-top img-fluid" alt="Image 1">
 					<div class="card-body">
 					<br>
 					<h5 class="card-title" style="color: #0099cc;">Quality</h5>
@@ -99,7 +104,7 @@
 				</div> 
 				<div class="col-md-3">
 					<div class="card">
-					<img style="width: 100%; height: 310px;" src="images/african.avif" class="card-img-top" alt="Image 2">
+					<img src="images/african.avif" class="card-img-top img-fluid" alt="Image 2">
 					<div class="card-body">
 						<h5 class="card-title" style="color: #0099cc;">Integrity</h5>
 						<p>We uphold the highest standards in all of our actions. We develop relationships that make a positive difference in our customers' lives. We work together to meet the needs of our customers and to achieve company objectives.</p>
@@ -109,7 +114,7 @@
 				</div>
 				<div class="col-md-3">
 					<div class="card">
-					<img style="width: 100%; height: 330px;" src="images/patient.avif" class="card-img-top" alt="Image 3">
+					<img src="images/patient.avif" class="card-img-top img-fluid" alt="Image 3">
 					<div class="card-body">
 						<br>
 						<h5 class="card-title" style="color: #0099cc;">Professionalism</h5>
@@ -127,10 +132,10 @@
 
 <!--Our Services------>
 
-<section class="services" id="services">
+<section class="services">
 <div class="container">
 	<h1>Our Services</h1>
-  <div class="row" id="services">
+  <div class="row">
     <!-- Musculoskeletal Physiotherapy Card -->
     <div class="col-md-4 mb-4">
       <div class="card service-card" data-service="musculoskeletal">
@@ -162,7 +167,7 @@
    </div>
 
 
-    <div class="row" id="services">
+    <div class="row">
     <!-- Geriatric Physiotherapy Card -->
     <div class="col-md-4 mb-4">
       <div class="card service-card" data-service="geriatric">
@@ -194,7 +199,7 @@
     </div>
    </div>
 
-   <div class="row" id="services">
+   <div class="row">
     <!-- Corporate Ergonomic Training Card --> 
     <div class="col-md-4 mb-4">
       <div class="card service-card" data-service="ergonomictraining">
@@ -226,7 +231,7 @@
    </div>
 
    
-   <div class="row" id="services">
+   <div class="row">
 
     <!-- Home based care card -->   
     <div class="col-md-4 mb-4">
@@ -259,7 +264,7 @@
     </div>
    </div>
 
-   <div class="row" id="services">
+   <div class="row">
     <!-- Sexual Health and wellness Card -->
     <div class="col-md-4 mb-4">
       <div class="card service-card" data-service="sexualhealth">

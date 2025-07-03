@@ -1,98 +1,159 @@
-.banner{
-	width: 100%;
-	min-height: 100vh;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.3)),url(images/elderly.jpg);
-	background-size: cover;
-	background-position: center;
+/* Prevent horizontal scroll */
+body, html {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
-.navbar{
-	width: 85%;
-	margin: auto;
-	padding: 35px 0;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-}
-.logo{
-	width: 120px;
-	cursor: pointer;
-}
-.navbar ul li{
-	list-style: none;
-	display: inline-block;
-	margin: 0 20px;
-	position: relative;
 
+/* Banner Background */
+.banner {
+  width: 100%;
+  min-height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.3)), url(images/elderly.jpg);
+  background-size: cover;
+  background-position: center;
+  position: relative;
 }
-.navbar ul li a{
-	text-decoration: none;
-	color: #fff;
-	text-transform: uppercase;
-}
-.navbar ul li::after{
-	content: '';
-	height: 3px;
-	width: 0;
-	background: #0099cc;
-	position: absolute;
-	left: 0;
-	bottom: -10px;
-	transition: 0.5s;
-}
-.navbar ul li:hover::after{
-	width: 100%;
 
-} 
-.content{
-	width: 100%;
-	color: #fff;
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	text-align: center;
+/* Logo */
+.logo {
+ 	max-width: 150px;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 10px;
+  display: block;
 }
-.content h1{
-	font-size: 70px;
-}
-.content p{
-	margin: 20px;
-	font-weight: 100;
-	line-height: 25px;
-}
-button{
-	width: 200px;
-	padding: 15px 0;
-	text-align: center;
-	margin: 20px 10px;
-	border-radius: 25px;
-	font-weight: bold;
-	border: 2px solid #0099cc;
-	background: transparent;
-	color: #fff;
-	cursor: pointer;
-	position: relative;
-	overflow: hidden;
 
-}
-span{
-	background: #0099cc;
-	height: 100%;
-	width: 0;
-	border-radius: 25px;
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	z-index: -1;
-	transition: 0.5s;
 
+/* Navbar */
+.navbar {
+  background-color: transparent !important;
+  position: relative;
+  z-index: 10;
+  padding: 10px 20px;
 }
-button:hover span{
-	width: 100%;
 
+/* Navbar Links */
+.navbar-nav .nav-link {
+  color: #fff !important;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin: 0 15px;
+  position: relative;
 }
-button:hover{
-	border: none;
+
+/* Hover underline effect */
+.navbar-nav .nav-link::after {
+  content: '';
+  height: 3px;
+  width: 0;
+  background: #0099cc;
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  transition: 0.5s;
 }
+.navbar-nav .nav-link:hover::after {
+  width: 100%;
+}
+
+/* Collapsed Navbar Background for Mobile */
+@media (max-width: 992px) {
+  .navbar-collapse {
+    background-color: rgba(0, 0, 0, 0.85); /* dark background on mobile menu */
+    padding: 20px 0;
+  }
+
+  .navbar-nav {
+    text-align: center;
+  }
+
+  .navbar-nav .nav-link {
+    margin: 10px 0;
+  }
+
+  .logo {
+    max-width: 100px;
+  }
+
+  .banner {
+    padding-top: 60px;
+  }
+}
+
+
+/* Centered Banner Content */
+.content {
+  width: 100%;
+  max-width: 100%;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.content h1 {
+  font-size: 70px;
+  font-weight: 700;
+}
+.content p {
+  margin: 20px 0;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* CTA Buttons */
+button {
+  width: 200px;
+  padding: 15px 0;
+  margin: 20px 10px;
+  border-radius: 25px;
+  font-weight: bold;
+  border: 2px solid #0099cc;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+button span {
+  background: #0099cc;
+  height: 100%;
+  width: 0;
+  border-radius: 25px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  transition: 0.5s;
+}
+button:hover span {
+  width: 100%;
+}
+button:hover {
+  border: none;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .content h1 {
+    font-size: 40px;
+  }
+  .content p {
+    font-size: 16px;
+    padding: 0 10px;
+  }
+  button {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+/* Image Container (if needed) */
 .container img{
 	width: 400px;
 	height: 300px;
@@ -239,6 +300,12 @@ body {
 .modal-content p {
   margin-bottom: 1.2em;
 }
+.modal-content h2{
+	color: #007bff;;
+}
+.modal-content h3{
+	color: #007bff;;
+}
 
 .section-heading {
   color: #007bff;
@@ -269,3 +336,12 @@ body {
 .card-title{
 	color: #007399;
 }
+
+.card-img-top{
+	height: auto;
+  max-height: 300px;
+  object-fit: cover;
+  width: 100%;
+}
+
+

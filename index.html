@@ -3,9 +3,16 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <!---Font Awesome--->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!--Bootstrap link-->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!--AOS--->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+  <!--Stylesheet link-->
 	<link rel="stylesheet" type="text/css" href="style.css">
+  
+  <!--Animate-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 	<title>Home</title>
 </head>
@@ -25,18 +32,20 @@
             <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
             <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-            <li class="nav-item"><a class="nav-link" href="#location">Location</a></li>
+            <li class="nav-item"><a class="nav-link" href="#map">Location</a></li>
           </ul>
         </div>
       </div>
     </nav>
+
+    
 
     <!-- Banner Content -->
     <div class="content text-center">
       <h1>Feel Stronger. Move Freely</h1>
       <p>Professional physiotherapy that restores balance, strength, and confidence.</p>
       <div>
-        <button type="button"><span></span>CONTACT US</button>
+        <button type="button" onclick="window.location.href='#contact'"><span></span>CONTACT US</button>
         <button type="button" onclick="window.location.href='#projects'"><span></span>PROJECTS</button>
       </div>
     </div>    
@@ -397,6 +406,79 @@
 
   </div>
 </section>
+
+
+<!--CONTACT US--->
+
+<section id="contact" class="contact-section py-5">
+  <div class="container" data-aos="fade-up">
+    <div class="text-center mb-5">
+      <h2 class="section-title"><span class="highlight">Get in Touch</span></h2>
+      <p class="section-subtitle">We'd love to hear from you. Let's talk!</p>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-4" data-aos="fade-right">
+        <h4 class="mb-3">Contact Information</h4>
+        <p><i class="fa-solid fa-envelope"></i><strong>  Email:</strong> info@mephysclinic.com</p>
+        <p><i class="fa-solid fa-phone"></i><strong> Phone:</strong> +254 720-095-236</p>
+        <p><i class="fa-solid fa-location-dot"></i><strong> Location:</strong> Soubth B, Golden Gates Drive</p>
+        <p><i class="fa-solid fa-clock-rotate-left"></i>  We are open from <strong>9:00am - 6:00pm</strong>, Monday to Friday.</p>
+      </div>
+
+      <div class="col-md-6" data-aos="fade-left">
+        <form id="contact-form" method="POST">
+          <div class="form-group mb-3">
+            <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+          </div>
+          <div class="form-group mb-3">
+            <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+          </div>
+          <div class="form-group mb-3">
+            <textarea class="form-control" name="message" rows="5" placeholder="Your Message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Send Message</button>
+          <!-- Message output -->
+          <div id="form-message" class="mt-3"></div>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!--Map Location of the website--->
+<!--section id="map" class="map-section py-5">
+  <div class="container" data-aos="fade-up">
+    <div class="text-center mb-4">
+      <h2 class="section-title">Find <span class="highlight">Us</span></h2>
+      <p class="section-subtitle">Our clinic is located in the heart of Calgary</p>
+    </div>
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.7675865751676!2d36.83735147397421!3d-1.314973335656062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f11a416c3cab7%3A0x2193788a9fb879ab!2sGolden%20Gate%20Dr%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1751632474605!5m2!1sen!2ske" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section-->
+<section id="map" class="map-section py-5">
+  <div class="map-header text-center mb-4" data-aos="fade-up">
+    <h2 class="section-title" style="color: #007bff; font-weight: bold;">Locate <span class="highlight">Us</span></h2>
+    <!--p class="section-subtitle">Our clinic is located at South B the heart of Calgary</p-->
+  </div>
+  
+  <div class="map-full-width">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.7675865751676!2d36.83735147397421!3d-1.314973335656062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f11a416c3cab7%3A0x2193788a9fb879ab!2sGolden%20Gate%20Dr%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1751632474605!5m2!1sen!2ske" 
+      width="100%" 
+      height="500" 
+      style="border:0;" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
 
 
 

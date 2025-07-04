@@ -312,3 +312,40 @@ window.onclick = (e) => {
 
 
 
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contact-form");
+  const messageBox = document.getElementById("form-message");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault(); // Stop default form submit
+
+    const formData = new FormData(form);
+
+    fetch("contact.php", {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.text())
+      .then((response) => {
+        if (response.trim() === "success") {
+          messageBox.innerHTML = `
+            <div class="alert alert-success" role="alert">
+              Your message was sent successfully!
+            </div>`;
+          form.reset();
+        } else {
+          messageBox.innerHTML = `
+            <div class="alert alert-danger" role="alert">
+              Error: ${response}
+            </div>`;
+        }
+      })
+      .catch((err) => {
+        messageBox.innerHTML = `
+          <div class="alert alert-danger" role="alert">
+            Unexpected error occurred. Please try again.
+          </div>`;
+        console.error("Fetch error:", err);
+      });
+  });
+});

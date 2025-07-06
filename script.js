@@ -349,3 +349,96 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   });
 });
+
+
+
+
+/*Book Appointment Button*/
+
+
+// Open form from modal
+document.getElementById("openAppointmentFormBtn").addEventListener("click", function () {
+  const modalTitle = document.getElementById("modalTitle").innerText;
+  document.getElementById("selectedService").value = modalTitle;
+
+  document.getElementById("modal").style.display = "none";
+  const formContainer = document.getElementById("appointmentFormContainer");
+  formContainer.style.display = "block";
+  formContainer.scrollIntoView({ behavior: "smooth" });
+});
+
+// Block past dates
+const today = new Date().toISOString().split("T")[0];
+document.getElementById("appointmentDate").setAttribute("min", today);
+
+// Form validation and submission
+document.getElementById("appointmentForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById("fullName").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const time = document.getElementById("appointmentTime").value.trim();
+
+
+  const nameError = document.getElementById("nameError");
+  const emailError = document.getElementById("emailError");
+  const phoneError = document.getElementById("phoneError");
+  const timeError = document.getElementById("timeError");
+
+  // Reset error messages
+  nameError.textContent = "";
+  emailError.textContent = "";
+  phoneError.textContent = "";
+  timeError.textContent = "";
+
+  let isValid = true;
+
+  // Validate full name
+  if (!/^[A-Za-z\s]{2,}$/.test(name)) {
+    nameError.textContent = "Please enter a valid full name.";
+    isValid = false;
+  }
+
+  // Validate email
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    emailError.textContent = "Please enter a valid email address.";
+    isValid = false;
+  }
+
+  // Validate phone number
+  if (!/^\+?\d{7,15}$/.test(phone)) {
+    phoneError.textContent = "Please enter a valid phone number.";
+    isValid = false;
+  }
+  //Validate time
+  if (time < "09:00" || time > "17:00") {
+  timeError.textContent = "Please select a time within working hours (9 AM to 5 PM).";
+  isValid = false;
+}
+
+  if (isValid) {
+    const form = document.getElementById("appointmentForm");
+    const formData = new FormData(form);
+
+    fetch("book_appointment.php", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.text())
+      .then((data) => {
+        if (data.toLowerCase().includes("success"))  {
+          alert("Appointment successfully submitted!");
+          form.reset();
+          document.getElementById("appointmentFormContainer").style.display = "none";
+        } else {
+          alert("Submission failed. Server said: " + data);
+        }
+      })
+      .catch((error) => {
+        alert("Network error: " + error.message);
+      });
+  }
+});
+
+  

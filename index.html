@@ -314,13 +314,59 @@
     <h2 id="modalTitle"></h2>
     <div id="modalDesc"></div>
     <div class="text-end mt-4">
-      <a href="#appointment" class="btn btn-primary">Book Appointment</a>
+      <!--a href="#appointment" class="btn btn-primary">Book Appointment</a-->
+      <button id="openAppointmentFormBtn" class="btn btn-primary">Book Appointment</button>
     </div>
   </div>
 </div>
 
 
 
+<!-- Booking Form Section -->
+<section id="appointmentFormContainer" class="container my-5" style="display: none;" data-aos="fade-up">
+  <div class="card shadow-lg p-4 rounded-4 border-0 bg-light">
+    <h3 class="mb-4 text-center text-primary">Book Your Appointment</h3>
+    <form id="appointmentForm" method="POST">
+      <input type="hidden" name="service" id="selectedService">
+
+      <div class="mb-3">
+        <label for="fullName" class="form-label">Full Name</label>
+        <input type="text" class="form-control form-control-lg rounded-3" id="fullName" name="fullName" required>
+        <div class="error-message text-danger mt-1" id="nameError"></div>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email Address</label>
+        <input type="email" class="form-control form-control-lg rounded-3" id="email" name="email" required>
+        <div class="error-message text-danger mt-1" id="emailError"></div>
+      </div>
+
+      <div class="mb-3">
+        <label for="phone" class="form-label">Phone Number</label>
+        <input type="tel" class="form-control form-control-lg rounded-3" id="phone" name="phone" required>
+        <div class="error-message text-danger mt-1" id="phoneError"></div>
+      </div>
+      <div class="mb-3">
+        <label for="appointmentDate" class="form-label">Select Date</label>
+        <input type="date" class="form-control form-control-lg rounded-3" id="appointmentDate" name="date" required>
+      </div>
+      <div class="mb-3">
+      <label for="appointmentTime" class="form-label">Select Time</label>
+      <input type="time" class="form-control form-control-lg rounded-3" id="appointmentTime" name="time" min="09:00" max="17:00" required>
+      <div class="error-message text-danger mt-1" id="timeError"></div>
+      </div>
+
+      <div class="mb-3">
+        <label for="notes" class="form-label">Additional Notes (Optional)</label>
+        <textarea class="form-control rounded-3" id="notes" name="notes" rows="3"></textarea>
+      </div>
+
+      <div class="d-grid">
+        <button type="submit" class="btn btn-primary btn-lg rounded-pill">Confirm Appointment</button>
+      </div>
+    </form>
+  </div>
+</section>
 
 
 
@@ -446,7 +492,6 @@
     </div>
   </div>
 </section>
-
 
 <!--Map Location of the website--->
 <!--section id="map" class="map-section py-5">

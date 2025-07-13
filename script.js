@@ -412,8 +412,8 @@ document.getElementById("appointmentForm").addEventListener("submit", function (
     isValid = false;
   }
   //Validate time
-  if (time < "09:00" || time > "17:00") {
-  timeError.textContent = "Please select a time within working hours (9 AM to 5 PM).";
+  if (time < "07:00" || time > "19:00") {
+  timeError.textContent = "Please select a time within working hours (7 AM to 7 PM).";
   isValid = false;
 }
 

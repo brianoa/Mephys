@@ -18,357 +18,64 @@
 </head>
 <body>
 <section class="home" id="home"> 
-  <div class="banner">
-
-    <!-- Responsive Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarContent">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
-            <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-            <li class="nav-item"><a class="nav-link" href="#map">Location</a></li>
+ <div class="navbar-bg">
+  <nav class="navbar navbar-expand-lg fixed-top bg-white shadow-sm">
+   <div class="container">
+    <a class="navbar-brand" href="#">Mephys</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.php#home">Home</a>
+        </li>        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Services
+          </a>
+          <ul class="dropdown-menu scrollable-dropdown">
+            <li><a class="dropdown-item" href="services.php#musculoskeletal">Musculoskeletal Physiotherapy</a></li>
+            <li><a class="dropdown-item" href="services.php#neurological">Neurological Physiotherapy</a></li>
+            <li><a class="dropdown-item" href="services.php#cardiorespiratory">Cardiorespiratory Physiotherapy</a></li>
+            <li><a class="dropdown-item" href="services.php#geriatric">Geriatric Physiotherapy</a></li>
+            <li><a class="dropdown-item" href="services.php#sports">Sports Physiotherapy</a></li>
+            <li><a class="dropdown-item" href="services.php#orthopedic">Orthopedic Physiotherapy</a></li>
+            <li><a class="dropdown-item" href="services.php#corporate">Corporate Ergonomic Training</a></li>
+            <li><a class="dropdown-item" href="services.php#pediatric">Pediatric Physiotherapy</a></li>
+            <li><a class="dropdown-item" href="services.php#lamaze">Lamaze for Expectant Mothers</a></li>
+            <li><a class="dropdown-item" href="services.php#homebased">Home-Based Physiotherapy</a></li>
+            <li><a class="dropdown-item" href="services.php#lymphatic">Lymphatic drainage post surgery</a></li>
+            <li><a class="dropdown-item" href="services.php#physical">Physical Therapy Consultancy</a></li>
+            <li><a class="dropdown-item" href="services.php#sexual">Sexual Helath and Wellness</a></li>
+            <li><a class="dropdown-item" href="services.php#physicaltherapy">Physical Therapy Consultancy</a></li>
+            <li><a class="dropdown-item" href="services.php#pain">Pain Management</a></li>            
           </ul>
-        </div>
-      </div>
-    </nav>
-
-    
-
-    <!-- Banner Content -->
-    <div class="content text-center">
-      <h1>Feel Stronger. Move Freely</h1>
-      <p>Professional physiotherapy that restores balance, strength, and confidence.</p>
-      <div>
-        <button type="button" onclick="window.location.href='#contact'"><span></span>CONTACT US</button>
-        <button type="button" onclick="window.location.href='#projects'"><span></span>PROJECTS</button>
-      </div>
-    </div>    
-
-  </div>
-</section>
-
-<!--Profile----->
-<section class="AboutUS" id="about">
-<div class="container">
-	<div class="p-5 mb-4 bg-light rounded-3 shadow-sm">		
-	<h1>ABOUT US</h1>
-	<p>Mephys is a physiotherapy clinic that aims to provide innovative and holistic physiotherapy and rehabilitation services to patients in 
-	Nairobi, Kenya and surrounding areas. The Clinic was founded 2011.With over a decade of experience, our team have highly qualified physiotherapist and licensed physiotherapist, enables us to deliver exceptional care of wide range of condition. The goal of Mephys is to change the way physiotherapy care is delivered by moving away from the traditional model and taking a more holistic, patient-centered approach focused on sustainable, lifelong results. Mephys provides accessible, comprehensive services to meet a wide variety of patient needs. </p>
-	
-	<div class="row">
-		<div class="col-md-5">
-      
-			<img src="images/Physiotherapy.jpg" class="img-fluid" style="height: auto; object-fit: cover;">
-		</div>
-
-
-		<div class="col-md-7">
-			<h2>Vision</h2>
-			<p>To be the leading physiotherapy clinic that empowers individuals to achieve optimal health and wellness through personalized, evidence-based care. We envision a community where everyone has access to exceptional physiotherapy services, fostering a culture of proactive healthcare and lifelong well-being.Our commitment is to inspire, educate, and support individuals on their journey to a pain-free, active, and fulfilling life."</p>
-		</div>
-	</div>
-
-
-	
-	</div>
- </div>
-</section>
-<section class="objectives" id="mission">		
-			<h2>Mission</h2>
-			<p>At Mephys Physiotherapy Clinic, our mission is to enhance the overall well-being and quality of life for our patients through personalized and comprehensive physiotherapy services. We are committed to providing evidence-based care, utilizing cutting-edge techniques and technology to address musculoskeletal issues, promote mobility, and optimize physical function. Our 
-			dedicated team of experienced physiotherapists strives to create a supportive and empowering environment, fostering healing, recovery, and the prevention of future injuries. Mephys Physiotherapy Clinic is dedicated to being a trusted partner in our community, 
-			promoting health, and helping individuals achieve their fullest potential in movement and life."</p>
-		<button class="btn btn-primary mx-auto d-block" style="width: 120px;" onclick="window.location.href='mission.html'">Read More</button>			
-		
-
-</section>
-
-
-<section class="Core-Values" id="values">
-<div class="container">
-	<h2>Core Values</h2>
-			<p>At Mephys Physiotherapy Clinic, our mission is to enhance the overall well-being and quality of life for our patients through personalized and comprehensive physiotherapy services. We are committed to providing evidence-based care, utilizing cutting-edge techniques and technology to address musculoskeletal issues, promote mobility, and optimize physical function. Our 
-			dedicated team of experienced physiotherapists strives to create a supportive and empowering environment, fostering healing, recovery, and the prevention of future injuries. Mephys Physiotherapy Clinic is dedicated to being a trusted partner in our community, 
-			promoting health, and helping individuals achieve their fullest potential in movement and life."</p>
-
-
-			<h4 style="color: #0099cc;">key core values</h4>
-			<div class="row">				
-				<div class="col-md-6">	
-				 <div class="card">
-					<img src="images/safety.avif" class="card-img-top img-fluid" alt="Image 1">
-					<div class="card-body">
-					<br>
-					<h5 class="card-title" style="color: #0099cc;">Quality</h5>
-					<p>We believe that service is a major component in the every sector and we never hesitate in raising 
-					the bar when it comes to quality. Depending on the interest and requirement, timely service is offered to our valued customers.Quality service is the first priority of our company. To fulfil the customer’s satisfaction, the work given is attended with due care to the accomplishment.Complete professionalism is also maintained while communicating with the clients. We also keep in mind that the services and works awarded must be done in a proper way and are of international quality standards </p>						
-					</div>
-				 </div>
-				</div> 
-				<div class="col-md-3">
-					<div class="card">
-					<img src="images/african.avif" class="card-img-top img-fluid" alt="Image 2">
-					<div class="card-body">
-						<h5 class="card-title" style="color: #0099cc;">Integrity</h5>
-						<p>We uphold the highest standards in all of our actions. We develop relationships that make a positive difference in our customers' lives. We work together to meet the needs of our customers and to achieve company objectives.</p>
-						<button style="width: 120px;" type="button" class="btn btn-primary" onclick="window.location.href='mission.html'">Read More</button>
-					</div>
-				 </div>
-				</div>
-				<div class="col-md-3">
-					<div class="card">
-					<img src="images/patient.avif" class="card-img-top img-fluid" alt="Image 3">
-					<div class="card-body">
-						<br>
-						<h5 class="card-title" style="color: #0099cc;">Professionalism</h5>
-						<p>In all our endeavors, we are guided by a team of professionals who keep strive hard to deliver the best services to our clients</p>						
-										
-					</div>
-				 </div>
-				</div>
-
-			</div>
-				
-		</div>	
-
-</section>
-
-<!--Our Services------>
-
-<section class="services">
-<div class="container">
-	<h1>Our Services</h1>
-  <div class="row">
-    <!-- Musculoskeletal Physiotherapy Card -->
-    <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="musculoskeletal">
-        <div class="card-body">
-          <h5 class="card-title">Musculoskeletal Physiotherapy</h5>
-          <p class="card-text">Treatment for muscles, bones, and joints to reduce pain and improve mobility.</p>
-        </div>
-      </div>
-    </div>
-    <!-- Neurological Physiotherapy Card -->
-    <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="neurological">
-        <div class="card-body">
-          <h5 class="card-title">Neurological Physiotherapy</h5>
-          <p class="card-text">Helping patients with nervous system conditions like stroke or Parkinson's regain control and function.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Cardiorespiratory Physiotherapy Card -->
-    <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="cardiorespiratory">
-        <div class="card-body">
-          <h5 class="card-title">Cardiorespiratory Physiotherapy</h5>
-          <p class="card-text">Treatment for heart and lung conditions with personalized rehabilitation programs and breathing exercises.</p>
-        </div>
-      </div>
-    </div>
+         </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.php#about">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="location.php#map">Location</a>
+          </li>
+       </ul>      
+     </div>
    </div>
-
-
-    <div class="row">
-    <!-- Geriatric Physiotherapy Card -->
-    <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="geriatric">
-        <div class="card-body">
-          <h5 class="card-title">Geriatric Physiotherapy</h5>
-          <p class="card-text">Empowering seniors with mobility, independence, and fall prevention strategies.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Sports Physiotherapy Card -->
-    <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="sports">
-        <div class="card-body">
-          <h5 class="card-title">Sports Physiotherapy</h5>
-          <p class="card-text">Injury rehab and performance care designed for athletes and active individuals.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Orthopedic Physiotherapy Card -->
-    <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="orthopedic">
-        <div class="card-body">
-          <h5 class="card-title">Orthopedic Physiotherapy</h5>
-          <p class="card-text">Support for bone, joint, and muscle recovery — now includes Lamaze for mothers.</p>
-        </div>
-      </div>
-    </div>
-   </div>
-
-   <div class="row">
-    <!-- Corporate Ergonomic Training Card --> 
-    <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="ergonomictraining">
-        <div class="card-body">
-          <h5 class="card-title">Corporate Ergonomic Training</h5>
-          <p class="card-text">Customized workplace ergonomics for better health and productivity.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Pediatric Physiotherapy -->
-    <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="pediatric">
-        <div class="card-body">
-          <h5 class="card-title">Pediatric Physiotherapy</h5>
-          <p class="card-text">Helping infants and children grow stronger, move better, and thrive with early personalized care.</p>
-        </div>
-      </div>
-    </div>
-    <!-- Lamaze for Expectant Mothers card -->
-    <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="lamaze">
-        <div class="card-body">
-          <h5 class="card-title">Lamaze for Expectant Mothers</h5>
-          <p class="card-text">Supporting moms-to-be with informed, confident, and natural birthing techniques.</p>
-        </div>
-      </div>
-    </div>
-   </div>
-
-   
-   <div class="row">
-
-    <!-- Home based care card -->   
-    <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="homebasedcare">
-        <div class="card-body">
-          <h5 class="card-title">Home-Based Physiotherapy</h5>
-          <p class="card-text">Personalized healing in the comfort of your home for better recovery and convenience.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Lymphatic drainage post surgery Card -->
-    <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="lymphatic">
-        <div class="card-body">
-          <h5 class="card-title">Lymphatic drainage post surgery</h5>
-          <p class="card-text">...</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Physical Therapy Consultancy card -->
-    <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="physical">
-        <div class="card-body">
-          <h5 class="card-title">Physical Therapy Consultancy </h5>
-          <p class="card-text">...</p>
-        </div>
-      </div>
-    </div>
-   </div>
-
-   <div class="row">
-    <!-- Sexual Health and wellness Card -->
-    <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="sexualhealth">
-        <div class="card-body">
-          <h5 class="card-title">Sexual Health and wellness</h5>
-          <p class="card-text">...</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Physical Therapy Consultancy Card -->
-    <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="supply">
-        <div class="card-body">
-          <h5 class="card-title">Physical Therapy Consultancy</h5>
-          <p class="card-text">...</p>
-        </div>
-      </div>
-    </div>  
-
-    <!-- Pain Management Physiotherapy Card -->
-    <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="painmanagement">
-        <div class="card-body">
-          <h5 class="card-title">Pain Management</h5>
-          <p class="card-text">...</p>
-        </div>
-      </div>
-    </div>     
-   </div>   
-  </div>	
-</section>
-
-<!-- Modal -->
-<div class="modal" id="modal">
-  <div class="modal-content">
-    <span id="closeModal">&times;</span>
-    <h2 id="modalTitle"></h2>
-    <div id="modalDesc"></div>
-    <div class="text-end mt-4">
-      <!--a href="#appointment" class="btn btn-primary">Book Appointment</a-->
-      <button id="openAppointmentFormBtn" class="btn btn-primary">Book Appointment</button>
-    </div>
-  </div>
+ </nav>
 </div>
 
-
-
-<!-- Booking Form Section -->
-<section id="appointmentFormContainer" class="container my-5" style="display: none;" data-aos="fade-up">
-  <div class="card shadow-lg p-4 rounded-4 border-0 bg-light">
-    <h3 class="mb-4 text-center text-primary">Book Your Appointment</h3>
-    <form id="appointmentForm" method="POST">
-      <input type="hidden" name="service" id="selectedService">
-
-      <div class="mb-3">
-        <label for="fullName" class="form-label">Full Name</label>
-        <input type="text" class="form-control form-control-lg rounded-3" id="fullName" name="fullName" required>
-        <div class="error-message text-danger mt-1" id="nameError"></div>
-      </div>
-
-      <div class="mb-3">
-        <label for="email" class="form-label">Email Address</label>
-        <input type="email" class="form-control form-control-lg rounded-3" id="email" name="email" required>
-        <div class="error-message text-danger mt-1" id="emailError"></div>
-      </div>
-
-      <div class="mb-3">
-        <label for="phone" class="form-label">Phone Number</label>
-        <input type="tel" class="form-control form-control-lg rounded-3" id="phone" name="phone" required>
-        <div class="error-message text-danger mt-1" id="phoneError"></div>
-      </div>
-      <div class="mb-3">
-        <label for="appointmentDate" class="form-label">Select Date</label>
-        <input type="date" class="form-control form-control-lg rounded-3" id="appointmentDate" name="date" required>
-      </div>
-      <div class="mb-3">
-      <label for="appointmentTime" class="form-label">Select Time</label>
-      <input type="time" class="form-control form-control-lg rounded-3" id="appointmentTime" name="time" min="09:00" max="17:00" required>
-      <div class="error-message text-danger mt-1" id="timeError"></div>
-      </div>
-
-      <div class="mb-3">
-        <label for="notes" class="form-label">Additional Notes (Optional)</label>
-        <textarea class="form-control rounded-3" id="notes" name="notes" rows="3"></textarea>
-      </div>
-
-      <div class="d-grid">
-        <button type="submit" class="btn btn-primary btn-lg rounded-pill">Confirm Appointment</button>
-      </div>
-    </form>
+<!-- Banner Section -->
+<section class="hero-banner">
+  <div class="content text-center">
+    <h1>Feel Stronger. Move Freely</h1>
+    <p>Professional physiotherapy that restores balance, strength, and confidence.</p>
+    <div>
+      <button class="hero-btn" onclick="window.location.href='#contact'"><span></span>CONTACT US</button>
+      <button class="hero-btn" onclick="window.location.href='#projects'"><span></span>PROJECTS</button>
+    </div>
   </div>
 </section>
-
-
+</section>
 
 <!--Past Projects--->
 <section class="past-projects" id="projects">
@@ -493,36 +200,24 @@
   </div>
 </section>
 
-<!--Map Location of the website--->
-<!--section id="map" class="map-section py-5">
-  <div class="container" data-aos="fade-up">
-    <div class="text-center mb-4">
-      <h2 class="section-title">Find <span class="highlight">Us</span></h2>
-      <p class="section-subtitle">Our clinic is located in the heart of Calgary</p>
+
+
+
+<!-- WhatsApp Toast -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100">
+  <div id="whatsappToast" class="toast align-items-center text-white bg-primary border-0 shadow-lg" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        💬 Have questions? Chat with us on WhatsApp!
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
-    <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.7675865751676!2d36.83735147397421!3d-1.314973335656062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f11a416c3cab7%3A0x2193788a9fb879ab!2sGolden%20Gate%20Dr%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1751632474605!5m2!1sen!2ske" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="px-3 pb-3">
+      <a href="https://wa.me/254725917485" target="_blank" class="btn btn-light btn-sm rounded-pill">Chat on WhatsApp</a>
     </div>
   </div>
-</section-->
-<section id="map" class="map-section py-5">
-  <div class="map-header text-center mb-4" data-aos="fade-up">
-    <h2 class="section-title" style="color: #007bff; font-weight: bold;">Locate <span class="highlight">Us</span></h2>
-    <!--p class="section-subtitle">Our clinic is located at South B the heart of Calgary</p-->
-  </div>
-  
-  <div class="map-full-width">
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.7675865751676!2d36.83735147397421!3d-1.314973335656062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f11a416c3cab7%3A0x2193788a9fb879ab!2sGolden%20Gate%20Dr%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1751632474605!5m2!1sen!2ske" 
-      width="100%" 
-      height="500" 
-      style="border:0;" 
-      allowfullscreen="" 
-      loading="lazy" 
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-  </div>
-</section>
+</div>
+
 
 
 
@@ -536,9 +231,70 @@
     });
   </script>
 
+  <!---js--->
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contact-form");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    // Show loading dialog
+    Swal.fire({
+      title: 'Sending...',
+      text: 'Please wait while we submit your message.',
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading(); // shows spinner
+      }
+    });
+
+    fetch("contact.php", {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.text())
+      .then((response) => {
+        Swal.close(); // close loading
+
+        if (response.trim() === "success") {
+          Swal.fire({
+            icon: 'success',
+            title: 'Message Sent!',
+            text: 'Thank you for contacting us. We’ll respond shortly.',
+          });
+          form.reset();
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops!',
+            text: response,
+          });
+        }
+      })
+      .catch((err) => {
+        Swal.close(); // close loading
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Unexpected Error',
+          text: 'Please try again later.',
+        });
+        console.error("Fetch error:", err);
+      });
+  });
+});
+</script>
+
+
 <!--Bootstrap Js---->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-<script src="script.js"></script>
 
+<?php include 'footer.php'; ?>
 </body>
 </html>

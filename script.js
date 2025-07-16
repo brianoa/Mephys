@@ -3,7 +3,7 @@ const serviceContent = {
     title: "Musculoskeletal Physiotherapy",
     desc: `
       <p>Musculoskeletal physiotherapy, also known as orthopedic physiotherapy, is a specialized branch of physical therapy that focuses on the assessment, diagnosis, and treatment of musculoskeletal conditions affecting the muscles, bones, joints, ligaments, and tendons. We work to restore and optimize the function of the musculoskeletal system, alleviate pain, and improve overall mobility and quality of life for our patients.</p>
-      <img src="images/assessment.jpg" alt="Assessment and Diagnosis" class="section-image">
+      <img src="images/injuredman.jpg" alt="Assessment and Diagnosis" class="section-image">
 
       <p><strong class="section-heading">Assessment and Diagnosis:</strong><br>
       We conduct thorough assessments to identify the underlying causes of musculoskeletal issues. This may involve evaluating posture, joint range of motion, muscle strength, flexibility, and functional movement patterns.</p>
@@ -20,7 +20,7 @@ const serviceContent = {
     title: "Neurological Physiotherapy",
     desc: `
       <p>Focuses on conditions affecting the nervous system, like stroke, Parkinson's, or spinal cord injuries.</p>
-      <img src="images/assessment.jpg" alt="Assessment and Diagnosis" class="section-image">
+      <img src="images/treatment.jpg" alt="Assessment and Diagnosis" class="section-image">
 
       <p><strong class="section-heading">Comprehensive Assessment:</strong><br>
       we conduct detailed assessments to 
@@ -42,7 +42,7 @@ const serviceContent = {
     desc: `
       <p>Deals with heart and lung conditions, aiding in rehabilitation after surgeries or respiratory illnesses.</p>
 
-      <img src="images/assessment.jpg" alt="Assessment and Diagnosis" class="section-image">
+      <img src="images/fitness.avif" alt="Assessment and Diagnosis" class="section-image">
       <p><strong class="section-heading">Respiratory Muscle Training:</strong><br>
       Individuals with respiratory conditions such as chronic obstructive pulmonary disease (COPD), asthma, or post-surgery may benefit from 
       respiratory muscle training. This involves exercises to strengthen and improve the endurance of the muscles involved in 
@@ -66,7 +66,7 @@ const serviceContent = {
     title: "Geriatric Physiotherapy",
     desc: `
       <p>Tailored for older adults, aiming to improve mobility, balance, and overall well-being.</p>
-      <img src="images/assessment.jpg" alt="Assessment and Diagnosis" class="section-image">
+      <img src="images/ple.avif" alt="Assessment and Diagnosis" class="section-image">
 
       <p><strong class="section-heading">Functional Assessment:</strong><br>
        we conduct comprehensive assessments to evaluate an older individual's physical function, mobility, strength,
@@ -88,7 +88,7 @@ const serviceContent = {
     title: "Sports Physiotherapy",
     desc: `
       <p>Targets athletes' injuries, enhances performance, and aids in sports-related rehabilitation.</p>
-      <img src="images/assessment.jpg" alt="Assessment and Diagnosis" class="section-image">
+      <img src="images/knee.avif" alt="Assessment and Diagnosis" class="section-image">
 
       <p><strong class="section-heading">Injury Assessment and Diagnosis:</strong><br>
        Sports physiotherapists assess and diagnose sports-related injuries, considering factors such as 
@@ -105,7 +105,7 @@ const serviceContent = {
     title: "Orthopedic Physiotherapy",
     desc: `
       <p>Focuses on orthopedic conditions, such as fractures,arthritis,rehabilitation. </p>
-      <img src="images/assessment.jpg" alt="Assessment and Diagnosis" class="section-image">
+      <img src="images/adipometer.jpg" alt="Assessment and Diagnosis" class="section-image">
 
       <p><strong class="section-heading">Comprehensive Assessment:</strong><br>
        Our Physiotherapists conduct thorough assessments to diagnose and understand the nature of 
@@ -165,7 +165,7 @@ const serviceContent = {
           branch of physical therapy focused on the assessment and treatment of infants,children, and adolescents. Pediatric physiotherapists work with young individuals 
           who may have congenital or acquired conditions affecting their physical development, motor skills, and overall functional abilities. The goal is to promote 
           optimal physical development, improve motor skills, enhance independence, and support participation in age-appropriate activities </p>
-      <img src="images/assessment.jpg" alt="Assessment and Diagnosis" class="section-image">
+      <img src="images/child.avif" alt="Assessment and Diagnosis" class="section-image">
       <p><strong class="section-heading">Developmental Assessment:</strong><br>
        we assess the motor and musculoskeletal development of infants and children to identify any
        delays, abnormalities, or conditions affecting their physical abilities</p>      
@@ -183,7 +183,7 @@ const serviceContent = {
       <p>Lamaze is a popular approach to childbirth education that focuses on empowering expectant mothers and their partners to make informed decisions 
          about their birthing experience. The Lamaze method emphasizes a woman's natural ability to give birth and encourages a healthy, low-intervention 
          approach</p>
-      <img src="images/assessment.jpg" alt="Assessment and Diagnosis" class="section-image">
+      <img src="images/pgnt.avif" alt="Assessment and Diagnosis" class="section-image">
 
       <p><strong class="section-heading">Breastfeeding Support:</strong><br>
        Lamaze classes often include information on breastfeeding and provide guidance on initiating breastfeeding during the 
@@ -203,7 +203,7 @@ const serviceContent = {
       <p>At Mephys Physiotherapy Clinic, we believe that recovery should be accessible, convenient, and compassionate. 
          That’s why our Home-Based Care Services are designed to bring expert care to your doorstep—tailored to your 
          specific needs, delivered by professionals who care.</p>
-        <img src="images/assessment.jpg" alt="Assessment and Diagnosis" class="section-image">
+        <img src="images/care.avif" alt="Assessment and Diagnosis" class="section-image">
 
 
       <strong class="section-heading">Physiotherapy at Home</strong><br>      
@@ -312,47 +312,6 @@ window.onclick = (e) => {
 
 
 
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("contact-form");
-  const messageBox = document.getElementById("form-message");
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault(); // Stop default form submit
-
-    const formData = new FormData(form);
-
-    fetch("contact.php", {
-      method: "POST",
-      body: formData,
-    })
-      .then((res) => res.text())
-      .then((response) => {
-        if (response.trim() === "success") {
-          messageBox.innerHTML = `
-            <div class="alert alert-success" role="alert">
-              Your message was sent successfully!
-            </div>`;
-          form.reset();
-        } else {
-          messageBox.innerHTML = `
-            <div class="alert alert-danger" role="alert">
-              Error: ${response}
-            </div>`;
-        }
-      })
-      .catch((err) => {
-        messageBox.innerHTML = `
-          <div class="alert alert-danger" role="alert">
-            Unexpected error occurred. Please try again.
-          </div>`;
-        console.error("Fetch error:", err);
-      });
-  });
-});
-
-
-
-
 /*Book Appointment Button*/
 
 
@@ -417,9 +376,19 @@ document.getElementById("appointmentForm").addEventListener("submit", function (
   isValid = false;
 }
 
-  if (isValid) {
+   if (isValid) {
     const form = document.getElementById("appointmentForm");
     const formData = new FormData(form);
+
+    // Show SweetAlert loading
+    Swal.fire({
+      title: 'Booking your appointment...',
+      text: 'Please wait a moment.',
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      }
+    });
 
     fetch("book_appointment.php", {
       method: "POST",
@@ -427,18 +396,42 @@ document.getElementById("appointmentForm").addEventListener("submit", function (
     })
       .then((response) => response.text())
       .then((data) => {
-        if (data.toLowerCase().includes("success"))  {
-          alert("Appointment successfully submitted!");
+        Swal.close();
+
+        if (data.toLowerCase().includes("success")) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Appointment Booked!',
+            text: 'Thank you! We’ll contact you shortly to confirm.',
+          });
           form.reset();
           document.getElementById("appointmentFormContainer").style.display = "none";
         } else {
-          alert("Submission failed. Server said: " + data);
+          Swal.fire({
+            icon: 'error',
+            title: 'Submission Failed',
+            text: data || 'Something went wrong. Please try again.',
+          });
         }
       })
       .catch((error) => {
-        alert("Network error: " + error.message);
+        Swal.close();
+        Swal.fire({
+          icon: 'error',
+          title: 'Network Error',
+          text: 'Unable to submit. Please check your internet connection or try again later.',
+        });
+        console.error("Error:", error);
       });
   }
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const toast = new bootstrap.Toast(document.getElementById('whatsappToast'), {
+    delay: 7000 // Toast stays for 7 seconds
+  });
+  setTimeout(() => toast.show(), 3000); // Show after 3 seconds
 });
 
   

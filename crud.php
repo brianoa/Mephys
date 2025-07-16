@@ -50,6 +50,8 @@
                     <th>Phone</th>
                     <th>Date</th>
                     <th>Time</th>
+                    <th>Location</th>
+                    <th>Referral</th>
                     <th>Notes</th>
                     <th>Actions</th>
                 </tr>
@@ -67,6 +69,8 @@
                     <td><?= htmlspecialchars($row['phone']) ?></td>
                     <td><?= htmlspecialchars($row['appointment_date']) ?></td>
                     <td><?= htmlspecialchars($row['appointment_time']) ?></td>
+                     <td><?= htmlspecialchars($row['location']) ?></td>
+                      <td><?= htmlspecialchars($row['referral']) ?></td>
                     <td><?= htmlspecialchars($row['notes']) ?></td>
                     <td>
                         <a href="update_appointment.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-primary btn-space">Edit</a>

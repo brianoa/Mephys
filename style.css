@@ -1,209 +1,281 @@
-/* Prevent horizontal scroll */
-body, html {
-  overflow-x: hidden;
-  margin: 0;
-  padding: 0;
+/* Make navbar background white */
+.navbar {
+  background-color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* optional soft shadow */
+  z-index: 1000;
 }
-
-/* Banner Background */
-.banner {
+.navbar-bg {
   width: 100%;
   min-height: 100vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.3)), url(images/elderly.jpg);
+  background-image: url('images/elderly.jpg'); /* change to placeholder if testing */
   background-size: cover;
   background-position: center;
-  position: relative;
-}
-
-/* Logo */
-.logo {
- 	max-width: 150px;
-  height: auto;
-  position: relative;
-  z-index: 1;
-  margin-bottom: 10px;
-  display: block;
-}
-
-
-/* Navbar */
-.navbar {
-  background-color: transparent !important;
-  position: relative;
-  z-index: 10;
-  padding: 10px 20px;
-}
-
-/* Navbar Links */
-.navbar-nav .nav-link {
-  color: #fff !important;
-  text-transform: uppercase;
-  font-weight: 500;
-  margin: 0 15px;
-  position: relative;
-}
-
-/* Hover underline effect */
-.navbar-nav .nav-link::after {
-  content: '';
-  height: 3px;
-  width: 0;
-  background: #0099cc;
+  background-repeat: no-repeat;
+  overflow: hidden;
   position: absolute;
-  left: 0;
-  bottom: -5px;
-  transition: 0.5s;
-}
-.navbar-nav .nav-link:hover::after {
-  width: 100%;
+  
 }
 
-/* Collapsed Navbar Background for Mobile */
-@media (max-width: 992px) {
-  .navbar-collapse {
-    background-color: rgba(0, 0, 0, 0.85); /* dark background on mobile menu */
-    padding: 20px 0;
-  }
 
-  .navbar-nav {
-    text-align: center;
-  }
-
-  .navbar-nav .nav-link {
-    margin: 10px 0;
-  }
-
-  .logo {
-    max-width: 100px;
-  }
-
-  .banner {
-    padding-top: 60px;
-  }
+/* Adjust navbar brand */
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #006bb3 !important;
 }
 
+/* Nav links base style */
+.navbar-nav .nav-link {
+  color: black !important;
+  font-weight: 500 !important;
+  margin-right: 1rem !important;
+  transition: all 0.3s ease !important;
+}
+/* Dropdown menu styling */
+.dropdown-menu {
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+
+
+}
+
+.dropdown-item {
+  color: black !important;
+  transition: background-color 0.3s ease !important;
+  white-space: normal !important; /* allow wrapping of long items */
+  overflow-wrap: break-word;
+  font-size: 14px; /* optional: reduce font slightly for mobile */
+  padding: 8px 16px; /* reduce padding for tighter layout */
+}
+.dropdown-item:hover {
+  background-color: #006bb3 !important;
+  color: white !important;
+}
 
 /* Centered Banner Content */
 .content {
-  width: 100%;
-  max-width: 100%;
-  color: #fff;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  padding: 0 20px;
-  box-sizing: border-box;
+  width: 100% !important;
+  max-width: 100% !important;
+  color: #fff !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  text-align: center !important;
+  padding: 0 20px !important;
+  box-sizing: border-box !important;
 }
 .content h1 {
-  font-size: 70px;
-  font-weight: 700;
+  font-size: 70px !important;
+  font-weight: 700 !important;
 }
 .content p {
-  margin: 20px 0;
-  font-weight: 300;
-  line-height: 1.6;
+  margin: 20px 0 !important;
+  font-weight: 300 !important;
+  line-height: 1.6 !important;
 }
 
+
 /* CTA Buttons */
-button {
+.hero-btn {
   width: 200px;
   padding: 15px 0;
-  margin: 20px 10px;
-  border-radius: 25px;
-  font-weight: bold;
-  border: 2px solid #0099cc;
-  background: transparent;
-  color: #fff;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
+  margin: 20px 10px ;
+  border-radius: 25px !important;
+  font-weight: bold !important;
+  border: 2px solid #0099cc !important;
+  background: transparent !important;
+  color: #fff !important;
+  cursor: pointer !important;
+  position: relative !important;
+  overflow: hidden !important;
 }
-button span {
-  background: #0099cc;
-  height: 100%;
-  width: 0;
-  border-radius: 25px;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  z-index: -1;
-  transition: 0.5s;
+.hero-btn span {
+  background: #0099cc !important;
+  height: 100% !important;
+  width: 0 !important;
+  border-radius: 25px !important;
+  position: absolute !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  z-index: -1 !important;
+  transition: 0.5s !important;
 }
-button:hover span {
-  width: 100%;
+.hero-btn:hover span {
+  width: 100% !important;
 }
-button:hover {
-  border: none;
+.hero-btn:hover {
+  border: none !important;
 }
+
+
+
+
+
+/* Extra small devices (phones, <576px) */
+@media (max-width: 575.98px) {
+  .content h1 {
+    font-size: 24px !important;
+  }
+
+  .modal-content {
+    padding: 20px;
+    font-size: 14px;
+  }
+
+  .navbar-brand {
+    font-size: 1rem !important;
+  }
+
+  .service-card {
+    margin-bottom: 20px;
+  }
+
+  .objectives h2 {
+    font-size: 1.8rem;
+  }
+
+  .objectives p {
+    font-size: 1rem;
+  }
+}
+
+/* Tablets (>=576px and <768px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .content h1 {
+    font-size: 36px !important;
+  }
+
+  .modal-content {
+    font-size: 15px;
+  }
+}
+
+/* Medium screens (>=768px and <992px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .content h1 {
+    font-size: 48px !important;
+  }
+}
+
+/* Larger screens (>=992px) */
+@media (min-width: 992px) {
+  .hero-btn {
+    width: 200px;
+  }
+
+  .modal-content {
+    font-size: 16px;
+  }
+}
+
+
+
+
+
+
+
+
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
+  .content {
+    top: 55% !important;
+    transform: translate(-50%, -50%) !important;
+    padding: 0 15px !important;
+  }
+
   .content h1 {
-    font-size: 40px;
+    font-size: 32px !important;
   }
+
   .content p {
-    font-size: 16px;
-    padding: 0 10px;
+    font-size: 14px !important;
   }
+
   button {
-    width: 100%;
-    margin: 10px 0;
+    width: 100% !important;
+    padding: 12px 0 !important;
+    margin: 10px 0 !important;
+  }
+
+  .navbar-brand {
+    font-size: 1.2rem !important;
   }
 }
 
-/* Image Container (if needed) */
-.container img{
-	width: 400px;
-	height: 300px;
-	padding-top: 25px;
+
+/*Better Spacing*/
+.navbar {
+  padding: 10px 15px !important;
+}
+.navbar-toggler {
+  width: auto !important;
+  padding: 0.25rem 0.75rem !important;
+  border: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+}
+.navbar-toggler-icon {
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+}
+.hero-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding-top: 80px; /* match navbar height */
 }
 
-.container h2{
-	text-align: center;
-	color: #0099cc;
-	padding-top: 15px;
+
+/* Scrollable dropdown */
+.scrollable-dropdown {
+  max-height: 250px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  white-space: normal;
+  word-wrap: break-word;
 }
 
-.container h1{
-	color: #0099cc;
+/* Improve text wrapping inside items */
+.scrollable-dropdown .dropdown-item {
+  white-space: normal !important;
+  word-wrap: break-word;
+  font-size: 14px;
+  padding: 8px 16px;
 }
 
-.container p{
-	text-align: justify;
+/* Optional: nicer scrollbar */
+.scrollable-dropdown::-webkit-scrollbar {
+  width: 6px;
 }
 
-.objectives{
-	background-image: linear-gradient(rgba(0, 0, 0, 0.75),rgba(0, 0, 0, 0.75)),url(images/physio.jpg);
-	background-attachment: fixed;
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	position: relative;
-	padding: 100px 20px;
-	color: #fff;
+.scrollable-dropdown::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
+}
 
-}
-.objectives::before{
-	content: "";
-	position: absolute;
-	top: 0; left: 0; right: 0; bottom: 0;
-	ackground-color: rgba(0, 0, 0, 0.6);
 
+.scrollable-dropdown::-webkit-scrollbar {
+  width: 6px;
 }
-.objectives h2{
-	font-size: 2.5rem;
-	margin-bottom: 20px;
 
+.scrollable-dropdown::-webkit-scrollbar-thumb {
+  background-color: #007bff; /* Bootstrap primary blue */
+  border-radius: 3px;
 }
-.objectives p{
-	font-size: 1.2rem;
-	max-width: 800px;
-	margin: 0 auto 20px;
-	line-height: 1.8;
-	text-align: justify;
+
+.scrollable-dropdown::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
 }
+
+
+
+
+
+
 
 
 /*Past projects*/
@@ -247,102 +319,6 @@ button:hover {
   text-align: justify;
 }
 
-/*Services*/
-body {
-  background-color: #ffffff;
-  font-family: "Segoe UI", sans-serif;
-}
-
-.service-card {
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-.service-card:hover {
-  transform: scale(1.03);
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  overflow: hidden; /* No scroll on backdrop */
-}
-
-.modal-content {
-  background: #f0faff;
-  padding: 30px;
-  max-width: 700px;
-  width: 90%;
-  border-radius: 8px;
-  position: relative;
-  color: #333;
-  line-height: 1.7;
-  font-size: 16px;
-
-  max-height: 90vh;          
-  overflow-y: auto;          
-  box-sizing: border-box;
-}
-
-#closeModal {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  cursor: pointer;
-  font-size: 24px;
-}
-
-.modal-content p {
-  margin-bottom: 1.2em;
-}
-.modal-content h2{
-	color: #007bff;
-}
-.modal-content h3{
-	color: #007bff;
-}
-
-.section-heading {
-  color: #007bff;
-  font-weight: 600;
-  font-size: 1.1rem;
-}
-
-.btn-primary {
-  background-color: #007bff;
-  border: none;
-}
-.section-image {
-  width: 100%;
-  height: auto;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.services h1{
-	margin-top: 30px;
-	text-align: center;
-	color: #0099cc;
-	padding: 20px;
-}
-
-.card-title{
-	color: #007399;
-}
-
-.card-img-top{
-	height: auto;
-  max-height: 300px;
-  object-fit: cover;
-  width: 100%;
-}
 
 
 /*CONTACT US style*/
@@ -403,41 +379,7 @@ body {
 }
 
 
-/*BOOKING APPOINTMENT*/
-/* Compact form styles */
-#appointmentFormContainer {
-  max-width: 700px;
-  margin: auto;
-}
 
-#appointmentFormContainer .form-control {
-  font-size: 0.95rem;
-  padding: 8px 12px;
-  border-radius: 6px;
-}
-
-#appointmentFormContainer .form-label {
-  font-size: 0.9rem;
-  margin-bottom: 4px;
-}
-
-#appointmentFormContainer .form-control::placeholder {
-  font-size: 0.85rem;
-}
-
-#appointmentFormContainer .btn {
-  padding: 10px 24px;
-  font-size: 0.95rem;
-  border-radius: 20px;
-  width: fit-content;
-  align-self: center;
-}
-
-/* Optional: reduce textarea height */
-#appointmentFormContainer textarea {
-  resize: vertical;
-  min-height: 80px;
-}
 
 /*CRUD*/
 .btn-group .btn {
@@ -449,3 +391,5 @@ body {
   align-items: center;
   gap: 5px;
 }
+
+

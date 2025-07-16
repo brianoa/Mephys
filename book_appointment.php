@@ -12,14 +12,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $service = $_POST['service'] ?? '';
     $name = $_POST['fullName'] ?? '';
     $email = $_POST['email'] ?? '';
-    $phone = $_POST['phone'] ?? '';
+    $phone = $_POST['phone'] ?? '';    
     $date = $_POST['date'] ?? '';
     $time = $_POST['time'] ?? '';
+    $location = $_POST['location'] ?? '';
+    $referral = $_POST['referral'] ?? '';
     $notes = $_POST['notes'] ?? '';
 
     try {
-        $stmt = $pdo->prepare("INSERT INTO appointments (service, full_name, email, phone, appointment_date,appointment_time, notes)
-                               VALUES (:service, :name, :email, :phone, :date, :time, :notes)");
+        $stmt = $pdo->prepare("INSERT INTO appointments (service, full_name, email, phone, appointment_date,appointment_time, location, referral, notes)
+                               VALUES (:service, :name, :email, :phone, :date, :time, :location, :referral, :notes)");
         $stmt->execute([
             ":service" => $service,
             ":name" => $name,
@@ -27,6 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             ":phone" => $phone,
             ":date" => $date,
             ":time" => $time,
+            ":location" => $location,
+            ":referral" => $referral,
             ":notes" => $notes
         ]);
         // Initialize PHPMailer
@@ -69,6 +73,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                <strong>Service:</strong> $service<br>
                <strong>Date:</strong> $date<br>
                <strong>Time:</strong> $time<br>
+               <strong>Location:</strong> $location<br>
+               <strong>Referral:</strong> $referral</p>
                <strong>Notes:</strong> $notes</p>
         ";
         $mail->send();

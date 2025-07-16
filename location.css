@@ -1,0 +1,98 @@
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* leave space for fixed navbar */
+}
+
+:target::before {
+  content: "";
+  display: block;
+  height: 100px;
+  margin-top: -100px;
+}
+
+
+/* Adjust navbar brand */
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #006bb3 !important;
+}
+
+/* Nav links base style */
+.navbar-nav .nav-link {
+  color: black !important;
+  font-weight: 500 !important;
+  margin-right: 1rem !important;
+  transition: all 0.3s ease !important;
+}
+/* Dropdown menu styling */
+.dropdown-menu {
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+
+
+}
+
+.dropdown-item {
+  color: black !important;
+  transition: background-color 0.3s ease !important;
+  white-space: normal !important; /* allow wrapping of long items */
+  overflow-wrap: break-word;
+  font-size: 14px; /* optional: reduce font slightly for mobile */
+  padding: 8px 16px; /* reduce padding for tighter layout */
+}
+.dropdown-item:hover {
+  background-color: #006bb3 !important;
+  color: white !important;
+}
+.aboutus h1{
+	
+	padding-top: 50px;
+}
+
+/* Scrollable dropdown */
+.scrollable-dropdown {
+  max-height: 250px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+/* Improve text wrapping inside items */
+.scrollable-dropdown .dropdown-item {
+  white-space: normal !important;
+  word-wrap: break-word;
+  font-size: 14px;
+  padding: 8px 16px;
+}
+
+/* Optional: nicer scrollbar */
+.scrollable-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollable-dropdown::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
+}
+
+
+.scrollable-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollable-dropdown::-webkit-scrollbar-thumb {
+  background-color: #007bff; /* Bootstrap primary blue */
+  border-radius: 3px;
+}
+
+.scrollable-dropdown::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+/*End of scroll*/
+
+.section-title{
+  padding-top: 50px;
+}

@@ -1,0 +1,291 @@
+/*Services*/
+body {
+  background-color: #ffffff;
+  font-family: "Segoe UI", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* leave space for fixed navbar */
+}
+
+:target::before {
+  content: "";
+  display: block;
+  height: 100px;
+  margin-top: -100px;
+}
+
+
+/* Adjust navbar brand */
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #006bb3 !important;
+}
+
+/* Nav links base style */
+.navbar-nav .nav-link {
+  color: black !important;
+  font-weight: 500 !important;
+  margin-right: 1rem !important;
+  transition: all 0.3s ease !important;
+}
+/* Dropdown menu styling */
+.dropdown-menu {
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+
+
+}
+
+.dropdown-item {
+  color: black !important;
+  transition: background-color 0.3s ease !important;
+  white-space: normal !important; /* allow wrapping of long items */
+  overflow-wrap: break-word;
+  font-size: 14px; /* optional: reduce font slightly for mobile */
+  padding: 8px 16px; /* reduce padding for tighter layout */
+}
+.dropdown-item:hover {
+  background-color: #006bb3 !important;
+  color: white !important;
+}
+.aboutus h1{
+  
+  padding-top: 50px;
+}
+
+/* Scrollable dropdown */
+.scrollable-dropdown {
+  max-height: 250px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+/* Improve text wrapping inside items */
+.scrollable-dropdown .dropdown-item {
+  white-space: normal !important;
+  word-wrap: break-word;
+  font-size: 14px;
+  padding: 8px 16px;
+}
+
+/* Optional: nicer scrollbar */
+.scrollable-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollable-dropdown::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
+}
+
+
+.scrollable-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollable-dropdown::-webkit-scrollbar-thumb {
+  background-color: #007bff; /* Bootstrap primary blue */
+  border-radius: 3px;
+}
+
+.scrollable-dropdown::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+/*End of scroll*/
+
+
+.service-card {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.service-card:hover {
+  transform: scale(1.03);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow: hidden; /* No scroll on backdrop */
+}
+
+.modal-content {
+  background: #f0faff;
+  padding: 30px;
+  max-width: 700px;
+  width: 90%;
+  border-radius: 8px;
+  position: relative;
+  color: #333;
+  line-height: 1.7;
+  font-size: 16px;
+
+  max-height: 90vh;          
+  overflow-y: auto;          
+  box-sizing: border-box;
+}
+
+#closeModal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.modal-content p {
+  margin-bottom: 1.2em;
+}
+.modal-content h2{
+	color: #007bff;
+}
+.modal-content h3{
+	color: #007bff;
+}
+
+.section-heading {
+  color: #007bff;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+}
+.section-image {
+  width: 100%;
+  height: auto;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.services h1{
+	margin-top: 30px;
+	text-align: center;
+	color: #0099cc;
+	padding: 20px;
+}
+
+.card-title{
+	color: #007399;
+}
+
+.card-img-top{
+	height: auto;
+  max-height: 300px;
+  object-fit: cover;
+  width: 100%;
+}
+
+
+/*CONTACT US style*/
+
+.contact-section {
+  background:  #006080;
+  color: #fff;
+}
+
+.contact-section .section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.contact-section .highlight {
+  color: #fff;
+}
+
+.contact-section .section-subtitle {
+  font-size: 1.1rem;
+  color: #e0f7ff;
+}
+
+.contact-section .form-control {
+  border-radius: 0.5rem;
+  border: none;
+  padding: 1rem;
+}
+
+.contact-section .form-control:focus {
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  border-color: #007bff;
+}
+
+.contact-section .btn-primary {
+  background-color:  #007399;
+  border: none;
+  padding: 0.75rem;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.contact-section .btn-primary:hover {
+  background-color: #002633;
+}
+
+#formMessage {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/*ICONS*/
+.contact-section i {
+  color: #fff;
+  font-size: 1.1rem;
+  vertical-align: middle;
+}
+
+
+/*BOOKING APPOINTMENT*/
+/* Compact form styles */
+#appointmentFormContainer {
+  max-width: 700px;
+  margin: auto;
+}
+
+#appointmentFormContainer .form-control {
+  font-size: 0.95rem;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+#appointmentFormContainer .form-label {
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+
+#appointmentFormContainer .form-control::placeholder {
+  font-size: 0.85rem;
+}
+
+#appointmentFormContainer .btn {
+  padding: 10px 24px;
+  font-size: 0.95rem;
+  border-radius: 20px;
+  width: fit-content;
+  align-self: center;
+}
+
+/* Optional: reduce textarea height */
+#appointmentFormContainer textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.services h1{
+  padding-top: 50px;
+}

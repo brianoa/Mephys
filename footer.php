@@ -12,9 +12,10 @@
       <div class="col-md-4 col-lg-3 col-xl-2 mx-auto mb-4">
         <h6 class="text-uppercase fw-bold mb-3">Quick Links</h6>
         <ul class="list-unstyled">
-          <li><a href="index.html" class="text-white text-decoration-none">Home</a></li>
-          <li><a href="about.html" class="text-white text-decoration-none">About Us</a></li>
-          <li><a href="services.html" class="text-white text-decoration-none">Services</a></li>
+          <li><a href="index.php" class="text-white text-decoration-none">Home</a></li>
+          <li><a href="about.php#about" class="text-white text-decoration-none">About Us</a></li>
+          <li><a href="services.php" class="text-white text-decoration-none">Services</a></li>
+          <li><a href="shop/index.php" class="text-white text-decoration-none">Products</a></li>
           <li><a href="#appointmentFormContainer" class="text-white text-decoration-none">Book Appointment</a></li>
         </ul>
       </div>

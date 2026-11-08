@@ -79,6 +79,13 @@ $earliestBookingDate = (new DateTimeImmutable(
           </ul>
          </li>
           <li class="nav-item">
+
+            <a class="nav-link" href="shop/index.php">Products</a>
+
+          </li>
+
+
+          <li class="nav-item">
             <a class="nav-link" href="about.php#about">AboutUS</a>
           </li>
           <li class="nav-item">

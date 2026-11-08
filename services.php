@@ -1,3 +1,29 @@
+
+<?php
+date_default_timezone_set('Africa/Nairobi');
+
+if (session_status() === PHP_SESSION_NONE) {
+    ini_set('session.use_strict_mode', '1');
+    ini_set('session.cookie_httponly', '1');
+    ini_set('session.cookie_samesite', 'Lax');
+
+    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') {
+        ini_set('session.cookie_secure', '1');
+    }
+
+    session_start();
+}
+
+if (empty($_SESSION['booking_csrf_token'])) {
+    $_SESSION['booking_csrf_token'] = bin2hex(random_bytes(32));
+}
+
+$earliestBookingDate = (new DateTimeImmutable(
+    'tomorrow',
+    new DateTimeZone('Africa/Nairobi')
+))->format('Y-m-d');
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -252,9 +278,12 @@
 <!-- Booking Form Section -->
 <section id="appointmentFormContainer" class="container my-5" style="display: none;" data-aos="fade-up">
   <div class="card shadow-lg p-4 rounded-4 border-0 bg-light">
-    <h3 class="mb-4 text-center text-primary">Book Your Appointment</h3>
-    <form id="appointmentForm" method="POST">
-      <input type="hidden" name="service" id="selectedService">
+    <h3 class="mb-4 text-center text-primary">Book Your Appointment</h3>    
+    <form id="appointmentForm" method="POST" action="book_appointment.php">
+        <input type="hidden" name="service" id="selectedService" value="">
+
+        <input type="hidden" name="csrf_token"
+            value="<?= htmlspecialchars($_SESSION['booking_csrf_token'], ENT_QUOTES, 'UTF-8') ?>">
 
       <div class="mb-3">
         <label for="fullName" class="form-label">Full Name</label>
@@ -274,12 +303,20 @@
         <div class="error-message text-danger mt-1" id="phoneError"></div>
       </div>
       <div class="mb-3">
-        <label for="appointmentDate" class="form-label">Select Date</label>
-        <input type="date" class="form-control form-control-lg rounded-3" id="appointmentDate" name="date" required>
+        <label for="appointmentDate" class="form-label">Select Date</label>        
+        <input type="date"
+              class="form-control form-control-lg rounded-3"
+              id="appointmentDate"
+              name="date"
+              min="<?= htmlspecialchars($earliestBookingDate, ENT_QUOTES, 'UTF-8') ?>"
+              required>
+
       </div>
       <div class="mb-3">
       <label for="appointmentTime" class="form-label">Select Time</label>
-      <input type="time" class="form-control form-control-lg rounded-3" id="appointmentTime" name="time" min="09:00" max="17:00" required>
+      <input type="time" class="form-control form-control-lg rounded-3"
+       id="appointmentTime" name="time"
+       min="09:00" max="16:00" required>
       <div class="error-message text-danger mt-1" id="timeError"></div>
       </div>
 

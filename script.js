@@ -290,148 +290,248 @@ const modalDesc = document.getElementById('modalDesc');
 const closeModal = document.getElementById('closeModal');
 
 document.querySelectorAll('.service-card').forEach(card => {
-  card.addEventListener('click', () => {
-    const key = card.getAttribute('data-service');
-    if(serviceContent[key]){
-      modalTitle.textContent = serviceContent[key].title;
-      modalDesc.innerHTML = serviceContent[key].desc;
-      modal.style.display = 'flex';
-    }else{
-      alert("Detailed information is coming soon!");
-    }
-  });
+    card.addEventListener('click', () => {
+        const key = card.getAttribute('data-service');
+
+        if (serviceContent[key]) {
+            modalTitle.textContent = serviceContent[key].title;
+            modalDesc.innerHTML = serviceContent[key].desc;
+            modal.style.display = 'flex';
+        } else {
+            alert("Detailed information is coming soon!");
+        }
+    });
 });
 
 closeModal.onclick = () => {
-  modal.style.display = 'none';
+    modal.style.display = 'none';
 };
 
 window.onclick = (e) => {
-  if (e.target === modal) modal.style.display = 'none';
+    if (e.target === modal) modal.style.display = 'none';
 };
 
 
-
-/*Book Appointment Button*/
-
+/* Book Appointment Button */
 
 // Open form from modal
 document.getElementById("openAppointmentFormBtn").addEventListener("click", function () {
-  const modalTitle = document.getElementById("modalTitle").innerText;
-  document.getElementById("selectedService").value = modalTitle;
 
-  document.getElementById("modal").style.display = "none";
-  const formContainer = document.getElementById("appointmentFormContainer");
-  formContainer.style.display = "block";
-  formContainer.scrollIntoView({ behavior: "smooth" });
+    const selectedService = document.getElementById("modalTitle").innerText.trim();
+
+    document.getElementById("selectedService").value = selectedService;
+
+    document.getElementById("modal").style.display = "none";
+
+    const formContainer = document.getElementById("appointmentFormContainer");
+
+    formContainer.style.display = "block";
+    formContainer.scrollIntoView({ behavior: "smooth" });
 });
 
-// Block past dates
-const today = new Date().toISOString().split("T")[0];
-document.getElementById("appointmentDate").setAttribute("min", today);
+
+// Block dates before the earliest permitted booking date
+const appointmentDate = document.getElementById("appointmentDate");
+const earliestDate = appointmentDate.getAttribute("min");
+
+
+// Set appointment time limits
+const appointmentTime = document.getElementById("appointmentTime");
+
+appointmentTime.min = "09:00";
+appointmentTime.max = "16:00";
+
 
 // Form validation and submission
 document.getElementById("appointmentForm").addEventListener("submit", function (e) {
-  e.preventDefault();
 
-  const name = document.getElementById("fullName").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const time = document.getElementById("appointmentTime").value.trim();
+    e.preventDefault();
 
+    const name = document.getElementById("fullName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const time = appointmentTime.value.trim();
+    const date = appointmentDate.value;
 
-  const nameError = document.getElementById("nameError");
-  const emailError = document.getElementById("emailError");
-  const phoneError = document.getElementById("phoneError");
-  const timeError = document.getElementById("timeError");
+    const nameError = document.getElementById("nameError");
+    const emailError = document.getElementById("emailError");
+    const phoneError = document.getElementById("phoneError");
+    const timeError = document.getElementById("timeError");
 
-  // Reset error messages
-  nameError.textContent = "";
-  emailError.textContent = "";
-  phoneError.textContent = "";
-  timeError.textContent = "";
+    // Reset error messages
+    nameError.textContent = "";
+    emailError.textContent = "";
+    phoneError.textContent = "";
+    timeError.textContent = "";
 
-  let isValid = true;
+    let isValid = true;
 
-  // Validate full name
-  if (!/^[A-Za-z\s]{2,}$/.test(name)) {
-    nameError.textContent = "Please enter a valid full name.";
-    isValid = false;
-  }
+    // Validate selected service
+    const selectedService = document.getElementById("selectedService").value.trim();
 
-  // Validate email
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    emailError.textContent = "Please enter a valid email address.";
-    isValid = false;
-  }
+    if (!selectedService) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Service Required',
+            text: 'Please select a service before booking.'
+        });
 
-  // Validate phone number
-  if (!/^\+?\d{7,15}$/.test(phone)) {
-    phoneError.textContent = "Please enter a valid phone number.";
-    isValid = false;
-  }
-  //Validate time
-  if (time < "07:00" || time > "19:00") {
-  timeError.textContent = "Please select a time within working hours (7 AM to 7 PM).";
-  isValid = false;
-}
+        return;
+    }
 
-   if (isValid) {
+    // Validate full name
+    if (!/^[A-Za-z\s]{2,}$/.test(name)) {
+        nameError.textContent = "Please enter a valid full name.";
+        isValid = false;
+    }
+
+    // Validate email
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        emailError.textContent = "Please enter a valid email address.";
+        isValid = false;
+    }
+
+    // Validate phone number
+    if (!/^\+?[0-9]{7,15}$/.test(phone)) {
+        phoneError.textContent = "Please enter a valid phone number.";
+        isValid = false;
+    }
+
+    // Validate appointment date
+    if (!date || (earliestDate && date < earliestDate)) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Invalid Appointment Date',
+            text: 'Please select tomorrow or a future date.'
+        });
+
+        isValid = false;
+    }
+
+    // Validate appointment time
+    if (!time || time < "09:00" || time > "16:00") {
+        timeError.textContent = "Please select a time between 9 AM and 4 PM.";
+        isValid = false;
+    }
+
+    if (!isValid) {
+        return;
+    }
+
     const form = document.getElementById("appointmentForm");
+
+    // Collect all form fields
     const formData = new FormData(form);
+
+    // Explicitly include the selected service
+    formData.set("service", selectedService);
+
+    // Diagnostic checks
+    console.log("Selected service:", selectedService);
+    console.log("Service being submitted:", formData.get("service"));
+    console.log("CSRF token included:", formData.has("csrf_token"));
+
+    // Disable submit button to prevent repeated submissions
+    const submitButton = form.querySelector('[type="submit"]');
+
+    if (submitButton) {
+        submitButton.disabled = true;
+    }
 
     // Show SweetAlert loading
     Swal.fire({
-      title: 'Booking your appointment...',
-      text: 'Please wait a moment.',
-      allowOutsideClick: false,
-      didOpen: () => {
-        Swal.showLoading();
-      }
+        title: 'Booking your appointment...',
+        text: 'Please wait a moment.',
+        allowOutsideClick: false,
+        didOpen: () => {
+            Swal.showLoading();
+        }
     });
 
     fetch("book_appointment.php", {
-      method: "POST",
-      body: formData,
+        method: "POST",
+        body: formData
     })
-      .then((response) => response.text())
-      .then((data) => {
+    .then((response) => response.text())
+    .then((responseText) => {
+
         Swal.close();
 
-        if (data.toLowerCase().includes("success")) {
-          Swal.fire({
-            icon: 'success',
-            title: 'Appointment Booked!',
-            text: 'Thank you! We’ll contact you shortly to confirm.',
-          });
-          form.reset();
-          document.getElementById("appointmentFormContainer").style.display = "none";
-        } else {
-          Swal.fire({
-            icon: 'error',
-            title: 'Submission Failed',
-            text: data || 'Something went wrong. Please try again.',
-          });
+        let data;
+
+        try {
+            data = JSON.parse(responseText);
+        } catch (error) {
+            console.error("Server response:", responseText);
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Submission Failed',
+                text: 'The server returned an unexpected response. Please try again.'
+            });
+
+            return;
         }
-      })
-      .catch((error) => {
+
+        if (data.success === true) {
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Request Received!',
+                text: data.message || 'Thank you! We will contact you shortly to confirm.'
+            });
+
+            form.reset();
+
+            // Restore refreshed CSRF token
+            const csrfField = form.querySelector('[name="csrf_token"]');
+
+            if (csrfField && data.csrf_token) {
+                csrfField.value = data.csrf_token;
+            }
+
+            document.getElementById("appointmentFormContainer").style.display = "none";
+
+        } else {
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Submission Failed',
+                text: data.message || 'Something went wrong. Please try again.'
+            });
+        }
+    })
+    .catch((error) => {
+
         Swal.close();
+
         Swal.fire({
-          icon: 'error',
-          title: 'Network Error',
-          text: 'Unable to submit. Please check your internet connection or try again later.',
+            icon: 'error',
+            title: 'Network Error',
+            text: 'Unable to submit. Please check your internet connection or try again.'
         });
+
         console.error("Error:", error);
-      });
-  }
+    })
+    .finally(() => {
+
+        if (submitButton) {
+            submitButton.disabled = false;
+        }
+    });
 });
 
 
+// WhatsApp Toast
 document.addEventListener("DOMContentLoaded", function () {
-  const toast = new bootstrap.Toast(document.getElementById('whatsappToast'), {
-    delay: 7000 // Toast stays for 7 seconds
-  });
-  setTimeout(() => toast.show(), 3000); // Show after 3 seconds
-});
 
-  
+    const toastElement = document.getElementById('whatsappToast');
+
+    if (toastElement) {
+        const toast = new bootstrap.Toast(toastElement, {
+            delay: 7000
+        });
+
+        setTimeout(() => toast.show(), 3000);
+    }
+});

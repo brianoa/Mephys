@@ -1,4 +1,3 @@
-
 <?php
 
 require_once __DIR__ . '/staff-auth.php';
@@ -45,7 +44,7 @@ try {
     $check->execute([':id' => $id]);
 
     if (!$check->fetch(PDO::FETCH_ASSOC)) {
-        header('Location: contact_crud.php?error=not_found');
+        header('Location: crud.php?page=messages&error=not_found');
         exit;
     }
 
@@ -64,7 +63,8 @@ try {
         $id
     );
 
-    header('Location: contact_crud.php?deleted=1');
+    // Return to Contact Messages inside the dashboard.
+    header('Location: crud.php?page=messages&deleted=1');
     exit;
 
 } catch (PDOException $e) {

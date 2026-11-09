@@ -80,7 +80,7 @@
 
 
         <li class="nav-item">
-          <a class="nav-link" href="about.php#about">About Us</a>
+          <a class="nav-link" href="about.php#about">About</a>
         </li>
 
         <li class="nav-item">

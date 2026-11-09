@@ -25,7 +25,7 @@ function mephysValidDate(string $date): bool
 }
 
 // Only allow known dashboard sections.
-$allowedPages = ['dashboard', 'appointments', 'messages', 'account'];
+$allowedPages = ['dashboard', 'appointments', 'messages', 'orders', 'payments', 'customers', 'account'];
 $page = trim((string) ($_GET['page'] ?? 'dashboard'));
 
 if (!in_array($page, $allowedPages, true)) {
@@ -45,6 +45,18 @@ $pageDetails = [
         'title' => 'Contact Messages',
         'subtitle' => 'Review messages submitted through the clinic website.'
     ],
+    'orders' => [
+        'title' => 'Online Shop Orders',
+        'subtitle' => 'Track customer orders, payments and delivery fulfilment.'
+    ],
+    'payments' => [
+        'title' => 'Payment Tracking',
+        'subtitle' => 'Review M-Pesa payment attempts, receipts and failed requests.'
+    ],
+    'customers' => [
+        'title' => 'Shop Customers',
+        'subtitle' => 'View registered customers and their purchase history.'
+    ],
     'account' => [
         'title' => 'My Account',
         'subtitle' => 'View your staff account information and security options.'
@@ -53,6 +65,9 @@ $pageDetails = [
 
 $currentPageTitle = $pageDetails[$page]['title'];
 $currentPageSubtitle = $pageDetails[$page]['subtitle'];
+
+// Handle staff order updates before any HTML is sent to the browser.
+require_once __DIR__ . '/shop-management-actions.php';
 
 ?>
 
@@ -276,6 +291,7 @@ $currentPageSubtitle = $pageDetails[$page]['subtitle'];
         }
 
         .stats-grid { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 12px; margin-bottom: 19px; }
+        .commerce-stats { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
 
         .stat-card {
             min-height: 94px;
@@ -494,6 +510,12 @@ $currentPageSubtitle = $pageDetails[$page]['subtitle'];
             <a href="crud.php?page=messages" class="quick-action">
                 <i class="bi bi-chat-left-text"></i> Contact Messages
             </a>
+            <a href="crud.php?page=orders" class="quick-action">
+                <i class="bi bi-bag-check"></i> Manage Shop Orders
+            </a>
+            <a href="shop/admin/product-form.php" class="quick-action">
+                <i class="bi bi-plus-square"></i> Add Shop Product
+            </a>
             <a href="crud.php?page=account" class="quick-action">
                 <i class="bi bi-shield-lock"></i> Change Password
             </a>
@@ -509,6 +531,26 @@ $currentPageSubtitle = $pageDetails[$page]['subtitle'];
             </a>
             <a href="crud.php?page=messages" class="nav-link <?= $page === 'messages' ? 'active' : '' ?>">
                 <i class="bi bi-envelope"></i> Contact Messages
+            </a>
+
+            <div class="sidebar-label mt-3">Online Shop</div>
+            <a href="crud.php?page=orders" class="nav-link <?= $page === 'orders' ? 'active' : '' ?>">
+                <i class="bi bi-bag-check"></i> Orders
+            </a>
+            <a href="crud.php?page=payments" class="nav-link <?= $page === 'payments' ? 'active' : '' ?>">
+                <i class="bi bi-credit-card"></i> Payments
+            </a>
+            <a href="crud.php?page=customers" class="nav-link <?= $page === 'customers' ? 'active' : '' ?>">
+                <i class="bi bi-people"></i> Customers
+            </a>
+            <a href="shop/admin/products.php" class="nav-link">
+                <i class="bi bi-box-seam"></i> Products & Inventory
+            </a>
+            <a href="shop/admin/categories.php" class="nav-link">
+                <i class="bi bi-tags"></i> Product Categories
+            </a>
+            <a href="shop/admin/attributes.php" class="nav-link">
+                <i class="bi bi-sliders"></i> Product Specifications
             </a>
 
             <div class="sidebar-label mt-3">Account</div>
@@ -571,6 +613,18 @@ $currentPageSubtitle = $pageDetails[$page]['subtitle'];
                 <div id="contact-messages-content">
                     <?php require_once __DIR__ . '/contact_embed.php'; ?>
                 </div>
+
+            <?php elseif ($page === 'orders'): ?>
+
+                <?php require __DIR__ . '/orders_content.php'; ?>
+
+            <?php elseif ($page === 'payments'): ?>
+
+                <?php require __DIR__ . '/payments_content.php'; ?>
+
+            <?php elseif ($page === 'customers'): ?>
+
+                <?php require __DIR__ . '/customers_content.php'; ?>
 
             <?php elseif ($page === 'account'): ?>
 

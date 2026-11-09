@@ -77,7 +77,7 @@ mephysShopAdminLayoutStart('Products', $shopAdminStaff);
         <h1 class="shop-title">Products</h1>
         <div class="shop-subtitle">Manage the products customers can browse and purchase on the Mephys website.</div>
     </div>
-    <a href="product-form.php" class="btn btn-primary"><i class="bi bi-plus-lg me-1"></i>Add product</a>
+    <a href="/shop/admin/products-form.php" class="btn btn-primary"><i class="bi bi-plus-lg me-1"></i>Add product</a>
 </div>
 
 <div class="row g-3 mb-4">
@@ -117,7 +117,7 @@ mephysShopAdminLayoutStart('Products', $shopAdminStaff);
                     <td><span class="badge rounded-pill <?= $product['status'] === 'published' ? 'text-bg-success' : ($product['status'] === 'draft' ? 'text-bg-secondary' : 'text-bg-dark') ?>"><?= mephysShopAdminEscape(ucfirst($product['status'])) ?></span></td>
                     <td class="small text-secondary"><?= mephysShopAdminEscape(date('d M Y', strtotime((string) $product['updated_at']))) ?></td>
                     <td><div class="d-flex justify-content-end gap-2">
-                        <a class="btn btn-sm btn-outline-primary" href="product-form.php?id=<?= (int) $product['id'] ?>"><i class="bi bi-pencil-square me-1"></i>Edit</a>
+                        <a class="btn btn-sm btn-outline-primary" href="/shop/admin/products-form.php?id=<?= (int) $product['id'] ?>"><i class="bi bi-pencil-square me-1"></i>Edit</a>
                         <?php if ($product['status'] !== 'archived'): ?><form method="POST" onsubmit="return confirm('Archive this product? It will be hidden from the public shop.');"><?= mephysShopAdminCsrfField() ?><input type="hidden" name="action" value="archive"><input type="hidden" name="id" value="<?= (int) $product['id'] ?>"><button class="btn btn-sm btn-outline-danger" type="submit"><i class="bi bi-archive"></i></button></form><?php endif; ?>
                     </div></td>
                 </tr>

@@ -85,6 +85,15 @@ require_once __DIR__ . '/shop-management-actions.php';
 
     <title><?= mephysEscape($currentPageTitle) ?> | Mephys</title>
 
+    <!-- Apply saved theme early to avoid a light-mode flash. -->
+    <script>
+        try {
+            if (localStorage.getItem('mephys-admin-theme') === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            }
+        } catch (e) {}
+    </script>
+
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet"
@@ -273,6 +282,16 @@ require_once __DIR__ . '/shop-management-actions.php';
         .topbar-btn:hover { background: #f7f9fc; color: var(--blue); }
         .topbar-btn.logout { color: #b94a56; }
 
+        /* Theme toggle button */
+        .theme-toggle {
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .theme-toggle i {
+            font-size: 14px;
+        }
+
         .page-content {
             width: min(1600px, 100%);
             margin: 0 auto;
@@ -453,6 +472,252 @@ require_once __DIR__ . '/shop-management-actions.php';
         .alert { border-radius: 8px; font-size: 11px; }
         .mobile-menu-btn { display: none; border: 0; background: transparent; color: #536174; font-size: 20px; }
 
+
+        /* =====================================================
+           DARK MODE
+           These styles only apply when dark mode is selected.
+        ===================================================== */
+
+        html.dark-mode {
+            color-scheme: dark;
+            --background: #101b25;
+            --text: #e1eaf0;
+            --muted: #a7b7c2;
+            --border: #304451;
+        }
+
+        html.dark-mode body {
+            background: #101b25 !important;
+            color: #e1eaf0 !important;
+        }
+
+        /* Main layout surfaces */
+        html.dark-mode .sidebar,
+        html.dark-mode .topbar,
+        html.dark-mode .panel,
+        html.dark-mode .stat-card,
+        html.dark-mode .quick-action,
+        html.dark-mode .details-content,
+        html.dark-mode .card,
+        html.dark-mode .modal-content,
+        html.dark-mode .dropdown-menu,
+        html.dark-mode .list-group-item {
+            background: #192a36 !important;
+            color: #e1eaf0 !important;
+            border-color: #304653 !important;
+        }
+
+        html.dark-mode .topbar {
+            background: rgba(25,42,54,.97) !important;
+        }
+
+        html.dark-mode .filters {
+            background: #152630 !important;
+            border-color: #304653 !important;
+        }
+
+        /* Headings and important text */
+        html.dark-mode .brand,
+        html.dark-mode .brand-name,
+        html.dark-mode .account-name,
+        html.dark-mode .topbar-title,
+        html.dark-mode .page-heading,
+        html.dark-mode .section-heading,
+        html.dark-mode .stat-number,
+        html.dark-mode .patient-name,
+        html.dark-mode .appointment-date {
+            color: #e6f0f5 !important;
+        }
+
+        /* Secondary text */
+        html.dark-mode .brand-subtitle,
+        html.dark-mode .sidebar-label,
+        html.dark-mode .account-role,
+        html.dark-mode .topbar-subtitle,
+        html.dark-mode .page-subtitle,
+        html.dark-mode .stat-label,
+        html.dark-mode .results-count,
+        html.dark-mode .filter-label,
+        html.dark-mode .patient-email,
+        html.dark-mode .appointment-time,
+        html.dark-mode .table-footer {
+            color: #a9bbc6 !important;
+        }
+
+        /* Navigation */
+        html.dark-mode .nav-link {
+            color: #c1d0d9 !important;
+        }
+
+        html.dark-mode .nav-link i,
+        html.dark-mode .quick-action i {
+            color: #9aafbd !important;
+        }
+
+        html.dark-mode .nav-link:hover,
+        html.dark-mode .quick-action:hover {
+            background: #243b49 !important;
+            color: #75d2e5 !important;
+        }
+
+        html.dark-mode .nav-link.active {
+            background: linear-gradient(105deg, #087eaa, #075985) !important;
+            color: #fff !important;
+        }
+
+        html.dark-mode .nav-link.active i {
+            color: #fff !important;
+        }
+
+        /* Topbar buttons */
+        html.dark-mode .topbar-btn,
+        html.dark-mode .export-btn {
+            background: #203440 !important;
+            color: #d0dee6 !important;
+            border-color: #3b5361 !important;
+        }
+
+        html.dark-mode .topbar-btn:hover,
+        html.dark-mode .export-btn:hover {
+            background: #294452 !important;
+            color: #80d7e8 !important;
+        }
+
+        html.dark-mode .topbar-btn.logout {
+            color: #ff9ba4 !important;
+        }
+
+        /* Form fields */
+        html.dark-mode .form-control,
+        html.dark-mode .form-select,
+        html.dark-mode .input-group-text,
+        html.dark-mode textarea,
+        html.dark-mode input,
+        html.dark-mode select {
+            background-color: #12232e !important;
+            color: #e1eaf0 !important;
+            border-color: #405765 !important;
+        }
+
+        html.dark-mode .form-control::placeholder,
+        html.dark-mode textarea::placeholder {
+            color: #91a5b2 !important;
+        }
+
+        html.dark-mode .form-control:focus,
+        html.dark-mode .form-select:focus {
+            border-color: #42a9c1 !important;
+            box-shadow: 0 0 0 3px rgba(66,169,193,.15) !important;
+        }
+
+        /* Tables */
+        html.dark-mode .appointments-table,
+        html.dark-mode .table {
+            --bs-table-color: #d1dfe6;
+            --bs-table-bg: transparent;
+            --bs-table-border-color: #304653;
+            --bs-table-striped-bg: #1d303c;
+            --bs-table-hover-bg: #243c49;
+            --bs-table-hover-color: #ffffff;
+            color: #d1dfe6 !important;
+            border-color: #304653 !important;
+        }
+
+        html.dark-mode .appointments-table thead th,
+        html.dark-mode .table thead th {
+            background: #172833 !important;
+            color: #b3c5cf !important;
+            border-color: #304653 !important;
+        }
+
+        html.dark-mode .appointments-table tbody td,
+        html.dark-mode .table tbody td,
+        html.dark-mode .table tbody th {
+            background-color: transparent;
+            color: #d1dfe6 !important;
+            border-color: #304653 !important;
+        }
+
+        html.dark-mode .appointments-table tbody tr:hover,
+        html.dark-mode .table tbody tr:hover td {
+            background: #243c49 !important;
+        }
+
+        /* General Bootstrap text and backgrounds */
+        html.dark-mode .text-muted,
+        html.dark-mode .text-secondary,
+        html.dark-mode .text-body-secondary {
+            color: #a9bbc6 !important;
+        }
+
+        html.dark-mode .bg-white,
+        html.dark-mode .bg-light {
+            background: #192a36 !important;
+            color: #e1eaf0 !important;
+        }
+
+        html.dark-mode .border,
+        html.dark-mode hr {
+            border-color: #304653 !important;
+        }
+
+        html.dark-mode .icon-action {
+            color: #a9c1ce !important;
+        }
+
+        html.dark-mode .icon-action:hover {
+            background: #294452 !important;
+            color: #80d7e8 !important;
+        }
+
+        html.dark-mode .empty-state {
+            color: #a9bbc6 !important;
+        }
+
+        /* Keep status labels readable in both themes */
+        html.dark-mode .status-pending {
+            background: #493a1c !important;
+            color: #ffd77b !important;
+        }
+
+        html.dark-mode .status-confirmed {
+            background: #193b5a !important;
+            color: #9bcaff !important;
+        }
+
+        html.dark-mode .status-completed {
+            background: #164333 !important;
+            color: #8be0bd !important;
+        }
+
+        html.dark-mode .status-cancelled {
+            background: #4b252d !important;
+            color: #ffabb3 !important;
+        }
+
+        /* Additional text and links inside admin content */
+        html.dark-mode .page-content,
+        html.dark-mode .page-content p,
+        html.dark-mode .page-content label,
+        html.dark-mode .page-content strong,
+        html.dark-mode .page-content small,
+        html.dark-mode .page-content td,
+        html.dark-mode .page-content th,
+        html.dark-mode .page-content li {
+            color: #d1dfe6;
+        }
+
+        html.dark-mode .page-content a:not(.btn):not(.nav-link):not(.quick-action):not(.export-btn):not(.icon-action) {
+            color: #75c9df;
+        }
+
+        html.dark-mode .page-content .btn-primary {
+            color: #fff !important;
+            background: #176b91 !important;
+            border-color: #176b91 !important;
+        }
+
+
         @media (max-width: 1100px) {
             .filters { grid-template-columns: repeat(3,minmax(0,1fr)); }
             .stats-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
@@ -587,6 +852,19 @@ require_once __DIR__ . '/shop-management-actions.php';
             </div>
 
             <div class="topbar-actions">
+
+                <!-- Light/Dark mode switch -->
+                <button
+                    type="button"
+                    class="topbar-btn theme-toggle"
+                    id="themeToggle"
+                    aria-label="Switch to dark mode"
+                    title="Switch theme"
+                >
+                    <i class="bi bi-moon-stars" id="themeToggleIcon"></i>
+                    <span id="themeToggleText">Dark mode</span>
+                </button>
+
                 <a href="crud.php?page=account" class="topbar-btn">
                     <i class="bi bi-key"></i><span>Change Password</span>
                 </a>
@@ -680,6 +958,7 @@ require_once __DIR__ . '/shop-management-actions.php';
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 <script>
+    // Mobile sidebar menu
     const mobileMenuButton = document.getElementById('mobileMenuButton');
 
     if (mobileMenuButton) {
@@ -696,11 +975,76 @@ require_once __DIR__ . '/shop-management-actions.php';
             document.body.classList.contains('sidebar-open') &&
             sidebar &&
             !sidebar.contains(event.target) &&
+            mobileMenuButton &&
             !mobileMenuButton.contains(event.target)
         ) {
             document.body.classList.remove('sidebar-open');
         }
     });
+
+
+    // Light/Dark mode switch
+    (function () {
+        const storageKey = 'mephys-admin-theme';
+
+        const themeToggle = document.getElementById('themeToggle');
+        const themeToggleIcon = document.getElementById('themeToggleIcon');
+        const themeToggleText = document.getElementById('themeToggleText');
+
+        function applyTheme(theme) {
+            const isDark = theme === 'dark';
+
+            document.documentElement.classList.toggle('dark-mode', isDark);
+
+            if (themeToggle) {
+                themeToggle.setAttribute(
+                    'aria-label',
+                    isDark ? 'Switch to light mode' : 'Switch to dark mode'
+                );
+
+                themeToggle.title = isDark
+                    ? 'Switch to light mode'
+                    : 'Switch to dark mode';
+            }
+
+            if (themeToggleIcon) {
+                themeToggleIcon.className = isDark
+                    ? 'bi bi-sun'
+                    : 'bi bi-moon-stars';
+            }
+
+            if (themeToggleText) {
+                themeToggleText.textContent = isDark
+                    ? 'Light mode'
+                    : 'Dark mode';
+            }
+        }
+
+        let savedTheme = 'light';
+
+        try {
+            savedTheme = localStorage.getItem(storageKey) || 'light';
+        } catch (error) {
+            savedTheme = 'light';
+        }
+
+        applyTheme(savedTheme);
+
+        if (themeToggle) {
+            themeToggle.addEventListener('click', function () {
+                const currentlyDark = document.documentElement.classList.contains('dark-mode');
+                const newTheme = currentlyDark ? 'light' : 'dark';
+
+                try {
+                    localStorage.setItem(storageKey, newTheme);
+                } catch (error) {
+                    // Theme still changes for the current page if storage is unavailable.
+                }
+
+                applyTheme(newTheme);
+            });
+        }
+    })();
 </script>
 
 </body>

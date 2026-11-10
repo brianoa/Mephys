@@ -89,16 +89,16 @@
   </div>
   
   <div class="map-full-width">
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.7675865751676!2d36.83735147397421!3d-1.314973335656062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f11a416c3cab7%3A0x2193788a9fb879ab!2sGolden%20Gate%20Dr%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1751632474605!5m2!1sen!2ske" 
-      width="100%" 
-      height="500" 
-      style="border:0;" 
-      allowfullscreen="" 
-      loading="lazy" 
-      referrerpolicy="no-referrer-when-downgrade">
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.6738186272737!2d36.93271147495362!3d-1.3723967357262574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f0da705a1832f%3A0xf3e1d0f7f90e02a5!2sThe%20Veteran%20Mission%20Hospitals!5e0!3m2!1sen!2ske!4v1794224935688!5m2!1sen!2ske"
+        width="100%"
+        height="500"
+        style="border:0;"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin">
     </iframe>
-  </div>
+</div>
 </section>
 
 

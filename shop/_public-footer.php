@@ -1,21 +1,71 @@
+
 </main>
-<footer class="shop-public-footer">
-    <div class="container">
-        <div class="row g-3 align-items-center">
-            <div class="col-md-7">
-                <div class="fw-bold fs-5">Mephys Physiotherapy Clinic</div>
-                <div class="small opacity-75">Healing touch that cares.</div>
-            </div>
-            <div class="col-md-5 text-md-end small">
-                <a href="../index.php">Home</a><span class="mx-2">·</span>
-                <a href="index.php">Products</a><span class="mx-2">·</span>
-                <a href="../contact.php">Contact</a>
-            </div>
-        </div>
-        <hr class="border-light opacity-25 my-3">
-        <div class="small opacity-75">&copy; <?= date('Y') ?> Mephys Clinic. All rights reserved.</div>
+
+<footer class="bg-dark text-white pt-5 pb-4">
+  <div class="container text-md-left">
+    <div class="row">
+
+      <!-- Brand & Description -->
+      <div class="col-md-4 col-lg-4 col-xl-3 mx-auto mb-4">
+        <h5 class="text-uppercase fw-bold mb-3" style="color: #0dcaf0;">Mephys Clinic</h5>
+        <p>Empowering lives through evidence-based physiotherapy and holistic healing in Nairobi and beyond.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-md-4 col-lg-3 col-xl-2 mx-auto mb-4">
+        <h6 class="text-uppercase fw-bold mb-3">Quick Links</h6>
+        <ul class="list-unstyled">
+          <li><a href="/index.php" class="text-white text-decoration-none">Home</a></li>
+          <li><a href="/about.php#about" class="text-white text-decoration-none">About Us</a></li>
+          <li><a href="/services.php" class="text-white text-decoration-none">Services</a></li>
+          <li><a href="/shop/index.php" class="text-white text-decoration-none">Products</a></li>
+          <li><a href="/index.php#appointmentFormContainer" class="text-white text-decoration-none">Book Appointment</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-md-4 col-lg-4 col-xl-3 mx-auto mb-4">
+        <h6 class="text-uppercase fw-bold mb-3">Contact</h6>
+
+        <p class="d-flex align-items-start mb-3">
+          <i class="fas fa-envelope me-2 mt-1"></i>
+          <span>info@mephysclinic.com</span>
+        </p>
+
+        <p class="d-flex align-items-start mb-3">
+          <i class="fas fa-phone me-2 mt-1"></i>
+          <span>+254 720 095 236</span>
+        </p>
+
+        <p class="d-flex align-items-start mb-3">
+          <i class="fas fa-map-marker-alt me-2 mt-1"></i>
+          <span>The Veteran Mission Hospitals, Syokimau, along Katani Road, Machakos County</span>
+        </p>
+      </div>
+
     </div>
+
+    <hr class="mb-4" style="border-top: 1px solid rgba(255,255,255,0.2);">
+
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <p class="mb-0">&copy; <span id="year"></span> Mephys Clinic. All Rights Reserved.</p>
+      </div>
+
+      <div class="col-md-6 text-md-end">
+        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
+        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
+        <a href="https://wa.me/254725917485" class="text-white"><i class="fab fa-whatsapp fa-lg"></i></a>
+      </div>
+    </div>
+  </div>
 </footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

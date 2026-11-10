@@ -21,13 +21,26 @@
       </div>
 
       <!-- Contact Info -->
-      <div class="col-md-4 col-lg-4 col-xl-3 mx-auto mb-4">
-        <h6 class="text-uppercase fw-bold mb-3">Contact</h6>
-        <p><i class="fas fa-envelope me-2"></i> info@mephysclinic.com</p>
-        <p><i class="fas fa-phone me-2"></i> +254 720 095 236</p>
-        <p><i class="fas fa-map-marker-alt me-2"></i> South B, Golden Gates Drive, Nairobi</p>
-      </div>
+  <div class="col-md-4 col-lg-4 col-xl-3 mx-auto mb-4">
+    <h6 class="text-uppercase fw-bold mb-3">Contact</h6>
 
+    <p class="d-flex align-items-start mb-3">
+      <i class="fas fa-envelope me-2 mt-1"></i>
+      <span>info@mephysclinic.com</span>
+    </p>
+
+    <p class="d-flex align-items-start mb-3">
+      <i class="fas fa-phone me-2 mt-1"></i>
+      <span>+254 720 095 236</span>
+    </p>
+
+    <p class="d-flex align-items-start mb-3">
+      <i class="fas fa-map-marker-alt me-2 mt-1"></i>
+      <span>
+        The Veteran Mission Hospitals, Syokimau, along Katani Road, Machakos County
+      </span>
+    </p>
+  </div>
     </div>
 
     <hr class="mb-4" style="border-top: 1px solid rgba(255,255,255,0.2);">

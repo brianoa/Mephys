@@ -188,16 +188,22 @@ function mephysShopPageUrl(int $targetPage, string $search, string $category, st
                     $hasDiscount = $product['compare_at_price'] !== null && (float) $product['compare_at_price'] > (float) $product['price'];
                 ?>
                     <div class="col-6 col-md-4 col-xl-3">
-                        <article class="h-100 border rounded-4 overflow-hidden bg-white" style="box-shadow:0 5px 18px rgba(26,55,85,.045)">
+                        <article class="h-100 d-flex flex-column border rounded-4 overflow-hidden bg-white" style="box-shadow:0 5px 18px rgba(26,55,85,.045)">
                             <a href="product.php?slug=<?= rawurlencode((string) $product['slug']) ?>" class="d-block position-relative text-decoration-none" style="background:#f5f8fa">
                                 <img src="<?= mephysShopPublicEscape(mephysShopPublicImageUrl($product['image_path'])) ?>" alt="<?= mephysShopPublicEscape($product['name']) ?>" loading="lazy" class="w-100" style="height:220px;object-fit:contain;padding:12px">
                                 <?php if ((int) $product['is_featured'] === 1): ?><span class="badge text-bg-primary position-absolute top-0 start-0 m-2">Featured</span><?php endif; ?>
                                 <?php if ($isOutOfStock): ?><span class="badge text-bg-secondary position-absolute top-0 end-0 m-2">Out of stock</span><?php elseif ($hasDiscount): ?><span class="badge text-bg-danger position-absolute top-0 end-0 m-2">Special price</span><?php endif; ?>
                             </a>
-                            <div class="p-3">
+                            <div class="p-3 d-flex flex-column flex-grow-1">
                                 <?php if (!empty($product['category_name'])): ?><div class="small text-uppercase fw-bold mb-1" style="color:#7d91a4;font-size:.68rem;letter-spacing:.7px"><?= mephysShopPublicEscape($product['category_name']) ?></div><?php endif; ?>
-                                <h2 class="h6 fw-bold mb-2"><a class="text-decoration-none" style="color:#263f55" href="product.php?slug=<?= rawurlencode((string) $product['slug']) ?>"><?= mephysShopPublicEscape($product['name']) ?></a></h2>
-                                <p class="small shop-muted mb-3" style="min-height:2.7em"><?= mephysShopPublicEscape($product['short_description'] ?: 'View product details for more information.') ?></p>
+                                <h2 class="h6 fw-bold mb-2" style="min-height:2.5em;line-height:1.25">
+                                    <a class="text-decoration-none" style="color:#263f55" href="product.php?slug=<?= rawurlencode((string) $product['slug']) ?>">
+                                        <?= mephysShopPublicEscape($product['name']) ?>
+                                    </a>
+                                </h2>
+                                <p class="small shop-muted mb-3 product-card-description">
+                                    <?= mephysShopPublicEscape($product['short_description'] ?: 'View product details for more information.') ?>
+                                </p>
                                 <div class="d-flex align-items-baseline flex-wrap gap-2 mb-3"><span class="fw-bold" style="color:#006bb3;font-size:1.05rem"><?= mephysShopPublicMoney($product['price']) ?></span><?php if ($hasDiscount): ?><span class="small text-decoration-line-through text-secondary"><?= mephysShopPublicMoney($product['compare_at_price']) ?></span><?php endif; ?></div>
                                 <?php if (!$isOutOfStock && (int) ($product['active_variant_count'] ?? 0) === 0): ?>
                                     <form method="POST" action="cart.php" class="mb-2">
@@ -276,5 +282,22 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 <?php endif; ?>
+<style>
+/* Keep product descriptions tidy and product cards consistent */
+.product-card-description {
+    line-height: 1.45;
+    height: 4.35em;
+    min-height: 4.35em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+}
 
+/* Keep product prices and buttons aligned */
+.product-card-description + div {
+    margin-top: auto;
+}
+</style>
 <?php require __DIR__ . '/_public-footer.php'; ?>

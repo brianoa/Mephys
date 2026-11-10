@@ -56,6 +56,14 @@ try {
         ':message' => $message
     ]);
 
+    // The enquiry is safely stored even when outgoing email is not configured.
+    if (empty($mailConfig['username']) || empty($mailConfig['password']) ||
+        !filter_var($mailConfig['admin_email'] ?? '', FILTER_VALIDATE_EMAIL)) {
+        error_log('Mephys contact form: saved to database, SMTP settings are not configured.');
+        echo 'success';
+        exit;
+    }
+
     // Prepare reusable email settings.
     $mail = new PHPMailer(true);
 
@@ -145,8 +153,8 @@ try {
 
     error_log('Mephys email error: ' . $e->getMessage());
 
-    http_response_code(500);
-    echo 'Your message could not be processed completely. Please contact the clinic directly.';
+    // The message was already saved, so do not prompt a duplicate submission.
+    echo 'success';
 
 } catch (Throwable $e) {
 

@@ -1,3 +1,13 @@
+// Continue to handle bookings if the optional SweetAlert CDN is unavailable.
+const clinicAlert = window.Swal || {
+  fire(options) {
+    if (options && options.title === 'Booking your appointment...') return;
+    window.alert([options && options.title, options && options.text].filter(Boolean).join('\n'));
+  },
+  close() {},
+  showLoading() {}
+};
+
 const serviceContent = {
   musculoskeletal: {
     title: "Musculoskeletal Physiotherapy",
@@ -288,29 +298,57 @@ const modal = document.getElementById('modal');
 const modalTitle = document.getElementById('modalTitle');
 const modalDesc = document.getElementById('modalDesc');
 const closeModal = document.getElementById('closeModal');
+let previousFocus = null;
 
-document.querySelectorAll('.service-card').forEach(card => {
-    card.addEventListener('click', () => {
-        const key = card.getAttribute('data-service');
-
-        if (serviceContent[key]) {
-            modalTitle.textContent = serviceContent[key].title;
-            modalDesc.innerHTML = serviceContent[key].desc;
-            modal.style.display = 'flex';
-        } else {
-            alert("Detailed information is coming soon!");
-        }
-    });
-});
-
-closeModal.onclick = () => {
+function hideServiceModal() {
+    if (!modal) return;
     modal.style.display = 'none';
-};
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (previousFocus && previousFocus.isConnected) previousFocus.focus();
+}
 
-window.onclick = (e) => {
-    if (e.target === modal) modal.style.display = 'none';
-};
+function showServiceModal(card) {
+    if (!modal || !modalTitle || !modalDesc) return;
+    const key = card.getAttribute('data-service');
+    const detail = serviceContent[key];
+    const cardTitle = card.querySelector('.card-title');
+    const cardText = card.querySelector('.card-text');
+    previousFocus = card;
+    modalTitle.textContent = detail ? detail.title : (cardTitle ? cardTitle.textContent.trim() : 'Physiotherapy service');
+    // Static, developer-authored HTML only. Fall back to the public service-card description.
+    if (detail) {
+        modalDesc.innerHTML = detail.desc;
+    } else {
+        modalDesc.replaceChildren();
+        const paragraph = document.createElement('p');
+        paragraph.textContent = cardText && cardText.textContent.trim() !== '...'
+          ? cardText.textContent.trim()
+          : 'Contact our team to find out more about this service or request an appointment.';
+        modalDesc.appendChild(paragraph);
+    }
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    closeModal.focus();
+}
 
+if (modal) {
+    document.querySelectorAll('.service-card').forEach(card => {
+        card.addEventListener('click', () => showServiceModal(card));
+        card.addEventListener('keydown', event => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                showServiceModal(card);
+            }
+        });
+    });
+    closeModal.addEventListener('click', hideServiceModal);
+    modal.addEventListener('click', event => { if (event.target === modal) hideServiceModal(); });
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && modal.style.display === 'flex') hideServiceModal();
+    });
+}
 
 /* Book Appointment Button */
 
@@ -321,7 +359,7 @@ document.getElementById("openAppointmentFormBtn").addEventListener("click", func
 
     document.getElementById("selectedService").value = selectedService;
 
-    document.getElementById("modal").style.display = "none";
+    hideServiceModal();
 
     const formContainer = document.getElementById("appointmentFormContainer");
 
@@ -370,7 +408,7 @@ document.getElementById("appointmentForm").addEventListener("submit", function (
     const selectedService = document.getElementById("selectedService").value.trim();
 
     if (!selectedService) {
-        Swal.fire({
+        clinicAlert.fire({
             icon: 'error',
             title: 'Service Required',
             text: 'Please select a service before booking.'
@@ -399,7 +437,7 @@ document.getElementById("appointmentForm").addEventListener("submit", function (
 
     // Validate appointment date
     if (!date || (earliestDate && date < earliestDate)) {
-        Swal.fire({
+        clinicAlert.fire({
             icon: 'error',
             title: 'Invalid Appointment Date',
             text: 'Please select tomorrow or a future date.'
@@ -426,10 +464,6 @@ document.getElementById("appointmentForm").addEventListener("submit", function (
     // Explicitly include the selected service
     formData.set("service", selectedService);
 
-    // Diagnostic checks
-    console.log("Selected service:", selectedService);
-    console.log("Service being submitted:", formData.get("service"));
-    console.log("CSRF token included:", formData.has("csrf_token"));
 
     // Disable submit button to prevent repeated submissions
     const submitButton = form.querySelector('[type="submit"]');
@@ -439,12 +473,12 @@ document.getElementById("appointmentForm").addEventListener("submit", function (
     }
 
     // Show SweetAlert loading
-    Swal.fire({
+    clinicAlert.fire({
         title: 'Booking your appointment...',
         text: 'Please wait a moment.',
         allowOutsideClick: false,
         didOpen: () => {
-            Swal.showLoading();
+            clinicAlert.showLoading();
         }
     });
 
@@ -455,7 +489,7 @@ document.getElementById("appointmentForm").addEventListener("submit", function (
     .then((response) => response.text())
     .then((responseText) => {
 
-        Swal.close();
+        clinicAlert.close();
 
         let data;
 
@@ -464,7 +498,7 @@ document.getElementById("appointmentForm").addEventListener("submit", function (
         } catch (error) {
             console.error("Server response:", responseText);
 
-            Swal.fire({
+            clinicAlert.fire({
                 icon: 'error',
                 title: 'Submission Failed',
                 text: 'The server returned an unexpected response. Please try again.'
@@ -475,7 +509,7 @@ document.getElementById("appointmentForm").addEventListener("submit", function (
 
         if (data.success === true) {
 
-            Swal.fire({
+            clinicAlert.fire({
                 icon: 'success',
                 title: 'Request Received!',
                 text: data.message || 'Thank you! We will contact you shortly to confirm.'
@@ -494,7 +528,7 @@ document.getElementById("appointmentForm").addEventListener("submit", function (
 
         } else {
 
-            Swal.fire({
+            clinicAlert.fire({
                 icon: 'error',
                 title: 'Submission Failed',
                 text: data.message || 'Something went wrong. Please try again.'
@@ -503,9 +537,9 @@ document.getElementById("appointmentForm").addEventListener("submit", function (
     })
     .catch((error) => {
 
-        Swal.close();
+        clinicAlert.close();
 
-        Swal.fire({
+        clinicAlert.fire({
             icon: 'error',
             title: 'Network Error',
             text: 'Unable to submit. Please check your internet connection or try again.'
@@ -527,7 +561,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const toastElement = document.getElementById('whatsappToast');
 
-    if (toastElement) {
+    if (toastElement && window.bootstrap && window.bootstrap.Toast) {
         const toast = new bootstrap.Toast(toastElement, {
             delay: 7000
         });

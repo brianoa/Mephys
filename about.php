@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Learn about Mephys Physiotherapy Clinic and our approach to personalized rehabilitation.">
   <!---Font Awesome--->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <!--Bootstrap link-->
@@ -10,59 +11,16 @@
   <!--AOS--->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
   <!--Stylesheet link-->
-	<link rel="stylesheet" type="text/css" href="about.css">
+	<link rel="stylesheet" type="text/css" href="about.css?v=20261110b">
+    <link rel="stylesheet" href="nav.css?v=20261110b">
+    <script src="nav.js?v=20261110b" defer></script>
   
   <!--Animate-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-	<title>Home</title>
+	<title>About Us | Mephys Clinic</title>
 </head>
 <body>
-<section class="home" id="home"> 
- <div class="navbar-bg">
-  <nav class="navbar navbar-expand-lg fixed-top bg-white shadow-sm">
-   <div class="container">
-    <a class="navbar-brand" href="#">Mephys</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarScroll">
-      <ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php#home">Home</a>
-        </li>        
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Services
-          </a>
-          <ul class="dropdown-menu scrollable-dropdown">
-            <li><a class="dropdown-item" href="services.php#musculoskeletal">Musculoskeletal Physiotherapy</a></li>
-            <li><a class="dropdown-item" href="services.php#neurological">Neurological Physiotherapy</a></li>
-            <li><a class="dropdown-item" href="services.php#cardiorespiratory">Cardiorespiratory Physiotherapy</a></li>
-            <li><a class="dropdown-item" href="services.php#geriatric">Geriatric Physiotherapy</a></li>
-            <li><a class="dropdown-item" href="services.php#sports">Sports Physiotherapy</a></li>
-            <li><a class="dropdown-item" href="services.php#orthopedic">Orthopedic Physiotherapy</a></li>
-            <li><a class="dropdown-item" href="services.php#corporate">Corporate Ergonomic Training</a></li>
-            <li><a class="dropdown-item" href="services.php#pediatric">Pediatric Physiotherapy</a></li>
-            <li><a class="dropdown-item" href="services.php#lamaze">Lamaze for Expectant Mothers</a></li>
-            <li><a class="dropdown-item" href="services.php#homebased">Home-Based Physiotherapy</a></li>
-            <li><a class="dropdown-item" href="services.php#lymphatic">Lymphatic drainage post surgery</a></li>
-            <li><a class="dropdown-item" href="services.php#physical">Physical Therapy Consultancy</a></li>
-            <li><a class="dropdown-item" href="services.php#sexual">Sexual Helath and Wellness</a></li>
-            <li><a class="dropdown-item" href="services.php#physicaltherapy">Physical Therapy Consultancy</a></li>
-            <li><a class="dropdown-item" href="services.php#pain">Pain Management</a></li>            
-          </ul>
-         </li>
-          <li class="nav-item">
-            <a class="nav-link" href="about.php#about">AboutUS</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="location.php#map">Location</a>
-          </li>
-       </ul>      
-     </div>
-   </div>
- </nav>
-</div>
+<?php include __DIR__ . '/nav.php'; ?>
 
 
 <!--Profile----->
@@ -215,7 +173,7 @@
       <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
     <div class="px-3 pb-3">
-      <a href="https://wa.me/254712345678" target="_blank" class="btn btn-light btn-sm rounded-pill">Chat on WhatsApp</a>
+      <a href="https://wa.me/254725917485" target="_blank" class="btn btn-light btn-sm rounded-pill">Chat on WhatsApp</a>
     </div>
   </div>
 </div>
@@ -225,7 +183,7 @@
 <!--AOS Animate on Scroll JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
-    AOS.init({
+    if (window.AOS) AOS.init({
       duration: 1000,
       once: true,
     });

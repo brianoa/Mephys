@@ -15,6 +15,8 @@ $shopCartCount = function_exists('mephysShopPublicCartCount') ? mephysShopPublic
     <meta name="description" content="<?= mephysShopPublicEscape($shopPageDescription) ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../nav.css?v=20261110b">
+    <script src="../nav.js?v=20261110b" defer></script>
     <style>
         :root{--mephys-blue:#006bb3;--mephys-teal:#0099cc;--mephys-ink:#20364b;--mephys-muted:#758395;--mephys-line:#e7edf3;--mephys-bg:#f6f9fc}
         *{box-sizing:border-box}
@@ -39,13 +41,14 @@ $shopCartCount = function_exists('mephysShopPublicCartCount') ? mephysShopPublic
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg sticky-top shop-site-nav">
+<nav class="navbar navbar-expand-lg sticky-top shop-site-nav mephys-site-nav" aria-label="Shop navigation" data-mobile-nav>
     <div class="container">
         <a class="navbar-brand" href="../index.php#home">Mephys</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mephysShopNav" aria-controls="mephysShopNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler mephys-menu-toggle" type="button" aria-controls="mephysShopNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="mephysShopNav">
+        <div class="navbar-collapse mephys-nav-panel" id="mephysShopNav">
+            <div class="mephys-nav-panel-header"><span>Menu</span><button class="mephys-menu-close" type="button" aria-label="Close navigation menu">&times;</button></div>
             <ul class="navbar-nav ms-auto align-items-lg-center">
                 <li class="nav-item"><a class="nav-link" href="../index.php#home">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="../services.php">Services</a></li>
@@ -70,4 +73,5 @@ $shopCartCount = function_exists('mephysShopPublicCartCount') ? mephysShopPublic
         </div>
     </div>
 </nav>
+<div class="mephys-nav-backdrop" hidden aria-hidden="true"></div>
 <main class="shop-public-main">

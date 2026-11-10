@@ -16,7 +16,7 @@
           <li><a href="about.php#about" class="text-white text-decoration-none">About Us</a></li>
           <li><a href="services.php" class="text-white text-decoration-none">Services</a></li>
           <li><a href="shop/index.php" class="text-white text-decoration-none">Products</a></li>
-          <li><a href="#appointmentFormContainer" class="text-white text-decoration-none">Book Appointment</a></li>
+          <li><a href="services.php#services" class="text-white text-decoration-none">Book Appointment</a></li>
         </ul>
       </div>
 
@@ -50,10 +50,7 @@
         <p class="mb-0">&copy; <span id="year"></span> Mephys Clinic. All Rights Reserved.</p>
       </div>
       <div class="col-md-6 text-md-end">
-        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
-        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
-        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
-        <a href="https://wa.me/254725917485" class="text-white"><i class="fab fa-whatsapp fa-lg"></i></a>
+        <a href="https://wa.me/254725917485" target="_blank" rel="noopener noreferrer" aria-label="Chat with Mephys Clinic on WhatsApp" class="text-white"><i class="fab fa-whatsapp fa-lg"></i></a>
       </div>
     </div>
   </div>

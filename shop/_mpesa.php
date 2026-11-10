@@ -13,7 +13,7 @@ function mephysMpesaConfig(): array
         'consumer_secret' => trim((string)(getenv('d5063219wRReWBc7Ty3UwAYzBKmeaUC5De0ZSYRRV0t7yzHkdEKxIpPYdcOlcPsb') ?: '')),
         'shortcode' => trim((string)(getenv('174379') ?: '')),
         'passkey' => trim((string)(getenv('bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919') ?: '')),
-        'callback_url' => trim((string)(getenv('https://8cd4-105-164-128-118.ngrok-free.app/shop/mpesa-callback.php') ?: '')),
+        'callback_url' => trim((string)(getenv('https://9f26-105-164-128-180.ngrok-free.app/shop/mpesa-callback.php') ?: '')),
         'account_reference' => trim((string)(getenv('MEPHYS') ?: 'MEPHYS')),
         'transaction_type' => trim((string)(getenv('MEPHYS_MPESA_TRANSACTION_TYPE') ?: 'CustomerPayBillOnline')),
     ];

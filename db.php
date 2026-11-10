@@ -1,9 +1,9 @@
 <?php
 
-$host = "localhost";
-$dbname = "contact";
-$username = "root";
-$password = "";
+$host = getenv("MEPHYS_DB_HOST") ?: "localhost";
+$dbname = getenv("MEPHYS_DB_NAME") ?: "contact";
+$username = getenv("MEPHYS_DB_USER") ?: "root";
+$password = getenv("MEPHYS_DB_PASSWORD") ?: "";
 
 try {
     $pdo = new PDO(

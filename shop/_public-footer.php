@@ -15,11 +15,11 @@
       <div class="col-md-4 col-lg-3 col-xl-2 mx-auto mb-4">
         <h6 class="text-uppercase fw-bold mb-3">Quick Links</h6>
         <ul class="list-unstyled">
-          <li><a href="/index.php" class="text-white text-decoration-none">Home</a></li>
-          <li><a href="/about.php#about" class="text-white text-decoration-none">About Us</a></li>
-          <li><a href="/services.php" class="text-white text-decoration-none">Services</a></li>
-          <li><a href="/shop/index.php" class="text-white text-decoration-none">Products</a></li>
-          <li><a href="/index.php#appointmentFormContainer" class="text-white text-decoration-none">Book Appointment</a></li>
+          <li><a href="../index.php" class="text-white text-decoration-none">Home</a></li>
+          <li><a href="../about.php#about" class="text-white text-decoration-none">About Us</a></li>
+          <li><a href="../services.php" class="text-white text-decoration-none">Services</a></li>
+          <li><a href="index.php" class="text-white text-decoration-none">Products</a></li>
+          <li><a href="../services.php#services" class="text-white text-decoration-none">Book Appointment</a></li>
         </ul>
       </div>
 
@@ -53,9 +53,6 @@
       </div>
 
       <div class="col-md-6 text-md-end">
-        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
-        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
-        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
         <a href="https://wa.me/254725917485" class="text-white"><i class="fab fa-whatsapp fa-lg"></i></a>
       </div>
     </div>

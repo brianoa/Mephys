@@ -18,7 +18,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
 
     <!-- Main Stylesheet -->
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css?v=20261110intro2">
+    <link rel="stylesheet" href="nav.css?v=20261110b">
+    <script src="nav.js?v=20261110b" defer></script>
 
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -26,85 +28,48 @@
 </head>
 <body>
 
-<section class="home" id="home">
- <div class="navbar-bg">
-  <nav class="navbar navbar-expand-lg fixed-top bg-white shadow-sm">
-   <div class="container">
-
-    <!-- Brand links back to homepage -->
-    <a class="navbar-brand" href="index.php#home">Mephys</a>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarScroll">
-      <ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php#home">Home</a>
-        </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Services
-          </a>
-
-          <ul class="dropdown-menu scrollable-dropdown">
-            <li><a class="dropdown-item" href="services.php#musculoskeletal">Musculoskeletal Physiotherapy</a></li>
-            <li><a class="dropdown-item" href="services.php#neurological">Neurological Physiotherapy</a></li>
-            <li><a class="dropdown-item" href="services.php#cardiorespiratory">Cardiorespiratory Physiotherapy</a></li>
-            <li><a class="dropdown-item" href="services.php#geriatric">Geriatric Physiotherapy</a></li>
-            <li><a class="dropdown-item" href="services.php#sports">Sports Physiotherapy</a></li>
-            <li><a class="dropdown-item" href="services.php#orthopedic">Orthopedic Physiotherapy</a></li>
-            <li><a class="dropdown-item" href="services.php#corporate">Corporate Ergonomic Training</a></li>
-            <li><a class="dropdown-item" href="services.php#pediatric">Pediatric Physiotherapy</a></li>
-            <li><a class="dropdown-item" href="services.php#lamaze">Lamaze for Expectant Mothers</a></li>
-            <li><a class="dropdown-item" href="services.php#homebased">Home-Based Physiotherapy</a></li>
-            <li><a class="dropdown-item" href="services.php#lymphatic">Lymphatic drainage post surgery</a></li>
-            <li><a class="dropdown-item" href="services.php#physical">Physical Therapy Consultancy</a></li>
-            <li><a class="dropdown-item" href="services.php#sexual">Sexual Health and Wellness</a></li>
-            <li><a class="dropdown-item" href="services.php#physicaltherapy">Physical Therapy Consultancy</a></li>
-            <li><a class="dropdown-item" href="services.php#pain">Pain Management</a></li>
-          </ul>
-        </li>
-
-        <li class="nav-item">
-
-
-          <a class="nav-link" href="shop/index.php">Products</a>
-
-
-        </li>
-
-
-
-        <li class="nav-item">
-          <a class="nav-link" href="about.php#about">About</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="location.php#map">Location</a>
-        </li>
-
-       </ul>
-     </div>
-   </div>
- </nav>
-</div>
-
-<!-- Banner Section -->
-<section class="hero-banner">
-  <div class="content text-center">
-    <h1>Feel Stronger. Move Freely</h1>
-    <p>Professional physiotherapy that restores balance, strength, and confidence.</p>
-
-    <div>
-      <button class="hero-btn" onclick="window.location.href='#contact'"><span></span>CONTACT US</button>
-      <button class="hero-btn" onclick="window.location.href='#projects'"><span></span>PROJECTS</button>
+<?php include __DIR__ . '/nav.php'; ?>
+<section class="home mephys-hero" id="home" aria-label="Mephys physiotherapy clinic home">
+  <div class="mephys-hero-banner">
+    <picture class="mephys-hero-image">
+      <source media="(max-width: 767.98px)" srcset="images/mephys-reception-mobile.webp?v=20261110hero" type="image/webp">
+      <img src="images/mephys-reception-wide.webp?v=20261110hero"
+           width="2160" height="1305"
+           alt="Bright Mephys physiotherapy reception with the clinic emblem on the desk"
+           decoding="async" fetchpriority="high">
+    </picture>
+    <!-- These words are HTML, not part of the photo: they animate once and stay sharp. -->
+    <div class="mephys-hero-wall">
+      <h1 class="mephys-wall-name">MEPHYS</h1>
+      <p class="mephys-wall-specialty">PHYSIOTHERAPY CLINIC</p>
+      <p class="mephys-wall-tagline">Healing Touch, Care That Moves</p>
     </div>
   </div>
+  <div class="mephys-hero-actions" aria-label="Explore the clinic">
+    <a class="mephys-hero-cta mephys-hero-cta-primary" href="#contact">Contact Us</a>
+    <a class="mephys-hero-cta mephys-hero-cta-secondary" href="#projects">Our Projects</a>
+  </div>
 </section>
+
+<!-- Introduction: added without changing your existing projects or contact sections -->
+<section class="mephys-introduction" id="introduction" aria-labelledby="introduction-title">
+  <div class="container">
+    <div class="mephys-intro-layout">
+      <div>
+        <p class="intro-label">Welcome to Mephys</p>
+        <h2 id="introduction-title">Compassionate care. <span>Better movement.</span></h2>
+        <p class="intro-description">At Mephys Physiotherapy Clinic, we help people manage pain, recover from injuries and improve their mobility through attentive, goal-focused physiotherapy. We believe care should be practical, supportive and tailored to each person's needs.</p>
+        <p class="intro-description">Our work extends beyond individual appointments through experience supporting healthcare facilities and workplaces with physiotherapy services, staff treatment and ergonomic guidance.</p>
+        <a class="intro-link" href="services.php">Explore Our Services</a>
+      </div>
+      <aside class="partnership-panel" aria-labelledby="partnership-title">
+        <p class="intro-label">B2B Partnerships</p>
+        <h3 id="partnership-title">Stronger care through collaboration</h3>
+        <p>Mephys has worked with healthcare providers and employers on physiotherapy department support, employee treatment and ergonomic training. We welcome opportunities to collaborate with clinics, hospitals, businesses and other organizations seeking physiotherapy and workplace-wellness support.</p>
+        <a href="#contact">Discuss a partnership &rarr;</a>
+      </aside>
+    </div>
+  </div>
 </section>
 
 <!-- Past Projects -->
@@ -269,7 +234,7 @@
 
 <script>
   // Initialize AOS animations
-  AOS.init({
+  if (window.AOS) AOS.init({
     duration: 1000,
     once: true,
   });
@@ -283,6 +248,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   const form = document.getElementById("contact-form");
+  const alertAvailable = !!(window.Swal && typeof Swal.fire === 'function');
 
   // Check that the contact form exists before attaching the event
   if (form) {
@@ -293,7 +259,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const formData = new FormData(form);
 
       // Show loading dialog
-      Swal.fire({
+      if (alertAvailable) Swal.fire({
         title: 'Sending...',
         text: 'Please wait while we submit your message.',
         allowOutsideClick: false,
@@ -316,21 +282,22 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .then((response) => {
 
-          Swal.close();
+          if (alertAvailable) Swal.close();
 
           if (response.trim() === "success") {
 
-            Swal.fire({
+            if (alertAvailable) Swal.fire({
               icon: 'success',
-              title: 'Message Sent!',
+              title: 'Message Received!',
               text: 'Thank you for contacting us. We’ll respond shortly.',
             });
 
+            if (!alertAvailable) alert("Message sent successfully.");
             form.reset();
 
           } else {
 
-            Swal.fire({
+            if (alertAvailable) Swal.fire({
               icon: 'error',
               title: 'Oops!',
               text: response || 'Unable to send your message. Please try again.',
@@ -340,14 +307,15 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch((err) => {
 
-          Swal.close();
+          if (alertAvailable) Swal.close();
 
-          Swal.fire({
+          if (alertAvailable) Swal.fire({
             icon: 'error',
             title: 'Unexpected Error',
             text: 'Please try again later.',
           });
 
+          if (!alertAvailable) alert('Unable to send your message. Please try again.');
           console.error("Fetch error:", err);
 
         });

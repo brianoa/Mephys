@@ -1,0 +1,105 @@
+/* Shared, touch-friendly clinic navigation. Works without Bootstrap's collapse JavaScript. */
+:root { --mephys-nav-height: 68px; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--mephys-nav-height) + 16px); }
+/* Mobile viewport guard: never let a wide child push the whole website sideways.
+   overflow-x: clip (unlike hidden) does not create an unwanted scroll container. */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+@supports not (overflow: clip) {
+  html, body { overflow-x: hidden; }
+}
+/* Allow images, media, cards and flex/grid content to contract on tiny phones. */
+:where(img, video, canvas, svg, iframe) { max-width: 100%; }
+:where(main, section, footer, .container, .container-fluid, .card, .card-body) {
+  min-width: 0;
+  max-width: 100%;
+}
+:where(.row > *, .d-flex > *, .card-body > *) { min-width: 0; }
+:where(h1, h2, h3, h4, h5, h6, p, .card-title, .card-text, .btn) {
+  overflow-wrap: anywhere;
+}
+
+/* Pin the navbar to the visible viewport, not to any wider page content. */
+.mephys-site-nav {
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 100vw;
+  min-height: var(--mephys-nav-height);
+  z-index: 1040;
+  background: #fff !important;
+}
+.mephys-site-nav > .container {
+  min-width: 0;
+  width: 100%;
+}
+.mephys-site-nav .navbar-brand {
+  min-width: 0;
+  max-width: calc(100% - 68px);
+  overflow-wrap: anywhere;
+}
+.mephys-site-nav .navbar-brand { color: #006bb3 !important; font-weight: 750; }
+.mephys-site-nav .nav-link { color: #1b2937 !important; font-weight: 600; }
+.mephys-site-nav .nav-link:hover,
+.mephys-site-nav .nav-link:focus-visible,
+.mephys-site-nav .nav-link.active { color: #006bb3 !important; }
+.mephys-site-nav button.nav-link { display: flex; align-items: center; justify-content: space-between; gap: .5rem; background: none; border: 0; cursor: pointer; text-align: left; }
+.mephys-site-nav .mephys-caret { width: .48rem; height: .48rem; display: inline-block; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); margin: -.2rem 0 0 .3rem; transition: transform .15s ease; }
+.mephys-site-nav .mephys-has-submenu.is-open .mephys-caret { transform: rotate(225deg); margin-top: .2rem; }
+.mephys-site-nav .mephys-has-submenu { position: relative; }
+.mephys-site-nav .mephys-has-submenu .dropdown-menu { display: none; }
+.mephys-site-nav .mephys-has-submenu.is-open .dropdown-menu { display: block; }
+.mephys-site-nav .dropdown-menu { border: 1px solid #edf1f5; border-radius: .65rem; box-shadow: 0 12px 30px rgba(0,0,0,.12); }
+.mephys-site-nav .scrollable-dropdown { max-height: min(55vh, 350px); overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; }
+.mephys-site-nav .dropdown-item { white-space: normal; overflow-wrap: anywhere; line-height: 1.35; padding: .65rem 1rem; }
+.mephys-site-nav .dropdown-item:focus-visible, .mephys-site-nav .dropdown-item:hover { color: #fff !important; background: #006bb3; }
+.mephys-nav-panel-header { display: none; }
+.mephys-nav-backdrop[hidden] { display: none !important; }
+.mephys-nav-backdrop { position: fixed; inset: 0; z-index: 900; background: rgba(12,30,46,.48); }
+@media (min-width: 992px) {
+  .mephys-site-nav .mephys-nav-panel { display: flex !important; flex-basis: auto; align-items: center; }
+  .mephys-site-nav .nav-link { padding: .7rem .8rem !important; }
+  .mephys-site-nav .mephys-has-submenu .dropdown-menu { position: absolute; top: 100%; right: 0; left: auto; min-width: 280px; width: max-content; max-width: min(420px, 90vw); }
+  .mephys-site-nav .mephys-menu-toggle { display: none; }
+}
+@media (max-width: 991.98px) {
+  :root { --mephys-nav-height: 62px; }
+  .mephys-site-nav > .container { max-width: 100%; display: flex; flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: .5rem; }
+  .mephys-site-nav .mephys-menu-toggle {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 46px !important;
+    min-width: 46px;
+    height: 44px;
+    margin-inline-start: auto;
+    border: 1px solid #d2dfe8 !important;
+    border-radius: .5rem;
+    padding: .4rem !important;
+    flex: 0 0 46px;
+  }
+  .mephys-site-nav .mephys-menu-toggle:focus-visible, .mephys-site-nav .mephys-menu-close:focus-visible { outline: 3px solid #27a8e6; outline-offset: 2px; }
+  .mephys-site-nav .mephys-nav-panel { display: flex !important; flex-direction: column; position: fixed; top: 0; right: 0; bottom: 0; height: 100vh; height: 100dvh; width: min(360px, 92vw); max-width: 100vw; padding: 0 0 1.25rem; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; background: #fff; box-shadow: -8px 0 25px rgba(0,0,0,.15); z-index: 1050; transform: translate3d(100%, 0, 0); visibility: hidden; transition: transform .23s ease, visibility .23s; pointer-events: none; }
+  .mephys-site-nav .mephys-nav-panel.is-open { transform: translate3d(0, 0, 0); visibility: visible; pointer-events: auto; }
+  .mephys-site-nav .mephys-nav-panel-header { display: flex; align-items: center; justify-content: space-between; padding: .85rem 1rem; border-bottom: 1px solid #e7edf3; color: #143c55; font-weight: 700; font-size: 1.15rem; }
+  .mephys-site-nav .mephys-menu-close { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 0; background: #eff6fb; color: #193a50; font-size: 1.8rem; line-height: 1; border-radius: .45rem; }
+  .mephys-site-nav .mephys-nav-panel > .navbar-nav { display: flex; flex-direction: column; align-items: stretch !important; margin: 0 !important; padding: .6rem .85rem; width: 100%; gap: .1rem; }
+  .mephys-site-nav .nav-item { width: 100%; min-width: 0; }
+  .mephys-site-nav .navbar-nav .nav-link { margin-inline: 0 !important; }
+  .mephys-site-nav .mephys-nav-panel > .navbar-nav { min-width: 0; }
+  .mephys-site-nav .dropdown-item { overflow-wrap: anywhere; }
+  .mephys-site-nav .nav-link { width: 100%; display: flex; align-items: center; padding: .82rem .7rem !important; min-height: 46px; border-radius: .35rem; white-space: normal; }
+  .mephys-site-nav .nav-link:hover, .mephys-site-nav .nav-link.active { background-color: #eef7fc; }
+  .mephys-site-nav .mephys-has-submenu .dropdown-menu { position: static; float: none; width: 100%; max-height: min(42vh, 300px); margin: 0 0 .45rem; padding: .25rem 0; border: 1px solid #e6eef5; box-shadow: none; background: #f7fafc; }
+  .mephys-site-nav .dropdown-item { min-height: 42px; display: flex; align-items: center; padding: .55rem .7rem; font-size: .91rem; }
+  .mephys-site-nav .shop-account-nav { align-items: stretch; flex-direction: column; }
+  .mephys-site-nav .shop-account-nav form, .mephys-site-nav .shop-account-nav form button { width: 100%; }
+  body.mephys-menu-open { overflow: hidden; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .mephys-site-nav .mephys-nav-panel, .mephys-site-nav .mephys-caret { transition: none; }
+}

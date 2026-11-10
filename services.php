@@ -25,10 +25,11 @@ $earliestBookingDate = (new DateTimeImmutable(
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Explore Mephys physiotherapy services and request an appointment in Kenya.">
   <!---Font Awesome--->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <!--Bootstrap link-->
@@ -36,78 +37,27 @@ $earliestBookingDate = (new DateTimeImmutable(
   <!--AOS--->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
   <!--Stylesheet link-->
-	<link rel="stylesheet" type="text/css" href="services.css">
+	<link rel="stylesheet" type="text/css" href="services.css?v=20261110b">
+    <link rel="stylesheet" href="nav.css?v=20261110b">
+    <script src="nav.js?v=20261110b" defer></script>
   
   <!--Animate-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-	<title>Home</title>
+	<title>Physiotherapy Services | Mephys Clinic</title>
 </head>
 <body>
-<section class="home" id="home"> 
- <div class="navbar-bg">
-  <nav class="navbar navbar-expand-lg fixed-top bg-white shadow-sm">
-   <div class="container">
-    <a class="navbar-brand" href="#">Mephys</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarScroll">
-      <ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php#home">Home</a>
-        </li>        
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Services
-          </a>
-          <ul class="dropdown-menu scrollable-dropdown">
-            <li><a class="dropdown-item" href="services.php#musculoskeletal">Musculoskeletal Physiotherapy</a></li>
-            <li><a class="dropdown-item" href="services.php#neurological">Neurological Physiotherapy</a></li>
-            <li><a class="dropdown-item" href="services.php#cardiorespiratory">Cardiorespiratory Physiotherapy</a></li>
-            <li><a class="dropdown-item" href="services.php#geriatric">Geriatric Physiotherapy</a></li>
-            <li><a class="dropdown-item" href="services.php#sports">Sports Physiotherapy</a></li>
-            <li><a class="dropdown-item" href="services.php#orthopedic">Orthopedic Physiotherapy</a></li>
-            <li><a class="dropdown-item" href="services.php#corporate">Corporate Ergonomic Training</a></li>
-            <li><a class="dropdown-item" href="services.php#pediatric">Pediatric Physiotherapy</a></li>
-            <li><a class="dropdown-item" href="services.php#lamaze">Lamaze for Expectant Mothers</a></li>
-            <li><a class="dropdown-item" href="services.php#homebased">Home-Based Physiotherapy</a></li>
-            <li><a class="dropdown-item" href="services.php#lymphatic">Lymphatic drainage post surgery</a></li>
-            <li><a class="dropdown-item" href="services.php#physical">Physical Therapy Consultancy</a></li>
-            <li><a class="dropdown-item" href="services.php#sexual">Sexual Helath and Wellness</a></li>
-            <li><a class="dropdown-item" href="services.php#physicaltherapy">Physical Therapy Consultancy</a></li>
-            <li><a class="dropdown-item" href="services.php#pain">Pain Management</a></li>            
-          </ul>
-         </li>
-          <li class="nav-item">
-
-            <a class="nav-link" href="shop/index.php">Products</a>
-
-          </li>
-
-
-          <li class="nav-item">
-            <a class="nav-link" href="about.php#about">AboutUS</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="location.php#map">Location</a>
-          </li>
-       </ul>      
-     </div>
-   </div>
- </nav>
-</div>
-</section>
+<?php include __DIR__ . '/nav.php'; ?>
 
 
 <!--Our Services------>
 
-<section class="services">
+<section class="services" id="services">
 <div class="container">
   <h1>Our Services</h1>
   <div class="row">
     <!-- Musculoskeletal Physiotherapy Card -->
     <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="musculoskeletal" id="musculoskeletal">
+      <div class="card service-card" role="button" tabindex="0" aria-label="View service details and book an appointment" data-service="musculoskeletal" id="musculoskeletal">
         <div class="card-body">
           <h5 class="card-title">Musculoskeletal Physiotherapy</h5>
           <p class="card-text">Treatment for muscles, bones, and joints to reduce pain and improve mobility.</p>
@@ -116,7 +66,7 @@ $earliestBookingDate = (new DateTimeImmutable(
     </div>
     <!-- Neurological Physiotherapy Card -->
     <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="neurological" id="neurological">
+      <div class="card service-card" role="button" tabindex="0" aria-label="View service details and book an appointment" data-service="neurological" id="neurological">
         <div class="card-body">
           <h5 class="card-title">Neurological Physiotherapy</h5>
           <p class="card-text">Helping patients with nervous system conditions like stroke or Parkinson's regain control and function.</p>
@@ -126,7 +76,7 @@ $earliestBookingDate = (new DateTimeImmutable(
 
     <!-- Cardiorespiratory Physiotherapy Card -->
     <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="cardiorespiratory" id="cardiorespiratory">
+      <div class="card service-card" role="button" tabindex="0" aria-label="View service details and book an appointment" data-service="cardiorespiratory" id="cardiorespiratory">
         <div class="card-body">
           <h5 class="card-title">Cardiorespiratory Physiotherapy</h5>
           <p class="card-text">Treatment for heart and lung conditions with personalized rehabilitation programs and breathing exercises.</p>
@@ -139,7 +89,7 @@ $earliestBookingDate = (new DateTimeImmutable(
     <div class="row">
     <!-- Geriatric Physiotherapy Card -->
     <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="geriatric" id="geriatric">
+      <div class="card service-card" role="button" tabindex="0" aria-label="View service details and book an appointment" data-service="geriatric" id="geriatric">
         <div class="card-body">
           <h5 class="card-title">Geriatric Physiotherapy</h5>
           <p class="card-text">Empowering seniors with mobility, independence, and fall prevention strategies.</p>
@@ -149,7 +99,7 @@ $earliestBookingDate = (new DateTimeImmutable(
 
     <!-- Sports Physiotherapy Card -->
     <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="sports" id="sports">
+      <div class="card service-card" role="button" tabindex="0" aria-label="View service details and book an appointment" data-service="sports" id="sports">
         <div class="card-body">
           <h5 class="card-title">Sports Physiotherapy</h5>
           <p class="card-text">Injury rehab and performance care designed for athletes and active individuals.</p>
@@ -159,7 +109,7 @@ $earliestBookingDate = (new DateTimeImmutable(
 
     <!-- Orthopedic Physiotherapy Card -->
     <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="orthopedic" id="orthopedic">
+      <div class="card service-card" role="button" tabindex="0" aria-label="View service details and book an appointment" data-service="orthopedic" id="orthopedic">
         <div class="card-body">
           <h5 class="card-title">Orthopedic Physiotherapy</h5>
           <p class="card-text">Support for bone, joint, and muscle recovery — now includes Lamaze for mothers.</p>
@@ -171,7 +121,7 @@ $earliestBookingDate = (new DateTimeImmutable(
    <div class="row">
     <!-- Corporate Ergonomic Training Card --> 
     <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="ergonomictraining" id="corporate">
+      <div class="card service-card" role="button" tabindex="0" aria-label="View service details and book an appointment" data-service="ergonomictraining" id="corporate">
         <div class="card-body">
           <h5 class="card-title">Corporate Ergonomic Training</h5>
           <p class="card-text">Customized workplace ergonomics for better health and productivity.</p>
@@ -181,7 +131,7 @@ $earliestBookingDate = (new DateTimeImmutable(
 
     <!-- Pediatric Physiotherapy -->
     <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="pediatric" id="pediatric">
+      <div class="card service-card" role="button" tabindex="0" aria-label="View service details and book an appointment" data-service="pediatric" id="pediatric">
         <div class="card-body">
           <h5 class="card-title">Pediatric Physiotherapy</h5>
           <p class="card-text">Helping infants and children grow stronger, move better, and thrive with early personalized care.</p>
@@ -190,7 +140,7 @@ $earliestBookingDate = (new DateTimeImmutable(
     </div>
     <!-- Lamaze for Expectant Mothers card -->
     <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="lamaze" id="lamaze">
+      <div class="card service-card" role="button" tabindex="0" aria-label="View service details and book an appointment" data-service="lamaze" id="lamaze">
         <div class="card-body">
           <h5 class="card-title">Lamaze for Expectant Mothers</h5>
           <p class="card-text">Supporting moms-to-be with informed, confident, and natural birthing techniques.</p>
@@ -204,7 +154,7 @@ $earliestBookingDate = (new DateTimeImmutable(
 
     <!-- Home based care card -->   
     <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="homebasedcare" id="homebased">
+      <div class="card service-card" role="button" tabindex="0" aria-label="View service details and book an appointment" data-service="homebasedcare" id="homebased">
         <div class="card-body">
           <h5 class="card-title">Home-Based Physiotherapy</h5>
           <p class="card-text">Personalized healing in the comfort of your home for better recovery and convenience.</p>
@@ -214,7 +164,7 @@ $earliestBookingDate = (new DateTimeImmutable(
 
     <!-- Lymphatic drainage post surgery Card -->
     <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="lymphatic" id="lymphatic">
+      <div class="card service-card" role="button" tabindex="0" aria-label="View service details and book an appointment" data-service="lymphatic" id="lymphatic">
         <div class="card-body">
           <h5 class="card-title">Lymphatic drainage post surgery</h5>
           <p class="card-text">...</p>
@@ -224,7 +174,7 @@ $earliestBookingDate = (new DateTimeImmutable(
 
     <!-- Physical Therapy Consultancy card -->
     <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="physical" id="physical">
+      <div class="card service-card" role="button" tabindex="0" aria-label="View service details and book an appointment" data-service="physical" id="physical">
         <div class="card-body">
           <h5 class="card-title">Physical Therapy Consultancy </h5>
           <p class="card-text">...</p>
@@ -236,7 +186,7 @@ $earliestBookingDate = (new DateTimeImmutable(
    <div class="row">
     <!-- Sexual Health and wellness Card -->
     <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="sexualhealth" id="sexual">
+      <div class="card service-card" role="button" tabindex="0" aria-label="View service details and book an appointment" data-service="sexualhealth" id="sexual">
         <div class="card-body">
           <h5 class="card-title">Sexual Health and wellness</h5>
           <p class="card-text">...</p>
@@ -246,7 +196,7 @@ $earliestBookingDate = (new DateTimeImmutable(
 
     <!-- Physical Therapy Consultancy Card -->
     <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="supply" id="physicaltherapy">
+      <div class="card service-card" role="button" tabindex="0" aria-label="View service details and book an appointment" data-service="supply" id="physicaltherapy">
         <div class="card-body">
           <h5 class="card-title">Physical Therapy Consultancy</h5>
           <p class="card-text">...</p>
@@ -256,7 +206,7 @@ $earliestBookingDate = (new DateTimeImmutable(
 
     <!-- Pain Management Physiotherapy Card -->
     <div class="col-md-4 mb-4">
-      <div class="card service-card" data-service="painmanagement" id="pain">
+      <div class="card service-card" role="button" tabindex="0" aria-label="View service details and book an appointment" data-service="painmanagement" id="pain">
         <div class="card-body">
           <h5 class="card-title">Pain Management</h5>
           <p class="card-text">...</p>
@@ -268,9 +218,9 @@ $earliestBookingDate = (new DateTimeImmutable(
 </section>
 
 <!-- Modal -->
-<div class="modal" id="modal">
-  <div class="modal-content">
-    <span id="closeModal">&times;</span>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+  <div class="modal-content" tabindex="-1">
+    <button id="closeModal" type="button" aria-label="Close service details">&times;</button>
     <h2 id="modalTitle"></h2>
     <div id="modalDesc"></div>
     <div class="text-end mt-4">
@@ -406,7 +356,7 @@ $earliestBookingDate = (new DateTimeImmutable(
       <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
     <div class="px-3 pb-3">
-      <a href="https://wa.me/254712345678" target="_blank" class="btn btn-light btn-sm rounded-pill">Chat on WhatsApp</a>
+      <a href="https://wa.me/254725917485" target="_blank" class="btn btn-light btn-sm rounded-pill">Chat on WhatsApp</a>
     </div>
   </div>
 </div>
@@ -415,7 +365,7 @@ $earliestBookingDate = (new DateTimeImmutable(
 <!--AOS Animate on Scroll JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
-    AOS.init({
+    if (window.AOS) AOS.init({
       duration: 1000,
       once: true,
     });
@@ -428,6 +378,15 @@ $earliestBookingDate = (new DateTimeImmutable(
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contact-form");
+  if (!form) return;
+  const contactAlert = window.Swal || {
+    fire(options) {
+      if (options && options.title === 'Sending...') return;
+      window.alert([options && options.title, options && options.text].filter(Boolean).join('\n'));
+    },
+    close() {},
+    showLoading() {}
+  };
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -435,12 +394,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const formData = new FormData(form);
 
     // Show loading dialog
-    Swal.fire({
+    contactAlert.fire({
       title: 'Sending...',
       text: 'Please wait while we submit your message.',
       allowOutsideClick: false,
       didOpen: () => {
-        Swal.showLoading(); // shows spinner
+        contactAlert.showLoading(); // shows spinner
       }
     });
 
@@ -450,17 +409,17 @@ document.addEventListener("DOMContentLoaded", () => {
     })
       .then((res) => res.text())
       .then((response) => {
-        Swal.close(); // close loading
+        contactAlert.close(); // close loading
 
         if (response.trim() === "success") {
-          Swal.fire({
+          contactAlert.fire({
             icon: 'success',
             title: 'Message Sent!',
             text: 'Thank you for contacting us. We’ll respond shortly.',
           });
           form.reset();
         } else {
-          Swal.fire({
+          contactAlert.fire({
             icon: 'error',
             title: 'Oops!',
             text: response,
@@ -468,9 +427,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       })
       .catch((err) => {
-        Swal.close(); // close loading
+        contactAlert.close(); // close loading
 
-        Swal.fire({
+        contactAlert.fire({
           icon: 'error',
           title: 'Unexpected Error',
           text: 'Please try again later.',
@@ -489,8 +448,5 @@ document.addEventListener("DOMContentLoaded", () => {
 <script src="script.js"></script>
 
 <?php include 'footer.php'; ?>
-
-
-</div>
 </body>
 </html>

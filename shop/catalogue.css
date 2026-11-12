@@ -1,0 +1,194 @@
+/* Mephys shop catalogue only.
+   Keep product summaries visible but compact, and avoid unused card space. */
+
+.shop-catalogue-grid {
+  align-items: stretch;
+}
+
+/* Stretch every card to the height of the tallest card in its row. */
+.shop-product-column {
+  display: flex;
+}
+
+.shop-product-card {
+  min-width: 0;
+  width: 100%;
+  height: 100% !important;
+}
+
+.shop-product-media,
+.shop-product-info {
+  min-width: 0;
+}
+
+.shop-product-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.shop-product-description {
+  min-height: 0 !important;
+  height: auto;
+  overflow-wrap: anywhere;
+  line-height: 1.45;
+  margin-bottom: .5rem !important;
+}
+
+.product-card-preview-mobile { display: none; }
+.product-card-preview-desktop { display: inline; }
+
+.shop-product-name {
+  min-height: 0 !important;
+  line-height: 1.3 !important;
+  overflow-wrap: anywhere;
+}
+
+/* Prices must follow descriptions, not get pushed to the foot of the card. */
+.shop-product-price {
+  margin-top: 0 !important;
+}
+
+/* Align purchase buttons along each row even when content lengths differ. */
+.shop-product-actions {
+  margin-top: auto;
+}
+
+@media (max-width: 767.98px) {
+  .product-card-preview-mobile { display: inline; }
+  .product-card-preview-desktop { display: none; }
+}
+
+/* Narrow phones: one short, horizontal card per row; easy to tap. */
+@media (max-width: 349.98px) {
+  .shop-catalogue-grid { --bs-gutter-y: .7rem; }
+  .shop-product-card {
+    flex-direction: row !important;
+    height: 100% !important;
+    border-radius: .9rem !important;
+  }
+  .shop-product-media {
+    flex: 0 0 35%;
+    width: 35%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+  .shop-product-image {
+    height: 140px !important;
+    padding: 6px !important;
+    object-fit: contain;
+  }
+  .shop-product-info {
+    flex: 1 1 auto;
+    padding: .65rem .7rem !important;
+  }
+  .shop-product-name {
+    font-size: .92rem;
+    margin-bottom: .3rem !important;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+  .shop-product-description {
+    font-size: .81rem;
+    line-height: 1.35;
+    margin-bottom: .3rem !important;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+  .shop-product-price { margin-bottom: .45rem !important; }
+  .shop-product-actions form,
+  .shop-product-actions > .btn:not(.shop-product-details-link) { margin-bottom: .2rem !important; }
+  .shop-product-actions .btn { font-size: .81rem; min-height: 35px; }
+  .shop-product-media .badge { font-size: .6rem; padding: .2rem .3rem; margin: .3rem !important; }
+}
+
+/* Standard phones: two compact products across. */
+@media (min-width: 350px) and (max-width: 575.98px) {
+  .shop-catalogue-grid {
+    --bs-gutter-x: .7rem;
+    --bs-gutter-y: .8rem;
+  }
+  .shop-product-column {
+    width: 50%;
+    flex: 0 0 auto;
+  }
+  .shop-product-card {
+    flex-direction: column !important;
+    height: 100% !important;
+    border-radius: .85rem !important;
+  }
+  .shop-product-media {
+    display: flex !important;
+    width: 100%;
+    height: 135px;
+    align-items: center;
+    justify-content: center;
+  }
+  .shop-product-image {
+    height: 133px !important;
+    padding: 7px !important;
+    object-fit: contain;
+  }
+  .shop-product-media .badge {
+    font-size: .58rem;
+    margin: .3rem !important;
+    padding: .22rem .3rem;
+  }
+  .shop-product-info {
+    padding: .65rem .6rem !important;
+  }
+  .shop-product-category {
+    font-size: .65rem !important;
+    letter-spacing: .25px !important;
+  }
+  .shop-product-name {
+    font-size: .91rem;
+    line-height: 1.28 !important;
+    /* Three lines keep short and long product names aligned. */
+    min-height: 3.84em !important;
+    max-height: 3.84em;
+    margin-bottom: .35rem !important;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+  .shop-product-description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    /* Reserve only two text lines, even for a one-line description. */
+    min-height: 2.68em !important;
+    max-height: 2.68em;
+    margin-bottom: .35rem !important;
+    font-size: .81rem;
+    line-height: 1.34;
+  }
+  .shop-product-price { margin-bottom: .45rem !important; gap: .3rem !important; }
+  .shop-product-price > .fw-bold { font-size: .95rem !important; }
+  .shop-product-actions form,
+  .shop-product-actions > .btn:not(.shop-product-details-link) { margin-bottom: .25rem !important; }
+  .shop-product-actions .btn {
+    min-height: 36px;
+    padding: .3rem .25rem;
+    font-weight: 600;
+    font-size: .8rem;
+  }
+  .shop-product-details-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .1rem;
+  }
+}
+
+@media (min-width: 576px) {
+  .shop-product-description { margin-bottom: .75rem !important; }
+  .shop-product-info { padding: 1rem !important; }
+}

@@ -508,7 +508,7 @@ $orderBadgeClasses = [
                             <?= $openOrderId === $orderId ? 'open' : '' ?>
                         >
 
-                            <summary style="cursor:pointer;color:#2d68ce;font-weight:700;padding:8px 0">
+                            <summary style="cursor:pointer;color:#087b88;font-weight:700;padding:8px 0">
                                 Order details, delivery address, payment diagnostics and fulfilment
                             </summary>
 

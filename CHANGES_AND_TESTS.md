@@ -98,3 +98,12 @@ Two Chrome DevTools phone screenshots showed that the menu button could be outsi
 - `images/mephys-reception-mobile.webp` (new): cropped clean reception photograph for small screens.
 - `images/elderly.jpg` has been removed from this release because no website code references it. It remains available in the earlier project backup ZIP.
 - The logo and wording on the reception desk are in the image and are not animated/changed.
+
+## 2026-11-10 — Checkout reliability, teal theme and GPS-to-directions
+- Repaired `shop/_mpesa.php`: reads `MEPHYS_MPESA_*` environment variable *names*, not literal secret values. Validates HTTPS callback and credentials before saving an order.
+- Added `shop/retry-payment.php` for a rate-limited, CSRF-protected retry of a previously failed unpaid order; status page now shows retry controls and errors.
+- The checkout location button now fills a Google Maps pin link and approximate directions, preserves typed instructions, works even if the map widget fails, and cancels stale geocoder requests.
+- Added brand teal `mephys-theme.css` and applied consistent colors to clinic pages, nav, shop and admin views without changing dimensions or sidebar behavior.
+- Blocked public access to `check-mpesa.php` (CLI-only) and included `MPESA_AND_DELIVERY_SETUP.md`.
+- PHP files syntax checked; 35 simulated viewport checks passed on the five clinic pages; three mocked geolocation scenarios passed.
+- **Not verified:** real Safaricom STK acceptance/callback, live database writes, or a physical device. Configure fresh Daraja credentials and a live HTTPS callback; rotate exposed old values.

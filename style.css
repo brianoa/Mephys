@@ -30,7 +30,7 @@
 
   font-size: 1.5rem;
 
-  color: #006bb3 !important;
+  color: #087b88 !important;
 
 }
 
@@ -84,7 +84,7 @@
 
 .dropdown-item:hover {
 
-  background-color: #006bb3 !important;
+  background-color: #087b88 !important;
 
   color: white !important;
 
@@ -144,7 +144,7 @@
 
   font-weight: bold !important;
 
-  border: 2px solid #0099cc !important;
+  border: 2px solid #087d8b !important;
 
   background: transparent !important;
 
@@ -160,7 +160,7 @@
 
 .hero-btn span {
 
-  background: #0099cc !important;
+  background: #087d8b !important;
 
   height: 100% !important;
 
@@ -466,7 +466,7 @@
 
 .scrollable-dropdown::-webkit-scrollbar-thumb {
 
-  background-color: #007bff; /* Bootstrap primary blue */
+  background-color: #087b88; /* Bootstrap primary blue */
 
   border-radius: 3px;
 
@@ -516,7 +516,7 @@
 
 .past-projects h2 {
 
-  color: #0099cc;
+  color: #087d8b;
 
   font-size: 2.5rem;
 
@@ -530,7 +530,7 @@
 
   background-color: #ffffff;
 
-  border-left: 5px solid #0099cc;
+  border-left: 5px solid #087d8b;
 
   padding: 20px;
 
@@ -556,7 +556,7 @@
 
 .project-card h5 {
 
-  color: #007399;
+  color: #075d69;
 
   font-weight: 700;
 
@@ -588,7 +588,7 @@
 
 .contact-section {
 
-  background:  #006080;
+  background:  #07505b;
 
   color: #fff;
 
@@ -642,7 +642,7 @@
 
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 
-  border-color: #007bff;
+  border-color: #087b88;
 
 }
 
@@ -650,7 +650,7 @@
 
 .contact-section .btn-primary {
 
-  background-color:  #007399;
+  background-color:  #075d69;
 
   border: none;
 

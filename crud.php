@@ -103,7 +103,7 @@ require_once __DIR__ . '/shop-management-actions.php';
         :root {
             --sidebar-width: 218px;
             --navy: #18344d;
-            --blue: #2868d7;
+            --blue: #087b88;
             --blue-dark: #2058bd;
             --background: #f5f7fb;
             --text: #303b4b;
@@ -383,7 +383,7 @@ require_once __DIR__ . '/shop-management-actions.php';
 
         .filter-buttons { display: flex; align-items: flex-end; gap: 6px; }
         .btn { border-radius: 6px; font-size: 10px; font-weight: 700; }
-        .btn-primary { background: #2d68ce; border-color: #2d68ce; }
+        .btn-primary { background: #087b88; border-color: #087b88; }
         .btn-primary:hover { background: #2459b7; border-color: #2459b7; }
 
         .table-wrap { overflow-x: auto; }
@@ -751,6 +751,8 @@ require_once __DIR__ . '/shop-management-actions.php';
         }
     </style>
 
+<link rel="stylesheet" href="mephys-theme.css?v=20261111balanced">
+
 </head>
 
 <body>
@@ -778,7 +780,7 @@ require_once __DIR__ . '/shop-management-actions.php';
             <a href="crud.php?page=orders" class="quick-action">
                 <i class="bi bi-bag-check"></i> Manage Shop Orders
             </a>
-            <a href="shop/admin/product-form.php" class="quick-action">
+            <a href="shop/admin/products-form.php" class="quick-action">
                 <i class="bi bi-plus-square"></i> Add Shop Product
             </a>
             <a href="crud.php?page=account" class="quick-action">
@@ -888,7 +890,7 @@ require_once __DIR__ . '/shop-management-actions.php';
 
             <?php elseif ($page === 'messages'): ?>
 
-                <div id="contact-messages-content">
+                <div class="contact-messages-host">
                     <?php require_once __DIR__ . '/contact_embed.php'; ?>
                 </div>
 

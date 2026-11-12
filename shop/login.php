@@ -109,7 +109,7 @@ require __DIR__ . '/_public-header.php';
             </form>
 
             <?php $googleClientId = trim((string) getenv('MEPHYS_GOOGLE_CLIENT_ID')); ?>
-            <?php if ($googleClientId !== ''): ?>
+            <?php if ($googleClientId !== '' && is_file(__DIR__ . '/google-auth.php')): ?>
                 <div class="text-center text-muted my-3">or continue with</div>
 
                 <div
@@ -143,7 +143,7 @@ require __DIR__ . '/_public-header.php';
                 </script>
             <?php else: ?>
                 <p class="small text-muted mt-3 mb-0">
-                    Google sign-in will appear here after the Mephys Google OAuth Client ID is configured.
+                    Google sign-in will appear when the Mephys Google authentication endpoint and OAuth Client ID are configured.
                 </p>
             <?php endif; ?>
         </div>

@@ -16,12 +16,12 @@ html {
 
 .container h2{
 	text-align: center;
-	color: #0099cc;
+	color: #087d8b;
 	padding-top: 15px;
 }
 
 .container h1{
-	color: #0099cc;
+	color: #087d8b;
 }
 
 
@@ -57,3 +57,160 @@ html {
 
 
 @media (max-width: 767px) { .objectives { background-attachment: scroll; padding: 3rem 1rem; } .aboutus .p-5 { padding: 1.4rem !important; } }
+
+
+/* ===============================================================
+   MEPHYS: ACCESSIBLE ABOUT PAGE PRESENTATION
+   Larger type, better line lengths, balanced imagery and spacing.
+   Scoped to About page to avoid altering navigation or checkout.
+   =============================================================== */
+.aboutus {
+  padding: calc(var(--mephys-nav-height, 68px) + 2.25rem) 0 4.75rem;
+  background: linear-gradient(180deg, #f4f9fa 0%, #ffffff 96%);
+  color: #243b45;
+}
+.aboutus .mephys-about-container { max-width: 1210px; }
+.aboutus .mephys-about-panel {
+  padding: clamp(1.4rem, 4.2vw, 3.65rem);
+  border: 1px solid #e0ebee;
+  background: #ffffff;
+  border-radius: 22px;
+  box-shadow: 0 18px 48px rgba(19, 66, 75, .075);
+}
+.aboutus .mephys-about-intro { margin-bottom: clamp(1.75rem, 3vw, 2.75rem); }
+.aboutus h1 {
+  padding: 0;
+  margin: 0 0 1.45rem;
+  color: #075d69;
+  font-weight: 800;
+  font-size: clamp(2.1rem, 3.7vw, 3.5rem);
+  line-height: 1.12;
+  letter-spacing: -.035em;
+}
+.aboutus h1::after {
+  content: '';
+  display: block;
+  width: 78px;
+  height: 5px;
+  margin-top: 18px;
+  background: #087b88;
+  border-radius: 3px;
+}
+.aboutus p {
+  font-size: clamp(1.075rem, 1.3vw, 1.2rem);
+  line-height: 1.82;
+  color: #334a53;
+  letter-spacing: .001em;
+  margin: 0 0 1.1rem;
+}
+.aboutus .mephys-about-intro p { max-width: 83ch; }
+.aboutus .mephys-about-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1.04fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 3.5vw, 3.2rem);
+  align-items: center;
+  min-width: 0;
+  padding-top: clamp(1.3rem, 3vw, 2.2rem);
+  border-top: 1px solid #e0ebee;
+}
+.aboutus .mephys-about-photo { margin: 0; min-width: 0; }
+.aboutus .mephys-about-photo img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  display: block;
+  object-fit: cover;
+  object-position: center 40%;
+  border-radius: 17px;
+  box-shadow: 0 10px 28px rgba(20, 56, 66, .11);
+}
+.aboutus .mephys-about-vision { min-width: 0; }
+.aboutus .mephys-about-vision h2 {
+  padding: 0;
+  margin: 0 0 1rem;
+  text-align: left;
+  color: #075d69;
+  font-size: clamp(1.8rem, 2.6vw, 2.65rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+.aboutus .mephys-about-vision p { max-width: 54ch; margin-bottom: 0; }
+
+/* The page's other original sections remain intact, but with readable type. */
+.objectives {
+  padding: clamp(3.8rem, 7vw, 6.1rem) 1.25rem;
+}
+.objectives .container { max-width: 1000px; }
+.objectives h2 { font-size: clamp(2rem, 3.2vw, 3rem); margin-bottom: 1.1rem; }
+.objectives p, .objectives .lead {
+  max-width: 68ch;
+  font-size: clamp(1.1rem, 1.4vw, 1.25rem);
+  line-height: 1.8;
+  color: #fff;
+}
+.objectives .btn { min-height: 48px; padding: .65rem 1.5rem; font-size: 1.04rem; font-weight: 700; }
+.Core-Values {
+  padding: clamp(3.5rem, 6vw, 5.5rem) 0;
+  background: #f5f9fa;
+  color: #2c424b;
+}
+.Core-Values > .container { max-width: 1200px; }
+.Core-Values h2 {
+  text-align: left;
+  padding: 0;
+  margin-bottom: 1.1rem;
+  font-size: clamp(2rem, 3vw, 2.9rem);
+  font-weight: 800;
+  color: #075d69;
+}
+.Core-Values > .container > p { max-width: 84ch; }
+.Core-Values p, .Core-Values .card p {
+  font-size: 1.1rem;
+  line-height: 1.76;
+  color: #344e59;
+}
+.Core-Values h4 { margin: 1.7rem 0 1.4rem; font-size: 1.5rem; font-weight: 750; }
+.Core-Values .row { row-gap: 1.5rem; }
+.Core-Values .row > [class*='col-'] { display: flex; min-width: 0; }
+.Core-Values .card {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid #dce9ec;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(19, 66, 75, .055);
+  overflow: hidden;
+}
+.Core-Values .card-body { padding: clamp(1.3rem, 2.5vw, 2rem); }
+.Core-Values .card-title { font-weight: 800; font-size: 1.5rem; margin: 0 0 1rem; }
+.Core-Values .btn { min-height: 48px; font-size: 1rem; }
+.aboutus .modal-body p, .Core-Values .modal-body p { font-size: 1.1rem; line-height: 1.75; }
+@media (max-width: 991.98px) {
+  .aboutus .mephys-about-feature { grid-template-columns: minmax(0,1fr); }
+  .aboutus .mephys-about-photo img { aspect-ratio: 16 / 10; max-height: 420px; }
+  .aboutus .mephys-about-vision p { max-width: 75ch; }
+}
+@media (max-width: 767.98px) {
+  .aboutus { padding: calc(var(--mephys-nav-height, 62px) + 1.5rem) 0 3.25rem; }
+  .aboutus .mephys-about-panel { border-radius: 15px; padding: 1.25rem; }
+  .aboutus h1 { margin-bottom: 1.15rem; }
+  .aboutus p { font-size: 1.075rem; line-height: 1.75; }
+  .aboutus .mephys-about-photo img { aspect-ratio: 4 / 3; }
+  .Core-Values p, .Core-Values .card p { font-size: 1.05rem; }
+  .Core-Values > .container { padding-inline: 1.1rem; }
+  .objectives { background-attachment: scroll; }
+}
+@media (max-width: 350px) {
+  .aboutus .mephys-about-panel { padding: 1rem; }
+  .aboutus p { font-size: 1rem; }
+}
+
+/* A dark fallback keeps the white Mission text readable if the image fails. */
+.objectives { background-color: #173841; }
+/* Balance the longer Quality card and the two shorter values on wide screens. */
+@media (min-width: 768px) {
+  .Core-Values .row > .col-md-6 { flex: 0 0 100%; width: 100%; }
+  .Core-Values .row > .col-md-3 { flex: 0 0 50%; width: 50%; }
+  .Core-Values .row > .col-md-6 .card p { max-width: 83ch; }
+}
+/* White heading over dark Mission banner meets the contrast goal. */
+.objectives h2 { color: #ffffff; }

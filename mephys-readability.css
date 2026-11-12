@@ -1,0 +1,5 @@
+/* Restore the missing shared stylesheet (previously a 404 on public pages). */
+body{font-size:1rem;line-height:1.55}
+input,select,textarea,button{font:inherit}
+.form-control,.form-select{font-size:1rem}
+img,iframe{max-width:100%}

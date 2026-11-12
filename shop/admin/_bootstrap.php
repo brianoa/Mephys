@@ -152,7 +152,7 @@ if (!function_exists('mephysShopAdminLayoutStart')) {
         echo '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">';
         echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">';
         echo '<style>
-            :root{--shop-ink:#20364b;--shop-muted:#778596;--shop-line:#e7edf3;--shop-blue:#2868d7;--shop-bg:#f5f7fb}
+            :root{--shop-ink:#20364b;--shop-muted:#778596;--shop-line:#e7edf3;--shop-blue:#087b88;--shop-bg:#f5f7fb}
             body{margin:0;background:var(--shop-bg);color:#34445a;font-family:Inter,"Segoe UI",Arial,sans-serif;font-size:14px}
             .shop-admin-top{background:#fff;border-bottom:1px solid var(--shop-line);padding:15px 24px;display:flex;align-items:center;justify-content:space-between;gap:15px}
             .shop-admin-brand{font-weight:800;letter-spacing:.4px;color:var(--shop-ink);text-decoration:none}
@@ -160,7 +160,7 @@ if (!function_exists('mephysShopAdminLayoutStart')) {
             .shop-admin-wrap{max-width:1500px;margin:0 auto;padding:25px 24px 45px}
             .shop-admin-nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
             .shop-admin-nav a{padding:8px 12px;border:1px solid var(--shop-line);border-radius:8px;text-decoration:none;color:#58687a;background:#fff;font-size:12px;font-weight:650}
-            .shop-admin-nav a:hover{border-color:#bfd2f2;color:var(--shop-blue);background:#f8fbff}
+            .shop-admin-nav a:hover{border-color:#b4d9d8;color:var(--shop-blue);background:#f8fbff}
             .shop-card{background:#fff;border:1px solid var(--shop-line);border-radius:12px;box-shadow:0 3px 12px rgba(33,54,80,.035)}
             .shop-card-head{padding:16px 19px;border-bottom:1px solid #edf1f5;display:flex;justify-content:space-between;align-items:center;gap:15px}
             .shop-card-body{padding:19px}
@@ -168,7 +168,7 @@ if (!function_exists('mephysShopAdminLayoutStart')) {
             .shop-subtitle{font-size:12px;color:var(--shop-muted);margin-top:5px}
             .form-label{font-size:12px;font-weight:700;color:#536275}
             .form-control,.form-select{font-size:13px;border-color:#dfe6ee;border-radius:7px;min-height:39px}
-            .form-control:focus,.form-select:focus{border-color:#8eb4ec;box-shadow:0 0 0 .2rem rgba(40,104,215,.1)}
+            .form-control:focus,.form-select:focus{border-color:#63bcbf;box-shadow:0 0 0 .2rem rgba(40,104,215,.1)}
             .btn{font-size:12px;font-weight:700;border-radius:7px}
             .btn-primary{background:var(--shop-blue);border-color:var(--shop-blue)}
             .table{font-size:12px}
@@ -179,7 +179,7 @@ if (!function_exists('mephysShopAdminLayoutStart')) {
             .shop-stat{padding:15px 17px}.shop-stat strong{display:block;font-size:24px;color:var(--shop-ink)}.shop-stat span{font-size:11px;color:var(--shop-muted)}
             .required-mark{color:#c2414b}
             @media(max-width:640px){.shop-admin-top{padding:13px 15px}.shop-admin-wrap{padding:18px 12px 30px}.shop-card-body{padding:14px}.shop-title{font-size:19px}}
-        </style></head><body>';
+        </style><link rel="stylesheet" href="../../mephys-theme.css?v=20261111balanced"></head><body>';
         echo '<header class="shop-admin-top"><a class="shop-admin-brand" href="products.php">MEPHYS<small>ONLINE SHOP MANAGEMENT</small></a>';
         echo '<div class="d-flex align-items-center gap-3"><span class="small text-secondary">' . $staffName . '</span><a class="btn btn-outline-secondary btn-sm" href="../../crud.php?page=dashboard"><i class="bi bi-arrow-left me-1"></i>Staff dashboard</a></div></header>';
         echo '<main class="shop-admin-wrap">';

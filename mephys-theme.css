@@ -1,0 +1,154 @@
+/* Mephys visual identity — colors only. All navigation widths and layout rules stay in nav.css. */
+:root {
+    --mephys-primary: #087b88;
+    --mephys-primary-hover: #075d69;
+    --mephys-dark: #07505b;
+    --mephys-soft: #eaf7f7;
+    --mephys-ink: #243b45;
+    --bs-primary: #087b88;
+    --bs-primary-rgb: 8,123,136;
+    --bs-link-color: #087b88;
+    --bs-link-hover-color: #075d69;
+    --bs-focus-ring-color: rgba(8,123,136,.28);
+}
+a:not(.btn):not(.nav-link) { --bs-link-color: var(--mephys-primary); }
+.btn-primary {
+    --bs-btn-color:#fff;
+    --bs-btn-bg:#087b88;
+    --bs-btn-border-color:#087b88;
+    --bs-btn-hover-color:#fff;
+    --bs-btn-hover-bg:#075d69;
+    --bs-btn-hover-border-color:#075d69;
+    --bs-btn-focus-shadow-rgb:8,123,136;
+    --bs-btn-active-bg:#07505b;
+    --bs-btn-active-border-color:#07505b;
+    --bs-btn-disabled-bg:#087b88;
+    --bs-btn-disabled-border-color:#087b88;
+}
+.btn-outline-primary {
+    --bs-btn-color:#087b88;
+    --bs-btn-border-color:#087b88;
+    --bs-btn-hover-color:#fff;
+    --bs-btn-hover-bg:#087b88;
+    --bs-btn-hover-border-color:#087b88;
+    --bs-btn-focus-shadow-rgb:8,123,136;
+    --bs-btn-active-bg:#075d69;
+    --bs-btn-active-border-color:#075d69;
+}
+.text-primary { color:#087b88 !important; }
+.bg-primary,.text-bg-primary { background-color:#087b88 !important; }
+.border-primary { border-color:#087b88 !important; }
+.link-primary { color:#087b88 !important; }
+.form-check-input:checked { background-color:#087b88;border-color:#087b88; }
+.form-control:focus,.form-select:focus { border-color:#56abb2;box-shadow:0 0 0 .22rem rgba(8,123,136,.18); }
+.page-link { color:#087b88; }
+.page-link:hover { color:#075d69; }
+.page-item.active .page-link { background-color:#087b88;border-color:#087b88;color:#fff; }
+.btn-link { --bs-btn-color:#087b88;--bs-btn-hover-color:#075d69; }
+.shop-site-nav .navbar-brand,.shop-site-nav .nav-link:hover { color:#087b88; }
+.shop-eyebrow { color:#087b88; }
+/* Keep zoomed-in phone views usable without affecting sidebar motion. */
+img,video,iframe { max-width:100%; }
+
+
+/* Balanced visual scale: Mephys 2 site proportions, improved admin readability. */
+:root { --mephys-page-text-size: 16px; }
+body { font-size: 1rem; line-height: 1.5; }
+/* Staff dashboard: modest controls and readable text, without oversized cards. */
+.app-shell { font-size: 14px; }
+.app-shell .sidebar { padding: 18px 12px 14px; }
+.app-shell .brand-name { font-size: 16px; }
+.app-shell .brand-subtitle { font-size: 10px; }
+.app-shell .sidebar-label { font-size: 11px; }
+.app-shell .quick-action { font-size: 13px; min-height: 39px; padding: 8px 10px; }
+.app-shell .nav-link { font-size: 14px; min-height: 40px; padding: 9px 11px; }
+.app-shell .nav-link i { font-size: 15px; }
+.app-shell .account-name { font-size: 12px; }
+.app-shell .account-role { font-size: 11px; }
+.app-shell .topbar { min-height: 58px; }
+.app-shell .topbar-title { font-size: 15px; }
+.app-shell .topbar-subtitle { font-size: 12px; }
+.app-shell .topbar-btn { font-size: 12px; }
+.app-shell .page-content { width: min(1500px,100%); padding: 23px 22px 38px; }
+.app-shell .page-heading { font-size: 23px; }
+.app-shell .page-subtitle { font-size: 13px; }
+.app-shell .stat-card { min-height: 94px; padding: 16px; }
+.app-shell .stat-label { font-size: 12px; }
+.app-shell .stat-number { font-size: 26px; }
+.app-shell .section-heading { font-size: 16px; }
+.app-shell .results-count { font-size: 12px; }
+.app-shell .filter-label { font-size: 11px; }
+.app-shell :is(.form-control,.form-select) { font-size: 14px; min-height: 37px; }
+.app-shell .btn { font-size: 13px; }
+.app-shell .appointments-table { font-size: 13px; }
+.app-shell .appointments-table th { font-size: 12px; }
+.app-shell .patient-name { font-size: 14px; }
+.app-shell .patient-email { font-size: 12px; }
+.app-shell .status-form .form-select { font-size: 13px; min-height: 34px; }
+.app-shell .table-footer { font-size: 12px; }
+.app-shell .alert { font-size: 14px; }
+/* Shop administration: proportional forms, cards and table text. */
+.shop-admin-wrap { max-width: 1500px; padding: 25px 24px 45px; }
+.shop-admin-nav a { font-size: 14px; }
+.shop-admin-wrap .form-label { font-size: 14px; }
+.shop-admin-wrap :is(.form-control,.form-select) { font-size: 14px; }
+.shop-admin-wrap .btn { font-size: 14px; }
+.shop-admin-wrap .table { font-size: 14px; }
+.shop-admin-wrap .table th { font-size: 12px; }
+@media (max-width: 767.98px) {
+  .app-shell .page-content { padding: 17px 12px 28px; }
+  .app-shell .page-heading { font-size: 21px; }
+  .app-shell .stat-card { padding: 13px 10px; }
+  .app-shell .nav-link { font-size: 14px; }
+  .shop-admin-wrap { padding: 18px 12px 30px; }
+}
+
+@media (max-width: 767.98px) {
+  .shop-admin-wrap .products-table thead { display: none; }
+  .shop-admin-wrap .products-table,
+  .shop-admin-wrap .products-table tbody,
+  .shop-admin-wrap .products-table tbody tr { display: block; width: 100%; }
+  .shop-admin-wrap .products-table tbody tr {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e5edf2;
+  }
+  .shop-admin-wrap .products-table tbody td {
+    display: grid;
+    grid-template-columns: 85px minmax(0,1fr);
+    gap: 12px;
+    align-items: center;
+    padding: 10px 0;
+    border: 0;
+    width: 100%;
+    text-align: left !important;
+    overflow-wrap: anywhere;
+  }
+  .shop-admin-wrap .products-table tbody td::before {
+    content: attr(data-label);
+    color: #526777;
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .shop-admin-wrap .products-table tbody td[data-label="Product"] {
+    display: block;
+    padding-top: 2px;
+  }
+  .shop-admin-wrap .products-table tbody td[data-label="Product"]::before { display: none; }
+  .shop-admin-wrap .products-table tbody td[data-label="Actions"] > div { justify-content: flex-start !important; flex-wrap: wrap; }
+  .shop-admin-wrap .products-table tbody td.products-empty { display: block; }
+  .shop-admin-wrap .products-table tbody td.products-empty::before { display: none; }
+}
+
+
+
+/* Shared footer: compact columns, readable links and hover-only underline. */
+.mephys-footer{background:#122c38;color:#f0f6f8;font-size:1rem}
+.mephys-footer p{line-height:1.65}
+.mephys-footer-links li+li{margin-top:.42rem}
+.mephys-footer-links a,.mephys-footer-contact{color:#eff9fc;text-decoration:none!important;text-underline-offset:5px;transition:color .15s ease}
+.mephys-footer-links a:hover,.mephys-footer-links a:focus-visible{color:#a8eeee;text-decoration:underline!important;text-decoration-thickness:2px!important}
+.mephys-footer-contact:hover,.mephys-footer-contact:focus-visible{color:#a8eeee;text-decoration:underline!important}
+.mephys-footer-social{display:flex;flex-wrap:wrap;gap:.65rem}
+.mephys-footer-social a{display:inline-flex;justify-content:center;align-items:center;border:1px solid #45616c;width:43px;height:43px;border-radius:50%;color:#fff;font-size:1.2rem;text-decoration:none;transition:background .16s ease,transform .16s ease}
+.mephys-footer-social a:hover,.mephys-footer-social a:focus-visible{background:#087b88;transform:translateY(-2px);color:#fff;outline-offset:3px}
+@media(max-width:575.98px){.mephys-footer{padding-left:.15rem;padding-right:.15rem}.mephys-footer-social a{width:46px;height:46px}}

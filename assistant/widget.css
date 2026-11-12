@@ -1,0 +1,21 @@
+.mephys-assistant{position:fixed;right:18px;bottom:18px;z-index:1145;font-family:inherit;font-size:15px}
+.mephys-assistant-launch{display:flex;align-items:center;gap:.6rem;padding:.76rem 1rem;border:0;border-radius:999px;background:#086e7c;color:#fff;font-weight:700;box-shadow:0 10px 32px rgba(13,45,60,.27);cursor:pointer;min-height:46px}
+.mephys-assistant-launch:hover,.mephys-assistant-launch:focus-visible{background:#05515d}
+.mephys-assistant-panel{position:absolute;right:0;bottom:58px;width:min(370px,calc(100vw - 20px));height:min(565px,calc(100dvh - 98px));display:flex;flex-direction:column;overflow:hidden;border-radius:20px;background:#fff;color:#203846;box-shadow:0 20px 60px rgba(12,43,60,.28);border:1px solid #cddfe3}
+.mephys-assistant-panel[hidden]{display:none!important}
+.mephys-assistant-header{display:flex;justify-content:space-between;align-items:center;background:#075d69;color:#fff;padding:.85rem 1rem;gap:.75rem}
+.mephys-assistant-header strong{display:block;font-size:1rem}.mephys-assistant-header small{display:block;font-size:.73rem;color:#e3f3f4}
+.mephys-assistant-close{background:transparent;border:0;color:#fff;font-size:1.8rem;line-height:1;cursor:pointer}
+.mephys-assistant-messages{flex:1;min-height:0;overflow:auto;padding:1rem;display:flex;flex-direction:column;align-items:flex-start;gap:.75rem;background:#f6fafb}
+.mephys-assistant-bubble{max-width:95%;border-radius:13px;padding:.75rem .8rem;line-height:1.43;white-space:pre-wrap;overflow-wrap:anywhere;font-size:.88rem;background:#fff;border:1px solid #dce8ea}
+.mephys-assistant-bubble.user{background:#e1f3f3;align-self:flex-end;border-color:#b8dede}
+.mephys-assistant-examples{display:flex;flex-wrap:wrap;gap:.35rem;padding:.6rem .8rem 0;border-top:1px solid #eef1f2}
+.mephys-assistant-examples button{font-size:.7rem;border:1px solid #b6dadd;background:#f6ffff;border-radius:99px;padding:.25rem .45rem;color:#075d69}
+.mephys-assistant-form{padding:.65rem .8rem .75rem}
+.mephys-assistant-consent{display:flex;align-items:start;gap:.4rem;font-size:.7rem;line-height:1.35;color:#4a5d62;margin-bottom:.6rem}
+.mephys-assistant-consent input{margin-top:.1rem;flex-shrink:0}
+.mephys-assistant-input-row{display:flex;border:1px solid #b9d0d7;border-radius:10px;overflow:hidden}
+.mephys-assistant-input-row input{width:100%;min-width:0;border:0;padding:.6rem .7rem;font-size:.95rem;outline-offset:-2px;color:#163642;background:#fff}
+.mephys-assistant-input-row button{background:#087b88;color:#fff;border:0;padding:.6rem .85rem;cursor:pointer}
+.mephys-assistant-note{margin:.5rem 0 0;color:#566b75;line-height:1.35;font-size:.69rem}
+@media(max-width:420px){.mephys-assistant{right:10px;bottom:10px}.mephys-assistant-panel{bottom:54px;height:min(550px,calc(100dvh - 78px))}}

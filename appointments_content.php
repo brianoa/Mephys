@@ -383,10 +383,18 @@ function mephysStatusLabel(string $status): string
 
                                         <td>
                                             <div class="appointment-date"><?= mephysEscape($row['appointment_date']) ?></div>
-                                            <div class="appointment-time"><?= mephysEscape($row['appointment_time']) ?></div>
+                                            <div class="appointment-time"><?= mephysEscape(date('g:i A', strtotime((string) $row['appointment_time']) ?: time())) ?> EAT</div>
                                         </td>
 
-                                        <td><?= mephysEscape($row['location']) ?></td>
+                                        <td>
+                                            <div class="fw-semibold" style="max-width:280px;overflow-wrap:anywhere"><?= mephysEscape($row['location']) ?></div>
+                                            <?php if (preg_match('/^Visit type:\s*(.+)$/m', (string)($row['notes'] ?? ''), $visitMatch)): ?>
+                                                <span class="small text-muted d-block mt-1"><?= mephysEscape(trim($visitMatch[1])) ?></span>
+                                            <?php endif; ?>
+                                            <?php if (preg_match('/^Visit contact phone:\s*(.+)$/m', (string)($row['notes'] ?? ''), $phoneMatch)): ?>
+                                                <span class="small d-block mt-1"><i class="bi bi-telephone" aria-hidden="true"></i> <?= mephysEscape(trim($phoneMatch[1])) ?></span>
+                                            <?php endif; ?>
+                                        </td>
 
                                         <td>
                                             <span class="status-badge <?= mephysStatusClass($currentStatus) ?>">

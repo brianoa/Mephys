@@ -21,3 +21,5 @@ The updated project omits the redundant nested old `Mephys/` copy and Git histor
 - The PHP forms and shop require a configured MySQL database and proper tables/data; they cannot be fully tested with the source ZIP alone.
 - Bootstrap, icons, AOS, and SweetAlert2 are loaded via internet CDNs and may not appear offline.
 - Update privacy/contact details, store policies, customer sign-in flow, and payment callback domain with the actual production details before launch.
+
+For payment retry, PowerShell environment setup and location autofill information, see **MPESA_AND_DELIVERY_SETUP.md**.

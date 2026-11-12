@@ -68,20 +68,20 @@ html {
   margin-bottom: 1.2em;
 }
 .modal-content h2{
-	color: #007bff;
+	color: #087b88;
 }
 .modal-content h3{
-	color: #007bff;
+	color: #087b88;
 }
 
 .section-heading {
-  color: #007bff;
+  color: #087b88;
   font-weight: 600;
   font-size: 1.1rem;
 }
 
 .btn-primary {
-  background-color: #007bff;
+  background-color: #087b88;
   border: none;
 }
 .section-image {
@@ -96,12 +96,12 @@ html {
 .services h1{
 	margin-top: 30px;
 	text-align: center;
-	color: #0099cc;
+	color: #087d8b;
 	padding: 20px;
 }
 
 .card-title{
-	color: #007399;
+	color: #075d69;
 }
 
 .card-img-top{
@@ -115,7 +115,7 @@ html {
 /*CONTACT US style*/
 
 .contact-section {
-  background:  #006080;
+  background:  #07505b;
   color: #fff;
 }
 
@@ -142,11 +142,11 @@ html {
 
 .contact-section .form-control:focus {
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-  border-color: #007bff;
+  border-color: #087b88;
 }
 
 .contact-section .btn-primary {
-  background-color:  #007399;
+  background-color:  #075d69;
   border: none;
   padding: 0.75rem;
   font-weight: bold;
@@ -210,7 +210,7 @@ html {
   padding-top: 50px;
 }
 /* Service card keyboard focus and accessible detail dialog. */
-.service-card:focus-visible { outline: 3px solid #006bb3; outline-offset: 3px; }
+.service-card:focus-visible { outline: 3px solid #087b88; outline-offset: 3px; }
 #modal { z-index: 1060; }
 #modal .modal-content { width: min(92vw, 700px); max-height: 85dvh; }
 #closeModal { border: none; background: transparent; color: #15394f; line-height: 1; width: 42px; height: 42px; }
@@ -231,3 +231,19 @@ html {
   #appointmentFormContainer > .card { padding: 1rem !important; }
   #modal .modal-content { padding: .9rem; }
 }
+
+/* Booking page: clear field groups and conditional facility/home address fields. */
+.mephys-booking-section{scroll-margin-top:100px}
+.mephys-booking-shell{max-width:960px;margin:auto;background:#fff;border:1px solid #dbe8ec;border-radius:24px;box-shadow:0 14px 42px rgba(11,65,81,.08);overflow:hidden}
+.mephys-booking-heading{background:linear-gradient(120deg,#eef8f8,#fafcfd);padding:clamp(1.2rem,4vw,2rem) clamp(1rem,4vw,2.5rem);border-bottom:1px solid #dce8eb}
+.mephys-booking-heading h2{color:#173d47}
+.mephys-booking-shell form{padding:clamp(1.2rem,4vw,2.5rem)}
+.mephys-form-group{border:0;margin:0 0 1.5rem;padding:0 0 1.45rem;border-bottom:1px solid #e8edef;min-width:0}
+.mephys-form-group legend{display:block;float:none;width:100%;color:#0b6875;font-size:1.06rem;font-weight:800;margin-bottom:1rem}
+.mephys-form-group .form-control,.mephys-form-group .form-select{min-height:46px;border-color:#c6d6de;background-color:#fff;font-size:1rem}
+.mephys-form-group textarea.form-control{min-height:85px}
+.mephys-form-group .form-label{font-weight:650;color:#273e49;margin-bottom:.35rem}
+.mephys-form-group [hidden]{display:none!important}
+.mephys-booking-hint{background:#edf7f8;color:#2a5964;border-radius:12px;padding:.7rem .8rem;font-size:.9rem}
+.mephys-booking-submit{background:#087b88;border:0;min-height:49px}
+@media(max-width:575px){.mephys-booking-heading,.mephys-booking-shell form{padding:1.1rem}.mephys-booking-shell{border-radius:16px}}

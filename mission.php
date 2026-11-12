@@ -6,9 +6,11 @@
   <meta name="description" content="Learn about the mission and patient-first values of Mephys Physiotherapy Clinic.">
   <title>Our Mission | Mephys Clinic</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="about.css?v=20261110b">
+  <link rel="stylesheet" href="about.css?v=20261111readable">
   <link rel="stylesheet" href="nav.css?v=20261110b">
   <script src="nav.js?v=20261110b" defer></script>
+<link rel="stylesheet" href="mephys-theme.css?v=20261111readable">
+<link rel="stylesheet" href="mephys-readability.css?v=20261111a">
 </head>
 <body>
 <?php include __DIR__ . '/nav.php'; ?>

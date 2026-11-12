@@ -25,6 +25,8 @@
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
+<link rel="stylesheet" href="mephys-theme.css?v=20261110c">
+<link rel="stylesheet" href="mephys-readability.css?v=20261111a">
 </head>
 <body>
 
@@ -173,11 +175,9 @@
         <p><i class="fa-solid fa-phone"></i><strong> Phone:</strong> +254 720-095-236</p>
 
         <!-- Confirm that the corrected location is accurate -->
-        <p class="location-info">
-            <i class="fa-solid fa-location-dot"></i>
-            <span class="location-label"><strong>Location:</strong></span>
-            <span class="location-address">The Veteran Mission Hospitals, Syokimau, along Katani Road, Machakos County.</span>
-        </p>
+        <p class="location-info mb-2"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span class="location-address"><strong>Syokimau Katani:</strong> Veteran Hospital Doctors Plaza, Ground Floor.</span></p>
+        <p class="location-info mb-3"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span class="location-address"><strong>Komarocks Sector 2:</strong> Dawasmile Medical Centre.</span></p>
+        <a href="location.php#map" class="btn btn-outline-light btn-sm mb-3">View both locations and directions</a>
 
         <p><i class="fa-solid fa-clock-rotate-left"></i> We are open from <strong>9:00am - 6:00pm</strong>, Monday to Friday.</p>
       </div>
@@ -330,7 +330,7 @@ document.addEventListener("DOMContentLoaded", () => {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 
 <!-- Include website footer -->
-<?php include 'footer.php'; ?>
+<?php include 'shop/_public-footer.php'; ?>
 
 </body>
 </html>

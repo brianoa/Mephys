@@ -45,68 +45,110 @@ if (!function_exists('contactEscape')) {
 ?>
 
 <style>
-    /* All contact-page styling is restricted to this section. */
-
-    #contact-messages-content {
-        width: 100%;
-        min-width: 0;
-    }
-
+    /* Contact messages — full-sized text on desktop, readable stacked cards on phones. */
+    #contact-messages-content { width: 100%; min-width: 0; }
     #contact-messages-content .contact-message-panel {
+        background: #f9fbfc;
+        border: 1px solid #d6e2e6;
+        border-radius: 14px;
         overflow: hidden;
-        border: 1px solid #e8edf3;
-        border-radius: 10px;
-        background: #fff;
-        box-shadow: 0 2px 9px rgba(34, 55, 85, .025);
+        box-shadow: 0 2px 12px rgba(29, 54, 65, .05);
     }
-
     #contact-messages-content .contact-message-header {
-        padding: 17px 20px;
-        border-bottom: 1px solid #edf0f4;
-        color: #39485b;
-        font-size: 13px;
+        padding: 19px 22px;
+        background: #edf4f6;
+        border-bottom: 1px solid #d6e2e6;
+        color: #253d49;
+        font-size: 1.125rem;
         font-weight: 750;
     }
-
-    #contact-messages-content .contact-table-wrap {
-        width: 100%;
-        overflow-x: auto;
-    }
-
+    #contact-messages-content .contact-table-wrap { overflow-x: auto; width: 100%; }
     #contact-messages-content .contact-message-table {
         width: 100%;
-        min-width: 850px;
-        margin-bottom: 0;
-        font-size: 11px;
+        min-width: 880px;
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1.6;
+        --bs-table-bg: #f9fbfc;
+        --bs-table-striped-bg: #eef4f6;
+        --bs-table-hover-bg: #e5eff2;
+        --bs-table-color: #273f4b;
+        --bs-table-border-color: #dce6e9;
     }
-
     #contact-messages-content .contact-message-table th {
-        padding: 12px 13px;
+        padding: 15px 13px;
+        font-size: .9375rem;
+        font-weight: 700;
+        background: #344e5c;
+        color: #fff;
         white-space: nowrap;
-        font-size: 10px;
     }
-
     #contact-messages-content .contact-message-table td {
-        padding: 13px;
-        vertical-align: middle;
-    }
-
-    #contact-messages-content .contact-message-text {
-        min-width: 250px;
-        max-width: 400px;
-        white-space: normal;
+        padding: 16px 13px;
+        font-size: 1rem;
+        vertical-align: top;
         overflow-wrap: anywhere;
     }
-
-    #contact-messages-content .contact-empty-state {
-        padding: 40px 15px;
-        text-align: center;
-        color: #929cab;
+    #contact-messages-content .contact-message-text {
+        min-width: 220px;
+        max-width: 520px;
+        white-space: normal;
+        overflow-wrap: anywhere;
+        line-height: 1.7;
     }
+    #contact-messages-content .contact-message-table a { color: #075d6a; }
+    #contact-messages-content .contact-message-table td:last-child { min-width: 95px; white-space: nowrap; }
+    #contact-messages-content .contact-message-table .btn {
+        font-size: .9375rem;
+        min-height: 40px;
+        min-width: 75px;
+        white-space: nowrap;
+        padding: 7px 10px;
+    }
+    #contact-messages-content .contact-user-info { color: #506875; font-size: .9375rem; }
+    #contact-messages-content .contact-empty-state { padding: 42px 16px; text-align: center; color: #526775; }
 
-    #contact-messages-content .contact-user-info {
-        color: #8994a3;
-        font-size: 11px;
+    html.dark-mode #contact-messages-content .contact-message-panel { background: #192a36; border-color: #304653; }
+    html.dark-mode #contact-messages-content .contact-message-header { background: #203643; color: #e5f0f5; border-color: #304653; }
+    html.dark-mode #contact-messages-content .contact-message-table {
+        --bs-table-bg: #192a36; --bs-table-striped-bg: #1f3440;
+        --bs-table-hover-bg: #263d49; --bs-table-color: #e0ebf0;
+        --bs-table-border-color: #304653;
+    }
+    html.dark-mode #contact-messages-content .contact-message-table th { background: #203440 !important; color: #e6f1f5 !important; }
+    html.dark-mode #contact-messages-content .contact-message-table a { color: #80d5e7; }
+    html.dark-mode #contact-messages-content .contact-user-info { color: #adc2ce; }
+
+    @media (max-width: 767.98px) {
+        #contact-messages-content .contact-table-wrap { overflow: visible; }
+        #contact-messages-content .contact-message-table,
+        #contact-messages-content .contact-message-table tbody,
+        #contact-messages-content .contact-message-table tr,
+        #contact-messages-content .contact-message-table td { display: block; width: 100%; min-width: 0; }
+        #contact-messages-content .contact-message-table thead { display: none; }
+        #contact-messages-content .contact-message-table tbody tr {
+            padding: 14px 18px;
+            border-bottom: 1px solid #dce5e9;
+        }
+        #contact-messages-content .contact-message-table tbody td {
+            display: grid;
+            grid-template-columns: minmax(90px, 34%) minmax(0, 1fr);
+            align-items: start;
+            column-gap: 12px;
+            padding: 10px 0;
+            font-size: 1rem;
+            border: 0;
+            line-height: 1.6;
+        }
+        #contact-messages-content .contact-message-table tbody td[data-label]::before {
+            content: attr(data-label);
+            font-size: .9375rem;
+            font-weight: 700;
+            color: #506875;
+        }
+        #contact-messages-content .contact-message-table tbody td.contact-message-text { max-width: none; }
+        #contact-messages-content .contact-message-table tbody td.contact-empty-state { display: block; text-align: center; }
+        html.dark-mode #contact-messages-content .contact-message-table tbody td[data-label]::before { color: #bfd1da; }
     }
 </style>
 
@@ -168,27 +210,27 @@ if (!function_exists('contactEscape')) {
 
                         <tr>
 
-                            <td><?= $i++ ?></td>
+                            <td data-label="Number"><?= $i++ ?></td>
 
-                            <td>
+                            <td data-label="Name">
                                 <?= contactEscape($msg['name']) ?>
                             </td>
 
-                            <td>
+                            <td data-label="Email">
                                 <a href="mailto:<?= contactEscape($msg['email']) ?>">
                                     <?= contactEscape($msg['email']) ?>
                                 </a>
                             </td>
 
-                            <td class="contact-message-text">
+                            <td class="contact-message-text" data-label="Message">
                                 <?= nl2br(contactEscape($msg['message'])) ?>
                             </td>
 
-                            <td>
+                            <td data-label="Received">
                                 <?= contactEscape($msg['created_at'] ?? '') ?>
                             </td>
 
-                            <td>
+                            <td data-label="Action">
 
                                 <form
                                     method="POST"
@@ -259,6 +301,13 @@ if (!function_exists('contactEscape')) {
             event.preventDefault();
 
             const name = this.dataset.name || 'this contact';
+
+            if (!window.Swal) {
+                if (window.confirm('Permanently delete this message from ' + name + '?')) {
+                    this.submit();
+                }
+                return;
+            }
 
             Swal.fire({
                 title: 'Delete this message?',

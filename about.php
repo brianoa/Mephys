@@ -11,43 +11,40 @@
   <!--AOS--->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
   <!--Stylesheet link-->
-	<link rel="stylesheet" type="text/css" href="about.css?v=20261110b">
+	<link rel="stylesheet" type="text/css" href="about.css?v=20261111readable">
     <link rel="stylesheet" href="nav.css?v=20261110b">
     <script src="nav.js?v=20261110b" defer></script>
   
   <!--Animate-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 	<title>About Us | Mephys Clinic</title>
+<link rel="stylesheet" href="mephys-theme.css?v=20261111readable">
 </head>
 <body>
 <?php include __DIR__ . '/nav.php'; ?>
 
 
-<!--Profile----->
-<section class="aboutus" id="about">
-<div class="container">
-	<div class="p-5 mb-4 bg-light rounded-3 shadow-sm">		
-	<h1>ABOUT US</h1>
-	<p>Mephys is a physiotherapy clinic that aims to provide innovative and holistic physiotherapy and rehabilitation services to patients in 
-	Nairobi, Kenya and surrounding areas. The Clinic was founded 2011.With over a decade of experience, our team have highly qualified physiotherapist and licensed physiotherapist, enables us to deliver exceptional care of wide range of condition. The goal of Mephys is to change the way physiotherapy care is delivered by moving away from the traditional model and taking a more holistic, patient-centered approach focused on sustainable, lifelong results. Mephys provides accessible, comprehensive services to meet a wide variety of patient needs. </p>
-	
-	<div class="row">
-		<div class="col-md-5">
-      
-			<img src="images/Physiotherapy.jpg" class="img-fluid" style="height: auto; object-fit: cover;">
-		</div>
-
-
-		<div class="col-md-7">
-			<h2>Vision</h2>
-			<p>To be the leading physiotherapy clinic that empowers individuals to achieve optimal health and wellness through personalized, evidence-based care. We envision a community where everyone has access to exceptional physiotherapy services, fostering a culture of proactive healthcare and lifelong well-being.Our commitment is to inspire, educate, and support individuals on their journey to a pain-free, active, and fulfilling life.</p>
-		</div>
-	</div>
-
-
-	
-	</div>
- </div>
+<!-- About Mephys: accessible, readable layout; original information preserved. -->
+<section class="aboutus" id="about" aria-labelledby="mephysAboutTitle">
+  <div class="container mephys-about-container">
+    <div class="mephys-about-panel">
+      <div class="mephys-about-intro">
+        <h1 id="mephysAboutTitle">About Us</h1>
+        <p>Mephys is a physiotherapy clinic that aims to provide innovative and holistic physiotherapy and rehabilitation services to patients in Nairobi, Kenya and surrounding areas.</p>
+        <p>The Clinic was founded 2011. With over a decade of experience, our team have highly qualified physiotherapist and licensed physiotherapist, enables us to deliver exceptional care of wide range of condition.</p>
+        <p>The goal of Mephys is to change the way physiotherapy care is delivered by moving away from the traditional model and taking a more holistic, patient-centered approach focused on sustainable, lifelong results. Mephys provides accessible, comprehensive services to meet a wide variety of patient needs.</p>
+      </div>
+      <div class="mephys-about-feature">
+        <figure class="mephys-about-photo">
+          <img src="images/Physiotherapy.jpg" alt="Physiotherapy professional assisting a patient during treatment" loading="lazy" decoding="async">
+        </figure>
+        <div class="mephys-about-vision">
+          <h2>Vision</h2>
+          <p>To be the leading physiotherapy clinic that empowers individuals to achieve optimal health and wellness through personalized, evidence-based care. We envision a community where everyone has access to exceptional physiotherapy services, fostering a culture of proactive healthcare and lifelong well-being. Our commitment is to inspire, educate, and support individuals on their journey to a pain-free, active, and fulfilling life.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <section class="objectives py-4 text-white text-center" id="mission">
   <div class="container">
@@ -91,14 +88,14 @@
 			promoting health, and helping individuals achieve their fullest potential in movement and life.</p>
 
 
-			<h4 style="color: #0099cc;">key core values</h4>
+			<h4 style="color: #087d8b;">key core values</h4>
 			<div class="row">				
 				<div class="col-md-6">	
 				 <div class="card">
 					
 					<div class="card-body">
 					<br>
-					<h5 class="card-title" style="color: #0099cc;">Quality</h5>
+					<h5 class="card-title" style="color: #087d8b;">Quality</h5>
 					<p>We believe that service is a major component in the every sector and we never hesitate in raising 
 					the bar when it comes to quality. Depending on the interest and requirement, timely service is offered to our valued customers.Quality service is the first priority of our company. To fulfil the customer’s satisfaction, the work given is attended with due care to the accomplishment.Complete professionalism is also maintained while communicating with the clients. We also keep in mind that the services and works awarded must be done in a proper way and are of international quality standards </p>						
 					</div>
@@ -108,7 +105,7 @@
 				<div class="col-md-3">
 			  	<div class="card">
 			 		 <div class="card-body">
-			      <h5 class="card-title" style="color: #0099cc;">Integrity</h5>
+			      <h5 class="card-title" style="color: #087d8b;">Integrity</h5>
 			      <p>
 			        We uphold the highest standards in all of our actions. We develop relationships that make a positive difference in our customers' lives.
 			        We work together to meet the needs of our customers and to achieve company objectives.
@@ -125,7 +122,7 @@
 					
 					<div class="card-body">
 						<br>
-						<h5 class="card-title" style="color: #0099cc;">Professionalism</h5>
+						<h5 class="card-title" style="color: #087d8b;">Professionalism</h5>
 						<p>In all our endeavors, we are guided by a team of professionals who keep strive hard to deliver the best services to our clients</p>						
 										
 					</div>
@@ -144,10 +141,10 @@
 				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				      </div>
 				      <div class="modal-body">
-				        <strong style="color: #0099cc;">Customer Commitment</strong>
+				        <strong style="color: #087d8b;">Customer Commitment</strong>
 				        <p>We develop relationships that make a positive difference in our customers' lives</p>
 
-				        <strong style="color: #0099cc;">Teamwork</strong>
+				        <strong style="color: #087d8b;">Teamwork</strong>
 				        <p>We work together to meet the needs of our customers and to achieve company objectives</p>
 				      </div>
 				    </div>

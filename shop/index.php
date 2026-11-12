@@ -112,6 +112,30 @@ $shopPageTitle = $selectedCategory ? (string) $selectedCategory['name'] : 'Produ
 $shopPageDescription = 'Browse products currently offered by Mephys Physiotherapy Clinic.';
 require __DIR__ . '/_public-header.php';
 
+/** A complete, readable excerpt that ends with an actual ellipsis when shortened. */
+function mephysShopCardPreview(string $description, int $maxCharacters = 48): string
+{
+    $description = trim(preg_replace('/\s+/u', ' ', $description) ?? $description);
+    if ($description === '') {
+        $description = 'View product details for more information.';
+    }
+    // Unicode-aware; works even when PHP's optional mbstring extension is absent.
+    $characters = preg_split('//u', $description, -1, PREG_SPLIT_NO_EMPTY);
+    if ($characters === false) {
+        $characters = str_split($description);
+    }
+    if (count($characters) <= $maxCharacters) {
+        return $description;
+    }
+    $excerpt = implode('', array_slice($characters, 0, $maxCharacters));
+    // Do not leave a half-written word before the ellipsis.
+    $lastSpace = strrpos($excerpt, ' ');
+    if ($lastSpace !== false && $lastSpace >= (int) floor($maxCharacters * 0.65)) {
+        $excerpt = substr($excerpt, 0, $lastSpace);
+    }
+    return rtrim($excerpt, " \t\n\r.,;:-") . '…';
+}
+
 function mephysShopPageUrl(int $targetPage, string $search, string $category, string $sort): string
 {
     $params = ['page' => $targetPage];
@@ -121,6 +145,7 @@ function mephysShopPageUrl(int $targetPage, string $search, string $category, st
     return 'index.php?' . http_build_query($params);
 }
 ?>
+<link rel="stylesheet" href="catalogue.css?v=20261111equalcards3">
 
 <section class="py-5" style="background:linear-gradient(120deg,#f1f8fc,#f8fbfd 58%,#edf8fb)">
     <div class="container py-3">
@@ -182,29 +207,32 @@ function mephysShopPageUrl(int $targetPage, string $search, string $category, st
             </div>
         <?php else: ?>
             <div class="d-flex justify-content-between align-items-center mb-3"><div class="small shop-muted">Showing <?= number_format(min($totalProducts, $offset + 1)) ?>–<?= number_format(min($totalProducts, $offset + count($products))) ?> of <?= number_format($totalProducts) ?> products</div></div>
-            <div class="row g-3 g-md-4">
+            <div class="row g-3 g-md-4 shop-catalogue-grid">
                 <?php foreach ($products as $product):
                     $isOutOfStock = (int) $product['track_inventory'] === 1 && (int) $product['stock_quantity'] < 1 && (int) $product['allow_backorder'] !== 1;
                     $hasDiscount = $product['compare_at_price'] !== null && (float) $product['compare_at_price'] > (float) $product['price'];
                 ?>
-                    <div class="col-6 col-md-4 col-xl-3">
-                        <article class="h-100 d-flex flex-column border rounded-4 overflow-hidden bg-white" style="box-shadow:0 5px 18px rgba(26,55,85,.045)">
-                            <a href="product.php?slug=<?= rawurlencode((string) $product['slug']) ?>" class="d-block position-relative text-decoration-none" style="background:#f5f8fa">
-                                <img src="<?= mephysShopPublicEscape(mephysShopPublicImageUrl($product['image_path'])) ?>" alt="<?= mephysShopPublicEscape($product['name']) ?>" loading="lazy" class="w-100" style="height:220px;object-fit:contain;padding:12px">
+                    <div class="col-12 col-sm-6 col-lg-4 col-xl-3 shop-product-column">
+                        <article class="h-100 d-flex flex-column border rounded-4 overflow-hidden bg-white shop-product-card" style="box-shadow:0 5px 18px rgba(26,55,85,.045)">
+                            <a href="products.php?slug=<?= rawurlencode((string) $product['slug']) ?>" class="d-block position-relative text-decoration-none shop-product-media" style="background:#f5f8fa">
+                                <img src="<?= mephysShopPublicEscape(mephysShopPublicImageUrl($product['image_path'])) ?>" alt="<?= mephysShopPublicEscape($product['name']) ?>" loading="lazy" class="w-100 shop-product-image" style="height:220px;object-fit:contain;padding:12px">
                                 <?php if ((int) $product['is_featured'] === 1): ?><span class="badge text-bg-primary position-absolute top-0 start-0 m-2">Featured</span><?php endif; ?>
                                 <?php if ($isOutOfStock): ?><span class="badge text-bg-secondary position-absolute top-0 end-0 m-2">Out of stock</span><?php elseif ($hasDiscount): ?><span class="badge text-bg-danger position-absolute top-0 end-0 m-2">Special price</span><?php endif; ?>
                             </a>
-                            <div class="p-3 d-flex flex-column flex-grow-1">
-                                <?php if (!empty($product['category_name'])): ?><div class="small text-uppercase fw-bold mb-1" style="color:#7d91a4;font-size:.68rem;letter-spacing:.7px"><?= mephysShopPublicEscape($product['category_name']) ?></div><?php endif; ?>
-                                <h2 class="h6 fw-bold mb-2" style="min-height:2.5em;line-height:1.25">
-                                    <a class="text-decoration-none" style="color:#263f55" href="product.php?slug=<?= rawurlencode((string) $product['slug']) ?>">
+                            <div class="p-3 d-flex flex-column flex-grow-1 shop-product-info">
+                                <?php if (!empty($product['category_name'])): ?><div class="small text-uppercase fw-bold mb-1 shop-product-category" style="color:#7d91a4;font-size:.68rem;letter-spacing:.7px"><?= mephysShopPublicEscape($product['category_name']) ?></div><?php endif; ?>
+                                <h2 class="h6 fw-bold mb-2 shop-product-name" style="min-height:2.5em;line-height:1.25">
+                                    <a class="text-decoration-none" style="color:#263f55" href="products.php?slug=<?= rawurlencode((string) $product['slug']) ?>">
                                         <?= mephysShopPublicEscape($product['name']) ?>
                                     </a>
                                 </h2>
-                                <p class="small shop-muted mb-3 product-card-description">
-                                    <?= mephysShopPublicEscape($product['short_description'] ?: 'View product details for more information.') ?>
+                                <?php $cardSummary = (string) ($product['short_description'] ?: 'View product details for more information.'); ?>
+                                <p class="small shop-muted mb-3 product-card-description shop-product-description">
+                                    <span class="product-card-preview-mobile"><?= mephysShopPublicEscape(mephysShopCardPreview($cardSummary, 43)) ?></span>
+                                    <span class="product-card-preview-desktop"><?= mephysShopPublicEscape(mephysShopCardPreview($cardSummary, 90)) ?></span>
                                 </p>
-                                <div class="d-flex align-items-baseline flex-wrap gap-2 mb-3"><span class="fw-bold" style="color:#006bb3;font-size:1.05rem"><?= mephysShopPublicMoney($product['price']) ?></span><?php if ($hasDiscount): ?><span class="small text-decoration-line-through text-secondary"><?= mephysShopPublicMoney($product['compare_at_price']) ?></span><?php endif; ?></div>
+                                <div class="d-flex align-items-baseline flex-wrap gap-2 mb-3 shop-product-price"><span class="fw-bold" style="color:#006bb3;font-size:1.05rem"><?= mephysShopPublicMoney($product['price']) ?></span><?php if ($hasDiscount): ?><span class="small text-decoration-line-through text-secondary"><?= mephysShopPublicMoney($product['compare_at_price']) ?></span><?php endif; ?></div>
+                                <div class="shop-product-actions">
                                 <?php if (!$isOutOfStock && (int) ($product['active_variant_count'] ?? 0) === 0): ?>
                                     <form method="POST" action="cart.php" class="mb-2">
                                         <?= mephysShopPublicCsrfField() ?>
@@ -216,13 +244,14 @@ function mephysShopPageUrl(int $targetPage, string $search, string $category, st
                                         </button>
                                     </form>
                                 <?php elseif (!$isOutOfStock): ?>
-                                    <a href="product.php?slug=<?= rawurlencode((string) $product['slug']) ?>" class="btn btn-outline-primary btn-sm w-100 mb-2">
+                                    <a href="products.php?slug=<?= rawurlencode((string) $product['slug']) ?>" class="btn btn-outline-primary btn-sm w-100 mb-2">
                                         <i class="fa-solid fa-eye me-1"></i>View product options
                                     </a>
                                 <?php else: ?>
                                     <button class="btn btn-secondary btn-sm w-100 mb-2" type="button" disabled>Out of stock</button>
                                 <?php endif; ?>
-                                <a href="product.php?slug=<?= rawurlencode((string) $product['slug']) ?>" class="btn btn-outline-primary btn-sm w-100">View details <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                                <a href="products.php?slug=<?= rawurlencode((string) $product['slug']) ?>" class="btn btn-outline-primary btn-sm w-100 shop-product-details-link">View details <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                                </div>
                             </div>
                         </article>
                     </div>
@@ -282,22 +311,5 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 <?php endif; ?>
-<style>
-/* Keep product descriptions tidy and product cards consistent */
-.product-card-description {
-    line-height: 1.45;
-    height: 4.35em;
-    min-height: 4.35em;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
-}
 
-/* Keep product prices and buttons aligned */
-.product-card-description + div {
-    margin-top: auto;
-}
-</style>
 <?php require __DIR__ . '/_public-footer.php'; ?>

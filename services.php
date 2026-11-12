@@ -44,6 +44,8 @@ $earliestBookingDate = (new DateTimeImmutable(
   <!--Animate-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 	<title>Physiotherapy Services | Mephys Clinic</title>
+<link rel="stylesheet" href="mephys-theme.css?v=20261111readable">
+<link rel="stylesheet" href="mephys-readability.css?v=20261111a">
 </head>
 <body>
 <?php include __DIR__ . '/nav.php'; ?>
@@ -232,80 +234,75 @@ $earliestBookingDate = (new DateTimeImmutable(
 
 
 
-<!-- Booking Form Section -->
-<section id="appointmentFormContainer" class="container my-5" style="display: none;" data-aos="fade-up">
-  <div class="card shadow-lg p-4 rounded-4 border-0 bg-light">
-    <h3 class="mb-4 text-center text-primary">Book Your Appointment</h3>    
-    <form id="appointmentForm" method="POST" action="book_appointment.php">
-        <input type="hidden" name="service" id="selectedService" value="">
-
-        <input type="hidden" name="csrf_token"
-            value="<?= htmlspecialchars($_SESSION['booking_csrf_token'], ENT_QUOTES, 'UTF-8') ?>">
-
-      <div class="mb-3">
-        <label for="fullName" class="form-label">Full Name</label>
-        <input type="text" class="form-control form-control-lg rounded-3" id="fullName" name="fullName" required>
-        <div class="error-message text-danger mt-1" id="nameError"></div>
-      </div>
-
-      <div class="mb-3">
-        <label for="email" class="form-label">Email Address</label>
-        <input type="email" class="form-control form-control-lg rounded-3" id="email" name="email" required>
-        <div class="error-message text-danger mt-1" id="emailError"></div>
-      </div>
-
-      <div class="mb-3">
-        <label for="phone" class="form-label">Phone Number</label>
-        <input type="tel" class="form-control form-control-lg rounded-3" id="phone" name="phone" required>
-        <div class="error-message text-danger mt-1" id="phoneError"></div>
-      </div>
-      <div class="mb-3">
-        <label for="appointmentDate" class="form-label">Select Date</label>        
-        <input type="date"
-              class="form-control form-control-lg rounded-3"
-              id="appointmentDate"
-              name="date"
-              min="<?= htmlspecialchars($earliestBookingDate, ENT_QUOTES, 'UTF-8') ?>"
-              required>
-
-      </div>
-      <div class="mb-3">
-      <label for="appointmentTime" class="form-label">Select Time</label>
-      <input type="time" class="form-control form-control-lg rounded-3"
-       id="appointmentTime" name="time"
-       min="09:00" max="16:00" required>
-      <div class="error-message text-danger mt-1" id="timeError"></div>
-      </div>
-
-       <div class="mb-3">
-        <label for="location" class="form-label">Location</label>
-        <input type="text" class="form-control form-control-lg rounded-3" id="location" name="location" required>
-        <div class="error-message text-danger mt-1" id="locationError"></div>
-      </div>
-
-       <div class="mb-3">
-        <label for="referral" class="form-label">Referral</label>
-        <select class="form-select form-select-sm rounded-3" id="referral" name="referral" required>
-          <option value="">-- Select Referral Type --</option>
-          <option value="Self Referral">Self Referral</option>
-          <option value="Hospital Referral">Hospital Referral</option>
-          <option value="Doctor Referral">Doctor Referral</option>
-        </select>
-        <div class="error-message text-danger mt-1" id="referralError"></div>
-      </div>
-
-      <div class="mb-3">
-        <label for="notes" class="form-label">Additional Notes (Optional)</label>
-        <textarea class="form-control rounded-3" id="notes" name="notes" rows="3"></textarea>
-      </div>
-
-      <div class="d-grid">
-        <button type="submit" class="btn btn-primary btn-lg rounded-pill">Confirm Appointment</button>
-      </div>
+<!-- Appointment form: existing booking endpoint and database table are preserved. -->
+<section id="appointmentFormContainer" class="container my-5 mephys-booking-section" style="display:none" aria-labelledby="bookingTitle">
+  <div class="mephys-booking-shell">
+    <div class="mephys-booking-heading">
+      <p class="text-uppercase fw-bold mb-2 small" style="letter-spacing:.12em;color:#087b88">Care that comes to you</p>
+      <h2 id="bookingTitle" class="fw-bold mb-2">Request an appointment</h2>
+      <p class="text-secondary mb-0">Choose where you would like your session. A team member will confirm the appointment and directions with you.</p>
+    </div>
+    <form id="appointmentForm" method="POST" action="book_appointment.php" novalidate>
+      <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['booking_csrf_token'], ENT_QUOTES, 'UTF-8') ?>">
+      <input type="hidden" name="location" id="location" value="">
+      <fieldset class="mephys-form-group">
+        <legend>1. Service and contact information</legend>
+        <div class="row g-3">
+          <div class="col-12"><label for="selectedService" class="form-label">Service <span aria-hidden="true">*</span></label>
+            <select class="form-select" name="service" id="selectedService" required>
+              <option value="">Select a physiotherapy service</option>
+              <?php foreach (['Musculoskeletal Physiotherapy','Neurological Physiotherapy','Cardiorespiratory Physiotherapy','Geriatric Physiotherapy','Sports Physiotherapy','Orthopedic Physiotherapy','Corporate Ergonomic Training','Pediatric Physiotherapy','Lamaze for Expectant Mothers','Home-Based Physiotherapy','Lymphatic drainage post surgery','Physical Therapy Consultancy','Sexual Health and wellness','Pain Management','Physical Therapy Products and Support'] as $serviceOption): ?>
+                <option value="<?= htmlspecialchars($serviceOption, ENT_QUOTES, 'UTF-8') ?>"><?= htmlspecialchars($serviceOption, ENT_QUOTES, 'UTF-8') ?></option>
+              <?php endforeach; ?>
+            </select></div>
+          <div class="col-md-6"><label for="fullName" class="form-label">Full name *</label><input type="text" class="form-control" id="fullName" name="fullName" autocomplete="name" maxlength="150" required><div class="error-message text-danger small" id="nameError"></div></div>
+          <div class="col-md-6"><label for="email" class="form-label">Email *</label><input type="email" class="form-control" id="email" name="email" autocomplete="email" maxlength="255" required><div class="error-message text-danger small" id="emailError"></div></div>
+          <div class="col-md-6"><label for="phone" class="form-label">Main contact number *</label><input type="tel" class="form-control" id="phone" name="phone" autocomplete="tel" inputmode="tel" maxlength="30" placeholder="e.g. 0712 345 678" required><div class="error-message text-danger small" id="phoneError"></div></div>
+          <div class="col-md-6"><label for="referral" class="form-label">Referral type *</label><select class="form-select" id="referral" name="referral" required><option value="">Select referral type</option><option>Self Referral</option><option>Hospital Referral</option><option>Doctor Referral</option></select><div class="error-message text-danger small" id="referralError"></div></div>
+        </div>
+      </fieldset>
+      <fieldset class="mephys-form-group">
+        <legend>2. Date and preferred time</legend>
+        <div class="row g-3">
+          <div class="col-md-6"><label for="appointmentDate" class="form-label">Preferred date *</label><input type="date" id="appointmentDate" name="date" min="<?= htmlspecialchars($earliestBookingDate, ENT_QUOTES, 'UTF-8') ?>" class="form-control" required></div>
+          <div class="col-md-6"><label for="appointmentTime" class="form-label">Preferred time (EAT) *</label><select class="form-select" id="appointmentTime" name="time" required><option value="">Select time (AM / PM)</option>
+          <option value="09:00">9:00 AM</option>
+          <option value="09:30">9:30 AM</option>
+          <option value="10:00">10:00 AM</option>
+          <option value="10:30">10:30 AM</option>
+          <option value="11:00">11:00 AM</option>
+          <option value="11:30">11:30 AM</option>
+          <option value="12:00">12:00 PM</option>
+          <option value="12:30">12:30 PM</option>
+          <option value="13:00">1:00 PM</option>
+          <option value="13:30">1:30 PM</option>
+          <option value="14:00">2:00 PM</option>
+          <option value="14:30">2:30 PM</option>
+          <option value="15:00">3:00 PM</option>
+          <option value="15:30">3:30 PM</option>
+          <option value="16:00">4:00 PM</option>
+            </select><div class="form-text">Available request slots: 9:00 AM–4:00 PM. The team will confirm availability.</div><div class="error-message text-danger small" id="timeError"></div></div>
+        </div>
+      </fieldset>
+      <fieldset class="mephys-form-group">
+        <legend>3. Where should we see you?</legend>
+        <div class="row g-3">
+          <div class="col-12"><label for="appointmentType" class="form-label">Appointment setting *</label><select class="form-select" name="appointment_type" id="appointmentType" required><option value="">Choose appointment type</option><option value="facility">Facility appointment</option><option value="home">Home-based care appointment</option></select><div class="form-text">Choose the type first to see the relevant location fields.</div></div>
+          <div class="col-12" id="facilityFields" hidden><label for="facilityChoice" class="form-label">Which facility? *</label><select class="form-select" name="facility_choice" id="facilityChoice"><option value="">Select a facility</option><option value="syokimau">Syokimau Katani - Veteran Hospital Doctors Plaza, Ground Floor</option><option value="komarocks">Komarocks Sector 2 - Dawasmile Medical Centre</option><option value="other">Another facility (specify below)</option></select></div>
+          <div class="col-12" id="otherFacilityFields" hidden><label for="otherFacilityName" class="form-label">Other facility name *</label><input type="text" class="form-control" id="otherFacilityName" name="other_facility_name" maxlength="70" placeholder="Name of hospital, clinic, or workplace"></div>
+          <div class="col-12" id="visitAddressFields" hidden><label for="visitAddress" class="form-label">Full visit address *</label><textarea class="form-control" id="visitAddress" name="visit_address" rows="2" maxlength="160" placeholder="Building/estate, street or road, town, county, house or room number"></textarea><div class="form-text">Please include enough detail for our team to find you.</div></div>
+          <div class="col-md-6" id="visitPhoneFields" hidden><label for="visitContactPhone" class="form-label">Contact number at the visit location *</label><input type="tel" class="form-control" id="visitContactPhone" name="visit_contact_phone" inputmode="tel" maxlength="30" placeholder="e.g. 0712 345 678"><div class="form-text">A number we can call when approaching the facility or home.</div></div>
+          <div class="col-md-6" id="visitDirectionsFields" hidden><label for="visitDirections" class="form-label">Landmark / directions (optional)</label><textarea class="form-control" id="visitDirections" name="visit_directions" rows="2" maxlength="300" placeholder="Gate, floor, landmark, nearby road or directions"></textarea></div>
+        </div>
+        <div class="error-message text-danger small mt-2" id="locationError" aria-live="polite"></div>
+        <div class="mephys-booking-hint mt-3"><i class="fa-solid fa-circle-info me-2" aria-hidden="true"></i>We use your location and contact details only to coordinate your requested visit. Do not share private medical records in the directions field.</div>
+      </fieldset>
+      <div class="mb-4"><label for="notes" class="form-label fw-semibold">Anything else the clinician should know? (optional)</label><textarea class="form-control" name="notes" id="notes" rows="3" maxlength="1200" placeholder="Any accessibility needs or general information relevant to your visit"></textarea></div>
+      <button class="btn btn-primary btn-lg w-100 mephys-booking-submit" type="submit">Submit appointment request</button>
+      <p class="text-secondary small text-center mt-2 mb-0">A booking request is not a confirmed appointment. The Mephys team will contact you.</p>
     </form>
   </div>
 </section>
-
 
 <!--CONTACT US--->
 
@@ -321,7 +318,9 @@ $earliestBookingDate = (new DateTimeImmutable(
         <h4 class="mb-3">Contact Information</h4>
         <p><i class="fa-solid fa-envelope"></i><strong>  Email:</strong> info@mephysclinic.com</p>
         <p><i class="fa-solid fa-phone"></i><strong> Phone:</strong> +254 720-095-236</p>
-        <p><i class="fa-solid fa-location-dot"></i><strong> Location:</strong> Soubth B, Golden Gates Drive</p>
+        <p class="d-flex align-items-start gap-2"><i class="fa-solid fa-location-dot mt-1" aria-hidden="true"></i><span><strong>Syokimau Katani:</strong> Veteran Hospital Doctors Plaza, Ground Floor</span></p>
+        <p class="d-flex align-items-start gap-2"><i class="fa-solid fa-location-dot mt-1" aria-hidden="true"></i><span><strong>Komarocks Sector 2:</strong> Dawasmile Medical Centre</span></p>
+        <p><a href="location.php#map" class="link-light">View maps and directions</a></p>
         <p><i class="fa-solid fa-clock-rotate-left"></i>  We are open from <strong>9:00am - 6:00pm</strong>, Monday to Friday.</p>
       </div>
 

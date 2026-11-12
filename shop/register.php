@@ -139,7 +139,7 @@ require __DIR__ . '/_public-header.php';
 
             <?php
             $googleClientId = trim((string) getenv('MEPHYS_GOOGLE_CLIENT_ID'));
-            if ($googleClientId !== ''):
+            if ($googleClientId !== '' && is_file(__DIR__ . '/google-auth.php')):
             ?>
                 <div class="text-center text-muted my-3">or</div>
                 <div id="g_id_onload" data-client_id="<?= mephysShopPublicEscape($googleClientId) ?>" data-callback="handleGoogleCredential" data-auto_prompt="false"></div>
@@ -157,7 +157,7 @@ require __DIR__ . '/_public-header.php';
                     }
                 </script>
             <?php else: ?>
-                <p class="small text-muted mt-3 mb-0">Google sign-in will appear here after the Mephys Google OAuth Client ID is configured.</p>
+                <p class="small text-muted mt-3 mb-0">Google sign-in will appear when the Mephys Google authentication endpoint and OAuth Client ID are configured.</p>
             <?php endif; ?>
         </div>
 

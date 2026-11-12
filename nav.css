@@ -41,11 +41,11 @@ html, body {
   max-width: calc(100% - 68px);
   overflow-wrap: anywhere;
 }
-.mephys-site-nav .navbar-brand { color: #006bb3 !important; font-weight: 750; }
+.mephys-site-nav .navbar-brand { color: #087b88 !important; font-weight: 750; }
 .mephys-site-nav .nav-link { color: #1b2937 !important; font-weight: 600; }
 .mephys-site-nav .nav-link:hover,
 .mephys-site-nav .nav-link:focus-visible,
-.mephys-site-nav .nav-link.active { color: #006bb3 !important; }
+.mephys-site-nav .nav-link.active { color: #087b88 !important; }
 .mephys-site-nav button.nav-link { display: flex; align-items: center; justify-content: space-between; gap: .5rem; background: none; border: 0; cursor: pointer; text-align: left; }
 .mephys-site-nav .mephys-caret { width: .48rem; height: .48rem; display: inline-block; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); margin: -.2rem 0 0 .3rem; transition: transform .15s ease; }
 .mephys-site-nav .mephys-has-submenu.is-open .mephys-caret { transform: rotate(225deg); margin-top: .2rem; }
@@ -55,7 +55,7 @@ html, body {
 .mephys-site-nav .dropdown-menu { border: 1px solid #edf1f5; border-radius: .65rem; box-shadow: 0 12px 30px rgba(0,0,0,.12); }
 .mephys-site-nav .scrollable-dropdown { max-height: min(55vh, 350px); overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; }
 .mephys-site-nav .dropdown-item { white-space: normal; overflow-wrap: anywhere; line-height: 1.35; padding: .65rem 1rem; }
-.mephys-site-nav .dropdown-item:focus-visible, .mephys-site-nav .dropdown-item:hover { color: #fff !important; background: #006bb3; }
+.mephys-site-nav .dropdown-item:focus-visible, .mephys-site-nav .dropdown-item:hover { color: #fff !important; background: #087b88; }
 .mephys-nav-panel-header { display: none; }
 .mephys-nav-backdrop[hidden] { display: none !important; }
 .mephys-nav-backdrop { position: fixed; inset: 0; z-index: 900; background: rgba(12,30,46,.48); }
@@ -81,19 +81,19 @@ html, body {
     padding: .4rem !important;
     flex: 0 0 46px;
   }
-  .mephys-site-nav .mephys-menu-toggle:focus-visible, .mephys-site-nav .mephys-menu-close:focus-visible { outline: 3px solid #27a8e6; outline-offset: 2px; }
+  .mephys-site-nav .mephys-menu-toggle:focus-visible, .mephys-site-nav .mephys-menu-close:focus-visible { outline: 3px solid #28adb8; outline-offset: 2px; }
   .mephys-site-nav .mephys-nav-panel { display: flex !important; flex-direction: column; position: fixed; top: 0; right: 0; bottom: 0; height: 100vh; height: 100dvh; width: min(360px, 92vw); max-width: 100vw; padding: 0 0 1.25rem; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; background: #fff; box-shadow: -8px 0 25px rgba(0,0,0,.15); z-index: 1050; transform: translate3d(100%, 0, 0); visibility: hidden; transition: transform .23s ease, visibility .23s; pointer-events: none; }
   .mephys-site-nav .mephys-nav-panel.is-open { transform: translate3d(0, 0, 0); visibility: visible; pointer-events: auto; }
   .mephys-site-nav .mephys-nav-panel-header { display: flex; align-items: center; justify-content: space-between; padding: .85rem 1rem; border-bottom: 1px solid #e7edf3; color: #143c55; font-weight: 700; font-size: 1.15rem; }
-  .mephys-site-nav .mephys-menu-close { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 0; background: #eff6fb; color: #193a50; font-size: 1.8rem; line-height: 1; border-radius: .45rem; }
+  .mephys-site-nav .mephys-menu-close { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 0; background: #eff8f8; color: #193a50; font-size: 1.8rem; line-height: 1; border-radius: .45rem; }
   .mephys-site-nav .mephys-nav-panel > .navbar-nav { display: flex; flex-direction: column; align-items: stretch !important; margin: 0 !important; padding: .6rem .85rem; width: 100%; gap: .1rem; }
   .mephys-site-nav .nav-item { width: 100%; min-width: 0; }
   .mephys-site-nav .navbar-nav .nav-link { margin-inline: 0 !important; }
   .mephys-site-nav .mephys-nav-panel > .navbar-nav { min-width: 0; }
   .mephys-site-nav .dropdown-item { overflow-wrap: anywhere; }
   .mephys-site-nav .nav-link { width: 100%; display: flex; align-items: center; padding: .82rem .7rem !important; min-height: 46px; border-radius: .35rem; white-space: normal; }
-  .mephys-site-nav .nav-link:hover, .mephys-site-nav .nav-link.active { background-color: #eef7fc; }
-  .mephys-site-nav .mephys-has-submenu .dropdown-menu { position: static; float: none; width: 100%; max-height: min(42vh, 300px); margin: 0 0 .45rem; padding: .25rem 0; border: 1px solid #e6eef5; box-shadow: none; background: #f7fafc; }
+  .mephys-site-nav .nav-link:hover, .mephys-site-nav .nav-link.active { background-color: #edf9f9; }
+  .mephys-site-nav .mephys-has-submenu .dropdown-menu { position: static; float: none; width: 100%; max-height: min(42vh, 300px); margin: 0 0 .45rem; padding: .25rem 0; border: 1px solid #dcedec; box-shadow: none; background: #f7fafc; }
   .mephys-site-nav .dropdown-item { min-height: 42px; display: flex; align-items: center; padding: .55rem .7rem; font-size: .91rem; }
   .mephys-site-nav .shop-account-nav { align-items: stretch; flex-direction: column; }
   .mephys-site-nav .shop-account-nav form, .mephys-site-nav .shop-account-nav form button { width: 100%; }

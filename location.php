@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Find Mephys Clinic at The Veteran Mission Hospitals in Syokimau, along Katani Road.">
+    <meta name="description" content="Find the two Mephys clinic locations in Syokimau Katani and Komarocks Sector 2.">
   <!---Font Awesome--->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <!--Bootstrap link-->
@@ -18,41 +18,38 @@
   <!--Animate-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 	<title>Clinic Location | Mephys Clinic</title>
+<link rel="stylesheet" href="mephys-theme.css?v=20261110c">
+<link rel="stylesheet" href="mephys-readability.css?v=20261111a">
 </head>
 <body>
  <?php include __DIR__ . '/nav.php'; ?>
 
-<!--Map Location of the website--->
-<!--section id="map" class="map-section py-5">
-  <div class="container" data-aos="fade-up">
-    <div class="text-center mb-4">
-      <h2 class="section-title">Find <span class="highlight">Us</span></h2>
-      <p class="section-subtitle">Our clinic is located in the heart of Calgary</p>
-    </div>
-    <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.7675865751676!2d36.83735147397421!3d-1.314973335656062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f11a416c3cab7%3A0x2193788a9fb879ab!2sGolden%20Gate%20Dr%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1751632474605!5m2!1sen!2ske" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-  </div>
-</section-->
+<?php require_once __DIR__ . '/clinic-info.php'; ?>
 <section id="map" class="map-section py-5">
-  <div class="map-header text-center mb-4" data-aos="fade-up">
-    <h2 class="section-title" style="color: #007bff; font-weight: bold;">Locate <span class="highlight">Us</span></h2>
-    <!--p class="section-subtitle">Our clinic is located at South B the heart of Calgary</p-->
+  <div class="container">
+    <div class="text-center mb-4">
+      <p class="text-uppercase fw-bold mb-2" style="color:#087b88;letter-spacing:.1em">Find us</p>
+      <h1 class="fw-bold" style="color:#173c4a">Visit Mephys at either facility</h1>
+      <p class="text-secondary mx-auto" style="max-width:680px">Select the location that works best for you. These map searches are based on the facility names provided; verify the exact entrance with our team when booking.</p>
+    </div>
+    <div class="row g-4">
+      <?php foreach (mephysClinicLocations() as $key => $facility): ?>
+      <div class="col-12 col-lg-6">
+        <article class="mephys-location-card h-100">
+          <div class="mephys-location-card-top">
+            <span class="mephys-location-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
+            <div><h2 class="h5 fw-bold mb-1"><?= htmlspecialchars($facility['short'], ENT_QUOTES, 'UTF-8') ?></h2>
+              <p class="mb-0"><?= htmlspecialchars($facility['address'], ENT_QUOTES, 'UTF-8') ?></p></div>
+          </div>
+          <iframe title="Map search for <?= htmlspecialchars($facility['short'], ENT_QUOTES, 'UTF-8') ?>" src="<?= htmlspecialchars(mephysClinicMapUrl($key, true), ENT_QUOTES, 'UTF-8') ?>" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" class="mephys-location-map"></iframe>
+          <div class="p-3"><a class="btn btn-primary w-100" href="<?= htmlspecialchars(mephysClinicMapUrl($key), ENT_QUOTES, 'UTF-8') ?>" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-route me-2" aria-hidden="true"></i>Open Google Maps / Directions</a></div>
+        </article>
+      </div>
+      <?php endforeach; ?>
+    </div>
+    <p class="small text-secondary mt-4 mb-0">We can also discuss home-based physiotherapy. <a href="services.php#appointmentFormContainer">Request an appointment</a> and specify the visit type and full address.</p>
   </div>
-  
-  <div class="map-full-width">
-    <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.6738186272737!2d36.93271147495362!3d-1.3723967357262574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f0da705a1832f%3A0xf3e1d0f7f90e02a5!2sThe%20Veteran%20Mission%20Hospitals!5e0!3m2!1sen!2ske!4v1794224935688!5m2!1sen!2ske"
-        width="100%"
-        height="500"
-        style="border:0;"
-        allowfullscreen
-        loading="lazy"
-        referrerpolicy="strict-origin-when-cross-origin">
-    </iframe>
-</div>
 </section>
-
 
 <!-- WhatsApp Toast -->
 <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100">
@@ -68,11 +65,6 @@
     </div>
   </div>
 </div>
-
-
-
-
-
 <!--AOS Animate on Scroll JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>

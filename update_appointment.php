@@ -58,6 +58,7 @@ try {
             $date = trim($_POST['date'] ?? '');
             $time = trim($_POST['time'] ?? '');
             $notes = trim($_POST['notes'] ?? '');
+            $location = trim($_POST['location'] ?? '');
 
             // Validate required fields.
             if (
@@ -66,7 +67,8 @@ try {
                 $email === '' ||
                 $phone === '' ||
                 $date === '' ||
-                $time === ''
+                $time === '' ||
+                $location === ''
             ) {
                 $error = 'Please complete all required fields.';
             } elseif (strlen($service) > 150) {
@@ -77,6 +79,8 @@ try {
                 $error = 'Please enter a valid email address.';
             } elseif (strlen($phone) > 30) {
                 $error = 'The phone number is too long.';
+            } elseif (strlen($location) > 255) {
+                $error = 'The location cannot exceed 255 characters.';
             } elseif (strlen($notes) > 10000) {
                 $error = 'The notes are too long.';
             } else {
@@ -112,6 +116,7 @@ try {
                              phone = :phone,
                              appointment_date = :date,
                              appointment_time = :time,
+                             location = :location,
                              notes = :notes
                          WHERE id = :id"
                     );
@@ -123,6 +128,7 @@ try {
                         ':phone' => $phone,
                         ':date' => $date,
                         ':time' => $time,
+                        ':location' => $location,
                         ':notes' => $notes !== '' ? $notes : null,
                         ':id' => $id
                     ]);
@@ -148,6 +154,7 @@ try {
                 $appointment['phone'] = $phone;
                 $appointment['appointment_date'] = $date;
                 $appointment['appointment_time'] = $time;
+                $appointment['location'] = $location;
                 $appointment['notes'] = $notes;
             }
         }
@@ -196,6 +203,8 @@ try {
             font-weight: 600;
         }
     </style>
+<link rel="stylesheet" href="mephys-theme.css?v=20261111readable">
+<link rel="stylesheet" href="mephys-readability.css?v=20261111a">
 </head>
 
 <body>
@@ -295,7 +304,13 @@ try {
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Notes</label>
+                <label class="form-label" for="appointmentEditLocation">Visit location / full address</label>
+                <textarea id="appointmentEditLocation" class="form-control" name="location" maxlength="255" rows="2" required><?= editAppointmentEscape($appointment['location']) ?></textarea>
+                <div class="form-text">Update this only if the visit location changes. Contact and directions information is also in the appointment notes.</div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Notes, visit contact and directions</label>
                 <textarea
                     class="form-control"
                     name="notes"

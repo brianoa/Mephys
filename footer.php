@@ -4,7 +4,7 @@
 
       <!-- Brand & Description -->
       <div class="col-md-4 col-lg-4 col-xl-3 mx-auto mb-4">
-        <h5 class="text-uppercase fw-bold mb-3" style="color: #0dcaf0;">Mephys Clinic</h5>
+        <h5 class="text-uppercase fw-bold mb-3" style="color: #80dfe0;">Mephys Clinic</h5>
         <p>Empowering lives through evidence-based physiotherapy and holistic healing in Nairobi and beyond.</p>
       </div>
 

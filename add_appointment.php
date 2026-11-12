@@ -16,6 +16,8 @@ http_response_code(410);
     <title>Appointment Creation Unavailable - Mephys</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="mephys-theme.css?v=20261111readable">
+<link rel="stylesheet" href="mephys-readability.css?v=20261111a">
 </head>
 
 <body class="bg-light">

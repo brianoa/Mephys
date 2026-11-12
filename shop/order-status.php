@@ -215,6 +215,20 @@ require __DIR__ . '/_public-header.php';
                 </div>
             <?php endif; ?>
 
+            <?php if (isset($_GET['retry_error'])): ?>
+                <div class="alert alert-warning" role="alert">
+                    <?php if ($_GET['retry_error'] === 'config'): ?>
+                        M-Pesa payments are not yet configured. Please contact Mephys before retrying.
+                    <?php elseif ($_GET['retry_error'] === 'slow'): ?>
+                        A payment attempt was made recently. Please check your phone and try again after a moment.
+                    <?php elseif ($_GET['retry_error'] === 'pending'): ?>
+                        A payment request may still be processing. Please check its status before retrying.
+                    <?php else: ?>
+                        We could not start another M-Pesa request. Please contact Mephys and quote your order number.
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+
             <!-- PAYMENT WAITING -->
             <div
                 id="payment-waiting"
@@ -362,6 +376,17 @@ require __DIR__ . '/_public-header.php';
 
                 </div>
             <?php endforeach; ?>
+
+            <?php if ($isFailed && !$isPaid): ?>
+                <form method="POST" action="retry-payment.php" class="mt-3 mb-3">
+                    <?= mephysShopPublicCsrfField() ?>
+                    <input type="hidden" name="order_id" value="<?= (int) $orderId ?>">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa-solid fa-rotate-right me-1"></i> Retry M-Pesa payment for this order
+                    </button>
+                    <p class="small shop-muted mt-2 mb-0">Only retry if the previous attempt failed and no money was deducted. If you received an M-Pesa receipt, contact Mephys first.</p>
+                </form>
+            <?php endif; ?>
 
             <div class="mt-4 d-flex flex-wrap gap-2">
 

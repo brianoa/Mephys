@@ -293,6 +293,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             color: #718096;
         }
     </style>
+<link rel="stylesheet" href="mephys-theme.css?v=20261111readable">
+<link rel="stylesheet" href="mephys-readability.css?v=20261111a">
 </head>
 
 <body>

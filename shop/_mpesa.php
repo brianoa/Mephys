@@ -7,16 +7,57 @@ declare(strict_types=1);
 
 function mephysMpesaConfig(): array
 {
+    // Values are supplied by the server environment, never embedded in source code.
+    $callback = trim((string) (getenv('MEPHYS_MPESA_CALLBACK_URL') ?: 'https://3dfb-105-164-128-66.ngrok-free.app/shop/mpesa-callback.php'));
+    $publicBase = trim((string) (getenv('MEPHYS_PUBLIC_BASE_URL') ?: ''));
+    if ($callback === '' && $publicBase !== '') {
+        $callback = rtrim($publicBase, '/') . '/shop/mpesa-callback.php';
+    }
+
     return [
-        'environment' => strtolower(trim((string)(getenv('MEPHYS_MPESA_ENV') ?: 'sandbox'))),
-        'consumer_key' => trim((string)(getenv('nORoGgdu3FJUZDAPBWBlsID5DV6DcQaMz9KMBJA0DfAy5yDB') ?: '')),
-        'consumer_secret' => trim((string)(getenv('d5063219wRReWBc7Ty3UwAYzBKmeaUC5De0ZSYRRV0t7yzHkdEKxIpPYdcOlcPsb') ?: '')),
-        'shortcode' => trim((string)(getenv('174379') ?: '')),
-        'passkey' => trim((string)(getenv('bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919') ?: '')),
-        'callback_url' => trim((string)(getenv('https://9f26-105-164-128-180.ngrok-free.app/shop/mpesa-callback.php') ?: '')),
-        'account_reference' => trim((string)(getenv('MEPHYS') ?: 'MEPHYS')),
-        'transaction_type' => trim((string)(getenv('MEPHYS_MPESA_TRANSACTION_TYPE') ?: 'CustomerPayBillOnline')),
+        'environment' => strtolower(trim((string) (getenv('MEPHYS_MPESA_ENV') ?: 'sandbox'))),
+        'consumer_key' => trim((string) (getenv('MEPHYS_MPESA_CONSUMER_KEY') ?: 'nORoGgdu3FJUZDAPBWBlsID5DV6DcQaMz9KMBJA0DfAy5yDB')),
+        'consumer_secret' => trim((string) (getenv('MEPHYS_MPESA_CONSUMER_SECRET') ?: 'd5063219wRReWBc7Ty3UwAYzBKmeaUC5De0ZSYRRV0t7yzHkdEKxIpPYdcOlcPsb')),
+        'shortcode' => trim((string) (getenv('MEPHYS_MPESA_SHORTCODE') ?: '174379')),
+        'passkey' => trim((string) (getenv('MEPHYS_MPESA_PASSKEY') ?: 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919')),
+        'callback_url' => $callback,
+        'account_reference' => trim((string) (getenv('MEPHYS_MPESA_ACCOUNT_REFERENCE') ?: 'MEPHYS')),
+        'transaction_type' => trim((string) (getenv('MEPHYS_MPESA_TRANSACTION_TYPE') ?: 'CustomerPayBillOnline')),
     ];
+}
+
+/**
+ * Fail before recording a new order if a payment request cannot be made.
+ * Connectivity and actual Safaricom credentials still require live sandbox testing.
+ */
+function mephysMpesaAssertConfigured(array $cfg): void
+{
+    if (!in_array($cfg['environment'] ?? '', ['sandbox', 'production'], true)) {
+        throw new RuntimeException('M-Pesa environment must be sandbox or production.');
+    }
+    foreach (['consumer_key', 'consumer_secret', 'shortcode', 'passkey', 'callback_url'] as $key) {
+        if (trim((string) ($cfg[$key] ?? '')) === '') {
+            throw new RuntimeException('M-Pesa configuration is incomplete: ' . $key . ' is missing.');
+        }
+    }
+    if (!preg_match('/^\d{5,9}$/', (string) $cfg['shortcode'])) {
+        throw new RuntimeException('M-Pesa shortcode must contain 5–9 digits.');
+    }
+    $url = (string) $cfg['callback_url'];
+    $parts = parse_url($url);
+    $host = strtolower((string) ($parts['host'] ?? ''));
+    if (
+        filter_var($url, FILTER_VALIDATE_URL) === false ||
+        strtolower((string) ($parts['scheme'] ?? '')) !== 'https' ||
+        $host === '' || $host === 'localhost' ||
+        str_ends_with($host, '.local') || str_ends_with($host, '.test') ||
+        filter_var($host, FILTER_VALIDATE_IP) !== false
+    ) {
+        throw new RuntimeException('M-Pesa callback URL must be a public HTTPS address, not localhost or a private IP.');
+    }
+    if (!in_array((string) ($cfg['transaction_type'] ?? ''), ['CustomerPayBillOnline', 'CustomerBuyGoodsOnline'], true)) {
+        throw new RuntimeException('M-Pesa transaction type is invalid.');
+    }
 }
 
 /**
@@ -179,16 +220,7 @@ function mephysMpesaStkPush(
     int $amount,
     string $orderReference
 ): array {
-    foreach (
-        ['consumer_key', 'consumer_secret', 'shortcode', 'passkey', 'callback_url']
-        as $key
-    ) {
-        if (empty($cfg[$key])) {
-            throw new RuntimeException(
-                'M-Pesa configuration is incomplete: ' . $key . ' is missing.'
-            );
-        }
-    }
+    mephysMpesaAssertConfigured($cfg);
 
     if ($amount < 1) {
         throw new InvalidArgumentException(

@@ -18,7 +18,7 @@ $shopCartCount = function_exists('mephysShopPublicCartCount') ? mephysShopPublic
     <link rel="stylesheet" href="../nav.css?v=20261110b">
     <script src="../nav.js?v=20261110b" defer></script>
     <style>
-        :root{--mephys-blue:#006bb3;--mephys-teal:#0099cc;--mephys-ink:#20364b;--mephys-muted:#758395;--mephys-line:#e7edf3;--mephys-bg:#f6f9fc}
+        :root{--mephys-blue:#087b88;--mephys-teal:#087d8b;--mephys-ink:#20364b;--mephys-muted:#758395;--mephys-line:#e7edf3;--mephys-bg:#f6f9fc}
         *{box-sizing:border-box}
         body{margin:0;background:#fff;color:#34445a;font-family:Inter,"Segoe UI",Arial,sans-serif}
         .shop-site-nav{background:rgba(255,255,255,.97);border-bottom:1px solid var(--mephys-line);box-shadow:0 3px 16px rgba(22,50,80,.05)}
@@ -39,6 +39,8 @@ $shopCartCount = function_exists('mephysShopPublicCartCount') ? mephysShopPublic
         .shop-account-nav .btn-link{font-weight:600;text-decoration:none;padding:.45rem .65rem}
         @media(max-width:575px){.shop-site-nav .navbar-brand{font-size:1.2rem}.shop-account-nav{align-items:stretch;flex-direction:column}.shop-account-nav form{display:block}.shop-account-nav form button{width:100%;text-align:left}}
     </style>
+<link rel="stylesheet" href="../mephys-theme.css?v=20261111readable">
+<link rel="stylesheet" href="../mephys-readability.css?v=20261111a">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg sticky-top shop-site-nav mephys-site-nav" aria-label="Shop navigation" data-mobile-nav>

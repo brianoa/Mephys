@@ -350,35 +350,61 @@ if (modal) {
     });
 }
 
-/* Book Appointment Button */
+/* Keep the existing booking endpoint; make location choices explicit. */
+const appointmentSection = document.getElementById('appointmentFormContainer');
+const appointmentDate = document.getElementById('appointmentDate');
+const earliestDate = appointmentDate.getAttribute('min');
+const appointmentTime = document.getElementById('appointmentTime');
+const appointmentType = document.getElementById('appointmentType');
+const facilityChoice = document.getElementById('facilityChoice');
+const visitAddress = document.getElementById('visitAddress');
+const visitContactPhone = document.getElementById('visitContactPhone');
+const otherFacilityName = document.getElementById('otherFacilityName');
+const visitDirections = document.getElementById('visitDirections');
+const bookingPhone = document.getElementById('phone');
 
-// Open form from modal
-document.getElementById("openAppointmentFormBtn").addEventListener("click", function () {
-
-    const selectedService = document.getElementById("modalTitle").innerText.trim();
-
-    document.getElementById("selectedService").value = selectedService;
-
+function showAppointmentForm() {
+    appointmentSection.style.display = 'block';
+    appointmentSection.scrollIntoView({behavior:'smooth', block:'start'});
+}
+const openBookingButton = document.getElementById('openAppointmentFormBtn');
+if (openBookingButton) openBookingButton.addEventListener('click', function () {
+    const service = document.getElementById('modalTitle').innerText.trim();
+    const serviceSelect = document.getElementById('selectedService');
+    if (Array.from(serviceSelect.options).some(function(option){return option.value===service;})) serviceSelect.value=service;
     hideServiceModal();
-
-    const formContainer = document.getElementById("appointmentFormContainer");
-
-    formContainer.style.display = "block";
-    formContainer.scrollIntoView({ behavior: "smooth" });
+    showAppointmentForm();
+});
+if (window.location.hash === '#appointmentFormContainer') {
+    showAppointmentForm();
+}
+window.addEventListener('hashchange', function () {
+    if (window.location.hash === '#appointmentFormContainer') showAppointmentForm();
 });
 
-
-// Block dates before the earliest permitted booking date
-const appointmentDate = document.getElementById("appointmentDate");
-const earliestDate = appointmentDate.getAttribute("min");
-
-
-// Set appointment time limits
-const appointmentTime = document.getElementById("appointmentTime");
-
-appointmentTime.min = "09:00";
-appointmentTime.max = "16:00";
-
+function refreshVisitFields() {
+    const facility = appointmentType.value === 'facility';
+    const home = appointmentType.value === 'home';
+    const external = facility && facilityChoice.value === 'other';
+    document.getElementById('facilityFields').hidden = !facility;
+    document.getElementById('otherFacilityFields').hidden = !external;
+    document.getElementById('visitAddressFields').hidden = !(home||external);
+    document.getElementById('visitPhoneFields').hidden = !(home||external);
+    document.getElementById('visitDirectionsFields').hidden = !(home||external);
+    facilityChoice.required = facility;
+    otherFacilityName.required = external;
+    visitAddress.required = home || external;
+    visitContactPhone.required = home || external;
+    if (!facility) facilityChoice.value='';
+    if (!external) otherFacilityName.value='';
+    if (!home && !external) {
+        visitAddress.value='';visitDirections.value='';visitContactPhone.value='';
+    }
+    if ((home||external) && !visitContactPhone.value.trim()) visitContactPhone.value=bookingPhone.value.trim();
+}
+appointmentType.addEventListener('change', refreshVisitFields);
+facilityChoice.addEventListener('change', refreshVisitFields);
+refreshVisitFields();
 
 // Form validation and submission
 document.getElementById("appointmentForm").addEventListener("submit", function (e) {
@@ -418,7 +444,7 @@ document.getElementById("appointmentForm").addEventListener("submit", function (
     }
 
     // Validate full name
-    if (!/^[A-Za-z\s]{2,}$/.test(name)) {
+    if (name.length < 2 || name.length > 150 || !/^[\p{L}\p{M}][\p{L}\p{M}\s.'’\-]+$/u.test(name)) {
         nameError.textContent = "Please enter a valid full name.";
         isValid = false;
     }
@@ -430,7 +456,7 @@ document.getElementById("appointmentForm").addEventListener("submit", function (
     }
 
     // Validate phone number
-    if (!/^\+?[0-9]{7,15}$/.test(phone)) {
+    if (!/^\+?[0-9\s().-]{7,20}$/.test(phone)) {
         phoneError.textContent = "Please enter a valid phone number.";
         isValid = false;
     }
@@ -452,10 +478,32 @@ document.getElementById("appointmentForm").addEventListener("submit", function (
         isValid = false;
     }
 
+    const locationError = document.getElementById('locationError');
+    locationError.textContent = '';
+    const visitType = appointmentType.value;
+    const isOther = visitType === 'facility' && facilityChoice.value === 'other';
+    const requiresAddress = visitType === 'home' || isOther;
+    if (!['facility','home'].includes(visitType)) {
+        locationError.textContent='Select a facility or a home-based appointment.';
+        isValid=false;
+    } else if (visitType === 'facility' && !['syokimau','komarocks','other'].includes(facilityChoice.value)) {
+        locationError.textContent='Choose which facility you would like to visit.';
+        isValid=false;
+    } else if (isOther && (otherFacilityName.value.trim().length < 3 || otherFacilityName.value.trim().length>70)) {
+        locationError.textContent='Enter the name of the other facility.';
+        isValid=false;
+    } else if (requiresAddress && (visitAddress.value.trim().length < 12 || visitAddress.value.trim().length>160)) {
+        locationError.textContent='Enter a complete address including road, building or estate, town and county.';
+        isValid=false;
+    } else if (requiresAddress && !/^\+?[0-9\s().-]{7,20}$/.test(visitContactPhone.value.trim())) {
+        locationError.textContent='Enter a working contact number for the visit location.';
+        isValid=false;
+    }
     if (!isValid) {
+        const firstError = document.querySelector('#appointmentForm .error-message:not(:empty)');
+        if (firstError) firstError.scrollIntoView({behavior:'smooth',block:'center'});
         return;
     }
-
     const form = document.getElementById("appointmentForm");
 
     // Collect all form fields
@@ -516,6 +564,7 @@ document.getElementById("appointmentForm").addEventListener("submit", function (
             });
 
             form.reset();
+            refreshVisitFields();
 
             // Restore refreshed CSRF token
             const csrfField = form.querySelector('[name="csrf_token"]');

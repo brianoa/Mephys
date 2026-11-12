@@ -75,15 +75,28 @@ if (
 // COLLECT FORM DATA
 // ========================================
 
-$service = trim($_POST['service'] ?? '');
-$name = trim($_POST['fullName'] ?? '');
-$email = trim($_POST['email'] ?? '');
-$phone = trim($_POST['phone'] ?? '');
-$date = trim($_POST['date'] ?? '');
-$time = trim($_POST['time'] ?? '');
-$location = trim($_POST['location'] ?? '');
-$referral = trim($_POST['referral'] ?? '');
-$notes = trim($_POST['notes'] ?? '');
+function bookingField(string $key): string {
+    $value = $_POST[$key] ?? '';
+    return is_string($value) ? trim($value) : '';
+}
+function bookingLength(string $text): int {
+    return function_exists('mb_strlen') ? mb_strlen($text, 'UTF-8') : count(preg_split('//u', $text, -1, PREG_SPLIT_NO_EMPTY) ?: str_split($text));
+}
+$service = bookingField('service');
+$name = bookingField('fullName');
+$email = bookingField('email');
+$phone = bookingField('phone');
+$date = bookingField('date');
+$time = bookingField('time');
+$location = bookingField('location');
+$referral = bookingField('referral');
+$notes = bookingField('notes');
+$appointmentType = bookingField('appointment_type');
+$facilityChoice = bookingField('facility_choice');
+$otherFacilityName = bookingField('other_facility_name');
+$visitAddress = bookingField('visit_address');
+$visitContactPhone = bookingField('visit_contact_phone');
+$visitDirections = bookingField('visit_directions');
 
 // ========================================
 // VALIDATE REQUIRED FIELDS
@@ -101,7 +114,6 @@ $requiredFields = [
     'phone'    => $phone,
     'date'     => $date,
     'time'     => $time,
-    'location' => $location,
     'referral' => $referral
 ];
 
@@ -140,7 +152,8 @@ $allowedServices = [
     'Lymphatic drainage post surgery',
     'Physical Therapy Consultancy',
     'Sexual Health and wellness',
-    'Pain Management'
+    'Pain Management',
+    'Physical Therapy Products and Support'
 ];
 
 if (!in_array($service, $allowedServices, true)) {
@@ -155,8 +168,8 @@ if (!in_array($service, $allowedServices, true)) {
 // ========================================
 
 if (
-    mb_strlen($name) < 2 ||
-    mb_strlen($name) > 150 ||
+    bookingLength($name) < 2 ||
+    bookingLength($name) > 150 ||
     !preg_match("/^[\p{L}\p{M}][\p{L}\p{M}\s.'’-]{1,149}$/u", $name)
 ) {
     bookingResponse(400, [
@@ -170,7 +183,7 @@ if (
 // ========================================
 
 if (
-    mb_strlen($email) > 255 ||
+    bookingLength($email) > 255 ||
     !filter_var($email, FILTER_VALIDATE_EMAIL)
 ) {
     bookingResponse(400, [
@@ -184,7 +197,7 @@ if (
 // ========================================
 
 if (
-    mb_strlen($phone) > 30 ||
+    bookingLength($phone) > 30 ||
     !preg_match('/^\+?[0-9\s().-]{7,20}$/', $phone)
 ) {
     bookingResponse(400, [
@@ -194,15 +207,53 @@ if (
 }
 
 // ========================================
-// VALIDATE LOCATION
+// VALIDATE VISIT TYPE, FACILITY, ADDRESS AND CONTACT
 // ========================================
-
-if (mb_strlen($location) > 255) {
-    bookingResponse(400, [
-        'success' => false,
-        'message' => 'The location information is too long.'
-    ]);
+require_once __DIR__ . '/clinic-info.php';
+$additionalBookingLines = [];
+// Old cached forms without appointment_type remain accepted through their existing location field.
+if ($appointmentType !== '') {
+    if (!in_array($appointmentType, ['facility','home'], true)) {
+        bookingResponse(400, ['success'=>false, 'message'=>'Please choose a valid appointment setting.']);
+    }
+    if ($appointmentType === 'facility') {
+        if (!in_array($facilityChoice, ['syokimau','komarocks','other'], true)) {
+            bookingResponse(400, ['success'=>false,'message'=>'Select the facility for your appointment.']);
+        }
+        if ($facilityChoice === 'other') {
+            if (bookingLength($otherFacilityName)<3 || bookingLength($otherFacilityName)>70) bookingResponse(400,['success'=>false,'message'=>'Enter a valid other facility name.']);
+            $location = 'Other facility: ' . $otherFacilityName . ' - ' . $visitAddress;
+            $additionalBookingLines[] = 'Visit type: Other facility';
+            $additionalBookingLines[] = 'Facility: ' . $otherFacilityName;
+        } else {
+            $available = mephysClinicLocations();
+            $location = $available[$facilityChoice]['name'];
+            $additionalBookingLines[] = 'Visit type: Mephys facility';
+            $additionalBookingLines[] = 'Facility: ' . $available[$facilityChoice]['name'];
+        }
+    } else {
+        $location = 'Home-based care: ' . $visitAddress;
+        $additionalBookingLines[] = 'Visit type: Home-based care';
+    }
+    if ($appointmentType === 'home' || $facilityChoice === 'other') {
+        if (bookingLength($visitAddress)<12 || bookingLength($visitAddress)>160 || preg_match('/[<>]/', $visitAddress)) bookingResponse(400,['success'=>false,'message'=>'Provide a complete street/building, town and county address (12–160 characters).']);
+        if (!preg_match('/^\+?[0-9\s().-]{7,20}$/', $visitContactPhone)) bookingResponse(400,['success'=>false,'message'=>'Provide a valid contact number at the visit location.']);
+        if (bookingLength($visitDirections)>300) bookingResponse(400,['success'=>false,'message'=>'Directions must be 300 characters or fewer.']);
+        $additionalBookingLines[] = 'Full visit address: ' . $visitAddress;
+        $additionalBookingLines[] = 'Visit contact phone: ' . $visitContactPhone;
+        if ($visitDirections!=='') $additionalBookingLines[] = 'Landmark / directions: ' . $visitDirections;
+    } elseif ($visitAddress!=='' || $visitDirections!=='' || $visitContactPhone!=='' || $otherFacilityName!=='') {
+        bookingResponse(400,['success'=>false,'message'=>'Please review the visit fields for your selected facility.']);
+    }
+} elseif ($location === '') {
+    bookingResponse(400,['success'=>false,'message'=>'Please choose a visit location.']);
 }
+if (bookingLength($location)>255) bookingResponse(400,['success'=>false,'message'=>'Location is too long. Use a shorter address and add landmarks in directions.']);
+if (bookingLength($notes)>1200) bookingResponse(400,['success'=>false,'message'=>'Additional notes cannot exceed 1,200 characters.']);
+if ($additionalBookingLines) {
+    $notes = implode("\n", $additionalBookingLines) . ($notes!=='' ? "\n---\nPatient notes: " . $notes : '');
+}
+if (bookingLength($notes)>2200) bookingResponse(400,['success'=>false,'message'=>'Appointment details are too long. Please shorten your directions or notes.']);
 
 // ========================================
 // VALIDATE REFERRAL
@@ -225,7 +276,7 @@ if (!in_array($referral, $allowedReferrals, true)) {
 // VALIDATE NOTES
 // ========================================
 
-if (mb_strlen($notes) > 2000) {
+if (bookingLength($notes) > 2500) {
     bookingResponse(400, [
         'success' => false,
         'message' => 'Additional notes cannot exceed 2,000 characters.'
@@ -371,7 +422,8 @@ $safeEmail = htmlspecialchars($email, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 $safePhone = htmlspecialchars($phone, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 $safeService = htmlspecialchars($service, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 $safeDate = htmlspecialchars($date, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-$safeTime = htmlspecialchars($time, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+$timeLabel = DateTimeImmutable::createFromFormat('!H:i', $time, $timezone)->format('g:i A');
+$safeTime = htmlspecialchars($timeLabel, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 $safeLocation = htmlspecialchars($location, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 $safeReferral = htmlspecialchars($referral, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 $safeNotes = nl2br(
@@ -469,7 +521,7 @@ try {
             "Reference: {$appointmentId}\n" .
             "Service: {$service}\n" .
             "Date: {$date}\n" .
-            "Time: {$time}\n" .
+            "Time: {$timeLabel}\n" .
             "Location: {$location}\n\n" .
             "Your request is pending clinic approval. " .
             "Our team will contact you regarding confirmation.\n\n" .
@@ -552,7 +604,7 @@ try {
             "Phone: {$phone}\n" .
             "Service: {$service}\n" .
             "Date: {$date}\n" .
-            "Time: {$time}\n" .
+            "Time: {$timeLabel}\n" .
             "Location: {$location}\n" .
             "Referral: {$referral}\n" .
             "Notes: {$notes}\n\n" .
